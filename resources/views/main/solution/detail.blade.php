@@ -110,7 +110,7 @@
                     <div class="card card-body gap-2" style="flex-direction: row;">
                         <?php $partnership = Partnership::where('id_category', $row->id)->get()->all() ?>
                         @foreach($partnership as $partner)
-                            <img style="width: 150px; height: auto;" class="rounded shadow" src="{{asset('storage/images/' .$partner->image)}}"
+                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$partner->image)}}"
                                 alt="">
                         @endforeach
                     </div>
@@ -127,7 +127,7 @@
                 <div class="collapse" id="collapsefsi">
                     <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                         @foreach($fsi as $row)
-                        <img style="width: 150px; height: auto;" class="shadow rounded"
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
                             src="{{asset('storage/images/' .$row->image)}}" alt="">
                         @endforeach
                     </div>
@@ -135,10 +135,10 @@
                     <div class="card card-body d-flex justify-content-around flex-wrap">
                         @if($project1)
                         <div class="img-partnership col-md-2 mt-3">
-                            <img style="width: 150px; height: auto;"
-                                src="{{asset('storage/images/' .$project1->image)}}" alt="">
+                            <img style="height: 85px; width: 165px; object-fit: contain"
+                                src="{{asset('storage/images/' .$project1->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify;">{{$project1->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px;">{{$project1->desc}}</p>
                         @endif
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                 <div class="collapse" id="collapseGroverment">
                     <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                         @foreach($government as $row)
-                            <img style="width: 150px; height: auto;" class="rounded shadow" src="{{asset('storage/images/' .$row->image)}}"
+                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
                                 alt="">
                         @endforeach
                     </div>
@@ -158,10 +158,10 @@
                     <div class="card card-body d-flex justify-content-around flex-wrap">
                         @if($project2)
                         <div class="img-partnership col-md-2 mt-3">
-                            <img style="width: 150px; height: auto;"
-                                src="{{asset('storage/images/' .$project2->image)}}" alt="">
+                            <img style="height: 85px; width: 165px; object-fit: contain"
+                                src="{{asset('storage/images/' .$project2->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify;">{{$project2->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px;">{{$project2->desc}}</p>
                         @endif
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                 <div class="collapse" id="collapseManufacturing">
                     <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                         @foreach($manufacturing as $row)
-                            <img style="width: 150px; height: auto;" class="rounded shadow" src="{{asset('storage/images/' .$row->image)}}"
+                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
                                 alt="">
                         @endforeach
                     </div>
@@ -181,10 +181,10 @@
                     <div class="card card-body d-flex justify-content-around flex-wrap">
                         @if($project3)
                         <div class="img-partnership col-md-2 mt-3">
-                            <img style="width: 150px; height: auto;"
-                                src="{{asset('storage/images/' .$project3->image)}}" alt="">
+                            <img style="height: 85px; width: 165px; object-fit: contain"
+                                src="{{asset('storage/images/' .$project3->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify;">{{$project3->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px;">{{$project3->desc}}</p>
                         @endif
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                 <div class="collapse" id="collapseTelco">
                     <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                         @foreach($telco as $row)
-                            <img style="width: 150px; height: auto;" class="rounded shadow" src="{{asset('storage/images/' .$row->image)}}"
+                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
                                 alt="">
                         @endforeach
                     </div>
@@ -204,10 +204,10 @@
                     <div class="card card-body d-flex justify-content-around flex-wrap">
                         @if($project4)
                         <div class="img-partnership col-md-2 mt-3">
-                            <img style="width: 150px; height: auto;"
-                                src="{{asset('storage/images/' .$project4->image)}}" alt="">
+                            <img style="height: 85px; width: 165px; object-fit: contain"
+                                src="{{asset('storage/images/' .$project4->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify;">{{$project4->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px;">{{$project4->desc}}</p>
                         @endif
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                 <div class="collapse" id="collapseRetail">
                     <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                         @foreach($retail as $row)
-                            <img style="width: 150px; height: auto;" class="rounded shadow" src="{{asset('storage/images/' .$row->image)}}"
+                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
                                 alt="">
                         @endforeach
                     </div>
@@ -227,10 +227,10 @@
                     <div class="card card-body d-flex justify-content-around flex-wrap">
                         @if($project5)
                         <div class="img-partnership col-md-2 mt-3">
-                            <img style="width: 150px; height: auto;"
-                                src="{{asset('storage/images/' .$project5->image)}}" alt="">
+                            <img style="height: 85px; width: 165px; object-fit: contain"
+                                src="{{asset('storage/images/' .$project5->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify;">{{$project5->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px;">{{$project5->desc}}</p>
                         @endif
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                 <div class="collapse" id="collapseEducation">
                     <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                         @foreach($education as $row)
-                            <img style="width: 150px; height: auto;" class="rounded shadow" src="{{asset('storage/images/' .$row->image)}}"
+                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
                                 alt="">
                         @endforeach
                     </div>
@@ -250,10 +250,10 @@
                     <div class="card card-body d-flex justify-content-around flex-wrap">
                         @if($project6)
                         <div class="img-partnership col-md-2 mt-3">
-                            <img style="width: 150px; height: auto;"
-                                src="{{asset('storage/images/' .$project6->image)}}" alt="">
+                            <img style="height: 85px; width: 165px; object-fit: contain"
+                                src="{{asset('storage/images/' .$project6->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify;">{{$project6->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px;">{{$project6->desc}}</p>
                         @endif
                     </div>
                 </div>

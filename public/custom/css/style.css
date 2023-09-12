@@ -920,14 +920,6 @@
     transition: 0.3s;
 }
 
-.img-partnership:hover {
-    transform: scale(1.1);
-}
-
-.img-partnership:hover img {
-    border-radius: 10px;
-}
-
 .img-partnership>img {
     width: 90%;
     height: 140px;
@@ -1067,3 +1059,6 @@ div.dataTables_wrapper div.dataTables_info {
     margin-left: 13px;
     width: 95%;
 }
+
+
+

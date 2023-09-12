@@ -75,22 +75,22 @@
     <div class="career-job">
         <div class="d-flex justify-content-start" style="overflow: scroll;">
             <div class="form-check">
-                <input class="form-check-input" style="margin-top: 11px" onClick="allData()" type="radio"
+                <input class="form-check-input ms-1"onClick="allData()" type="radio"
                     name="exampleRadios" id="exampleRadios1" value="all" checked>
                 <label class="" for="exampleRadios1">All</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" style="margin-top: 11px;" onClick="data('Fulltime')" type="radio"
+                <input class="form-check-input ms-1" onClick="data('Fulltime')" type="radio"
                     name="exampleRadios" id="exampleRadios4" value="Fulltime">
                 <label class="" for="exampleRadios4">Full Time</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" style="margin-top: 11px" onClick="data('Contract')" type="radio"
+                <input class="form-check-input ms-1"onClick="data('Contract')" type="radio"
                     name="exampleRadios" id="exampleRadios2" value="Contract">
                 <label class="" for="exampleRadios2">Contract</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" style="margin-top: 11px" onClick="data('Internship')" type="radio"
+                <input class="form-check-input ms-1"onClick="data('Internship')" type="radio"
                     name="exampleRadios" id="exampleRadios3" value="Internship">
                 <label class="" for="exampleRadios3">Internship</label>
             </div>

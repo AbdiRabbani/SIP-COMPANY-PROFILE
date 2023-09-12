@@ -77,22 +77,26 @@
                     aria-selected="false">All</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(1)" style="min-width: max-content;" data-bs-toggle="pill"
-                    role="tab" aria-controls="pills-profile" type="submit" aria-selected="false">Enterprise Network
+                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(1)"
+                    style="min-width: max-content;" data-bs-toggle="pill" role="tab" aria-controls="pills-profile"
+                    type="submit" aria-selected="false">Enterprise Network
                     Infrastructure</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(2)" style="min-width: max-content;" data-bs-toggle="pill"
-                    role="tab" aria-controls="pills-profile" type="submit" aria-selected="false">Data center &
+                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(2)"
+                    style="min-width: max-content;" data-bs-toggle="pill" role="tab" aria-controls="pills-profile"
+                    type="submit" aria-selected="false">Data center &
                     Cloud</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(3)" style="min-width: max-content;" data-bs-toggle="pill"
-                    role="tab" aria-controls="pills-profile" type="submit" aria-selected="false">Cyber Security</button>
+                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(3)"
+                    style="min-width: max-content;" data-bs-toggle="pill" role="tab" aria-controls="pills-profile"
+                    type="submit" aria-selected="false">Cyber Security</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(4)" style="min-width: max-content;" data-bs-toggle="pill"
-                    role="tab" aria-controls="pills-profile" type="submit" aria-selected="false">Collaboration &
+                <button class="nav-link" id="filter-button pills-profile-tab" onClick="data(4)"
+                    style="min-width: max-content;" data-bs-toggle="pill" role="tab" aria-controls="pills-profile"
+                    type="submit" aria-selected="false">Collaboration &
                     Facility</button>
             </li>
         </ul>
@@ -104,8 +108,8 @@
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_1">
 
             </div>
-            <p id="title-project1" class="fw-semibold"></p>
-            <img style="height: 90px; width: auto;" class="rounded shadow my-3" id="img-project1" alt="">
+            <p id="title-project1" class="fw-semibold pt-3"></p>
+            <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project1" alt="">
             <p style="text-align: justify;" id="text-project1"></p>
         </div>
         <div class="mt-4">
@@ -113,8 +117,8 @@
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_2">
 
             </div>
-            <p id="title-project2" class="fw-semibold"></p>
-            <img style="height: 90px; width: auto;" class="rounded shadow my-3" id="img-project2" alt="">
+            <p id="title-project2" class="fw-semibold pt-3"></p>
+            <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project2" alt="">
             <p style="text-align: justify;" id="text-project2"></p>
         </div>
         <div class="mt-4">
@@ -122,26 +126,26 @@
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_3">
 
             </div>
-            <p id="title-project3" class="fw-semibold"></p>
-            <img style="height: 90px; width: auto;" class="rounded shadow my-3" id="img-project3" alt="">
+            <p id="title-project3" class="fw-semibold pt-3"></p>
+            <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project3" alt="">
             <p style="text-align: justify;" id="text-project3"></p>
         </div>
         <div class="mt-4">
             <p class="fs-5 fw-semibold px-3">~ Telco & Service Provider</p>
-            <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_4">
+            <div class="d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_4">
 
             </div>
-            <p id="title-project4" class="fw-semibold"></p>
-            <img style="height: 90px; width: auto;" class="rounded shadow my-3" id="img-project4" alt="">
+            <p id="title-project4" class="fw-semibold pt-3"></p>
+            <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project4" alt="">
             <p style="text-align: justify;" id="text-project4"></p>
         </div>
         <div class="mt-4">
             <p class="fs-5 fw-semibold px-3">~ Retail</p>
-            <div class="d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_5">
+            <div class="d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_5">
 
             </div>
-            <p id="title-project5" class="fw-semibold"></p>
-            <img style="height: 90px; width: auto;" class="rounded shadow my-3" id="img-project5" alt="">
+            <p id="title-project5" class="fw-semibold pt-3"></p>
+            <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project5" alt="">
             <p style="text-align: justify;" id="text-project5"></p>
         </div>
         <div class="mt-4">
@@ -149,8 +153,8 @@
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2 px-4" id="data_loop_6">
 
             </div>
-            <p id="title-project6" class="fw-semibold"></p>
-            <img style="height: 90px; width: auto;" class="rounded shadow my-3" id="img-project6" alt="">
+            <p id="title-project6" class="fw-semibold pt-3"></p>
+            <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project6" alt="">
             <p style="text-align: justify;" id="text-project6"></p>
         </div>
     </div>
@@ -178,32 +182,32 @@
                     if (key == 1) {
                         $.each(value, function (index, user) {
                             data_1 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 2) {
                         $.each(value, function (index, user) {
                             data_2 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 3) {
                         $.each(value, function (index, user) {
                             data_3 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 4) {
                         $.each(value, function (index, user) {
                             data_4 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 5) {
                         $.each(value, function (index, user) {
                             data_5 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 6) {
                         $.each(value, function (index, user) {
                             data_6 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     }
                 });
@@ -294,32 +298,32 @@
                     if (key == 1) {
                         $.each(value, function (index, user) {
                             data_1 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 2) {
                         $.each(value, function (index, user) {
                             data_2 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 3) {
                         $.each(value, function (index, user) {
                             data_3 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 4) {
                         $.each(value, function (index, user) {
                             data_4 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 5) {
                         $.each(value, function (index, user) {
                             data_5 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     } else if (key == 6) {
                         $.each(value, function (index, user) {
                             data_6 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded" style="height: 90px; width: auto;">';
+                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain">';
                         });
                     }
 

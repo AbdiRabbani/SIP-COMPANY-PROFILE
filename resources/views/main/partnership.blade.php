@@ -131,23 +131,19 @@
                 $.each(response, function (key, value) {
                     if (key === 'Expert') {
                         $.each(value, function (index, user) {
-                            data_e += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
-                                '" alt="">';
+                            data_e += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image + '" alt="">';
                         });
                     } else if (key === 'Professional') {
                         $.each(value, function (index, user) {
-                            data_p += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
-                                '" alt="">';
+                            data_p += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image + '" alt="">';
                         });
                     } else if (key === 'Associate') {
                         $.each(value, function (index, user) {
-                            data_as += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
-                                '" alt="">';   
+                            data_as += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image + '" alt="">';   
                         });
                     } else if (key === 'Authorized') {
                         $.each(value, function (index, user) {
-                            data_au += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
-                                '" alt="">';
+                            data_au += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image + '" alt="">';
                         });
                     }
                     
@@ -174,22 +170,22 @@
                 $.each(response, function (key, value) {
                     if (key === 'Expert') {
                         $.each(value, function (index, user) {
-                            data_e += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
+                            data_e += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image +
                                 '" alt="">';
                         });
                     } else if (key === 'Professional') {
                         $.each(value, function (index, user) {
-                            data_p += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
+                            data_p += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image +
                                 '" alt="">';
                         });
                     } else if (key === 'Associate') {
                         $.each(value, function (index, user) {
-                            data_as += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
+                            data_as += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image +
                                 '" alt="">';
                         });
                     } else if (key === 'Authorized') {
                         $.each(value, function (index, user) {
-                            data_au += '<img style="height: 90px; width: auto;" class="rounded shadow" src="/storage/images/' + user.image +
+                            data_au += '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" src="/storage/images/' + user.image +
                                 '" alt="">';
                         });
                     }

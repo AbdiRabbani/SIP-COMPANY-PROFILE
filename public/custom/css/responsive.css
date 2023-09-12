@@ -180,7 +180,11 @@
     }
 
     .solution-detail-header p {
-        font-size: 40px;
+        font-size: 25px;
+    }
+
+    .solution-detail-header img {
+        width: 150px;
     }
 }
 
