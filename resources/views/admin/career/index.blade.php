@@ -74,9 +74,9 @@
                 <div class="mt-3">
                     <label for="">Status</label>
                     <select name="status" id="" class="form-select">
-                        <option value="fulltime">Full Time</option>
-                        <option value="contract">Contract</option>
-                        <option value="intern">Internship</option>
+                        <option value="Fulltime">Full Time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
                     </select>
                 </div>
                 <div class="mt-3">

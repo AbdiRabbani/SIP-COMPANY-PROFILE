@@ -73,6 +73,10 @@
         background: var(--purple);
     }
 
+    .tab-content {
+        margin-top: 15px;
+    }
+
 </style>
 <div class="container">
     <div class="partnership-header">
