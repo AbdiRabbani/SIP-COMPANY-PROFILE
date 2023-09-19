@@ -37,6 +37,8 @@ Route::get('/insights/{id}', 'ViewController@insight_show');
 //Solution
 Route::get('/solution', 'ViewController@solution');
 Route::get('/solution/detail', 'ViewController@solution_show');
+Route::get('/blog/{id}', 'ViewController@blogData');
+Route::get('/blog/all', 'ViewController@blogAllData');
 
 //Campaign
 Route::get('/campaign', 'ViewController@campaign');
@@ -105,9 +107,10 @@ Route::put('/admin/category/p/update/{id}','CategoryController@updateP');
 Route::delete('/admin/category/dp/{id}','CategoryController@destroyP');
 
 Route::get('/admin/project-reference', 'ProjectController@index');
-Route::get('/admin/project-reference/{id}', 'ProjectController@create');
+Route::get('/admin/project-reference/create', 'ProjectController@create');
 Route::post('/admin/project-reference/store', 'ProjectController@store');
 Route::get('/admin/project-reference/edit/{id}', 'ProjectController@edit');
+Route::delete('/admin/project-reference/destroy/{id}', 'ProjectController@destroy');
 Route::put('/admin/project-reference/update/{id}', 'ProjectController@update');
 
 Route::get('/admin/career','CareerController@index');

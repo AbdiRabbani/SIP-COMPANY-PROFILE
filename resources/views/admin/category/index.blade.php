@@ -1,47 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-<style>
-    .floating-button:hover {
-        bottom: 50px;
-        animation: none;
-        color: rgb(215, 215, 215);
-    }
-
-    .floating-button {
-        display: none;
-        z-index: 99;
-        position: fixed;
-        right: 30px;
-        bottom: 30px;
-        background: var(--purple);
-        padding: 15px;
-        border-radius: 10px;
-        transition: 0.4s;
-        cursor: pointer;
-        box-shadow: rgba(0, 0, 0, 0.238) 0px 0px 10px;
-        text-decoration: none;
-        color: white;
-    }
-
-    @media screen and (max-width: 767px) {
-        .floating-button {
-            display: block;
-        }
-    }
-
-    .floating-button:nth-child(2) {
-        right: 140px;
-    }
-
-</style>
 <div class="container pt-5 d-flex flex-wrap">
     <div class="col-md-12" id="partnership">
-        <div class="d-flex justify-content-between align-items-center col-md-10">
-            <p class="fw-semibold" style="font-size: 48px;">Category</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="fw-semibold" style="font-size: 48px;">Product</p>
             <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#partnershipModal">Add</a>
         </div>
-        <div class="table table-responsive col-md-10 bg-white rounded p-3">
+        <div class="table table-responsive col-md-12 bg-white rounded p-3">
             <table class="table" id="myTable1">
                 <thead>
                     <tr>
@@ -169,8 +135,8 @@
     };
 
 </script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $('.remove-data').click(function (event) {

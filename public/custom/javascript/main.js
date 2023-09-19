@@ -145,26 +145,4 @@ function privacy() {
     }
 }
 
-function allDetailData() {
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/partnership/alldata",
-        success: function (response) {
-            var data_g = "";
-            $.each(response, function (key, value) {
-                if (key === 'gold') {
-                    $.each(value, function (index, user) {
-                        data_g +=
-                            '<div class="img-partnership col-md-3 justify-content-center mt-3">';
-                        data_g += '<img src="/storage/images/' + user.image +
-                            '" alt="">';
-                        data_g += "<p>" + user.name + "</p>";
-                        data_g += "</div>";
-                    });
-                }
-            });
-            $('.solution-detail-partnership').html(data_g);
-        }
-    })
-};
+

@@ -148,5 +148,5 @@
         .catch(error => {
             console.log(error);
         });
-    </script>
-    @endsection
+</script>
+@endsection

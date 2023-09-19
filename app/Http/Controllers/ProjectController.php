@@ -4,34 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProjectReference;
+use App\PartnershipCategory;
 
 class ProjectController extends Controller
 {
-    public function index() {
-        return view('admin.project.index');
+    public function index()
+    {
+        $data = ProjectReference::all();
+        return view('admin.project.index', compact('data'));
     }
 
-    public function create($id) {
-        $fsi = ProjectReference::where('type', 1)->where('about', $id)->get()->first();
-        $government = ProjectReference::where('type', 2)->where('about', $id)->get()->first();
-        $manufacturing = ProjectReference::where('type', 3)->where('about', $id)->get()->first();
-        $telco = ProjectReference::where('type', 4)->where('about', $id)->get()->first();
-        $retail = ProjectReference::where('type', 5)->where('about', $id)->get()->first();
-        $education = ProjectReference::where('type', 6)->where('about', $id)->get()->first();
-
-        $id_ = $id;
-
-        return view('admin.project.create', compact('fsi', 'government', 'manufacturing', 'telco', 'retail', 'education', 'id_'));
+    public function create()
+    {
+        $product = PartnershipCategory::all();
+        return view('admin.project.create', compact('product'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $response = $request->all();
 
         $data = [
             'name' => $response['name'],
             'desc' => $response['desc'],
             'image' => $response['image'],
-            'about' => $response['about'],
+            'id_product' => $response['id_product'],
             'type' => $response['type'],
         ];
         
@@ -43,16 +40,17 @@ class ProjectController extends Controller
         
         
         ProjectReference::create($data);
-        return back();
+        return redirect('/admin/project-reference');
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $response = $request->all();
 
         $data = [
             'name' => $response['name'],
             'desc' => $response['desc'],
-            'about' => $response['about'],
+            'id_product' => $response['id_product'],
             'type' => $response['type'],
         ];
 
@@ -65,12 +63,19 @@ class ProjectController extends Controller
         }
 
         ProjectReference::find($id)->update($data);
-        return back();
+        return redirect('/admin/project-reference');
     }
 
-    public function edit($id) {
-        $data = ProjectReference::where('id_category', $id)->get()->first();
-        $id_ = $id;
-        return view('admin.project.edit', compact('data', 'id_'));
+    public function edit($id)
+    {
+        $data = ProjectReference::find($id);
+        $product = PartnershipCategory::all();
+        return view('admin.project.edit', compact('data', 'product'));
+    }
+
+    public function destroy($id)
+    {
+        ProjectReference::find($id)->delete();
+        return back();
     }
 }

@@ -64,19 +64,9 @@
         <p class="detail-date">{{Carbon\Carbon::parse($data->created_at)->format('d M Y')}}</p>
         <p class="detail-title fw-semibold">{{$data->title}}</p>
         <div class="justify-content-start gap-2" style="height: max-content;">
-            @if($data->type == 'blog')
-            @foreach($about as $row)
-            <p class="rounded p-1 text-white" style="background: var(--purple);">
-                @if($row->about == 1)
-                Enterprise Network Infrastructure
-                @elseif($row->about == 2)
-                Data center & Cloud
-                @elseif($row->about == 3)
-                Cyber Security
-                @elseif($row->about == 4)
-                Collaboration & facility
-                @endif
-            </p>
+            @if($data->type == 'Blog')
+            @foreach($blogtag as $row)
+            <p class="rounded p-1 text-white" style="background: var(--purple);">{{$row->product->name}}</p>
             @endforeach
             @else
             @foreach($tag as $row)

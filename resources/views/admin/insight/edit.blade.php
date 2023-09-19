@@ -29,29 +29,19 @@
         <div class="mt-2">
             <label for="">Type</label>
             <select name="type" id="type_insights" onChange="changeType()" class="form-select">
-                <option value="{{$data->type}}">
-                    @if($data->type == 'blog')
-                    Blog
-                    @elseif($data->type == 'news')
-                    News
-                    @endif
-                    --current
-                </option>
-                <option value="blog">Blog</option>
+                <option value="{{$data->type}}">{{$data->type}} --current</option>
+                <option value="Blog">Blog</option>
                 <option value="news">News</option>
             </select>
         </div>
         <div class="mt-2" id="blog_about">
-            <label for="">About</label>
-            <select name="about[]" id="about_select" class="" multiple="multiple" style="width: 100%;">
-                <option value="1" @foreach($about as $row) @if($row->about == 1) selected @endif @endforeach>Enterprise
-                    Network Infrastructure</option>
-                <option value="2" @foreach($about as $row) @if($row->about == 2) selected @endif @endforeach>Data center
-                    & Cloud</option>
-                <option value="3" @foreach($about as $row) @if($row->about == 3) selected @endif @endforeach>Cyber
-                    Security</option>
-                <option value="4" @foreach($about as $row) @if($row->about == 4) selected @endif
-                    @endforeach>Collaboration & facility</option>
+            <label for="">About Product</label>
+            <select name="id_product[]" id="about_select" class="" multiple="multiple" style="width: 100%;">
+                @foreach($product as $row)
+                <option value="{{$row->id}}" @if(in_array($row->id, array_column($tag2, 'id_product'))) selected
+                    @endif> {{$row->name}}
+                </option>
+                @endforeach
             </select>
         </div>
         <div class="mt-2" id="news_tag">
@@ -93,12 +83,11 @@
     changeType()
 
     function changeType() {
-        if (document.querySelector('#type_insights').value == 'blog') {
-
+        if (document.querySelector('#type_insights').value == 'Blog') {
             document.querySelector('#blog_about').style.display = 'block';
             document.querySelector('#news_tag').style.display = 'none';
 
-        } else if (document.querySelector('#type_insights').value == 'news') {
+        } else if (document.querySelector('#type_insights').value == 'News') {
 
             document.querySelector('#blog_about').style.display = 'none';
             document.querySelector('#news_tag').style.display = 'block';

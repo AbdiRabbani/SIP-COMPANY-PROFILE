@@ -36,7 +36,7 @@ class PartnershipController extends Controller
         return back();
     }
 
-    protected function update(Request $request) 
+    protected function update(Request $request, $id) 
     {
         $response = $request->all();
 

@@ -1,17 +1,6 @@
 @extends('layouts.main')
 
 @section('nav')
-<style>
-    .nav-pills .nav-link.active,
-    .nav-pills .show>.nav-link {
-        background-color: var(--purple);
-    }
-
-    .nav-link {
-        color: var(--purple);
-    }
-
-</style>
 <a class="nav-item" href="{{url('/home')}}">Home</a>
 <a class="nav-item" href="{{url('/profile')}}">Profile</a>
 <div>
@@ -67,39 +56,115 @@
         border-bottom: none;
     }
 
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        background-color: var(--purple);
+    }
+
+    .nav-link {
+        color: var(--purple);
+        box-shadow: 0px 0px 3px var(--purple);
+        margin: 10px 0px;
+    }
+
+    .nav-link:hover {
+        color: white;
+        background: var(--purple);
+    }
+
+    .tab-content {
+        margin: 20px 0px !important;
+    }
+
 </style>
 
 <div class="container">
-    <p class="text-center fw-semibold" style="margin-top: 100px; font-size: 48px;">Blog</p>
-    <div class="d-flex row insights-header">
-        <div class="search_insights mb-3 col-md-2">
-            <input type="text" class="form-control" id="search_input" onChange="dataSearch()">
-            <button href="" type="submit" style="border: none; background-color: white;" onClick="dataSearch()">
-                <img src="{{asset('custom/icon/ic_search.png')}}" alt="">
-            </button>
+    <div class="partnership-header">
+        <p class="text-center fw-semibold">Blog</p>
+        <div class="col-ms-12 d-flex justify-content-end">
+            <div class="search_insights mb-3 col-md-2">
+                <input type="text" class="form-control" id="search_input" onChange="dataSearch()">
+                <button href="" type="submit" style="border: none; background-color: white;" onClick="dataSearch()">
+                    <img src="{{asset('custom/icon/ic_search.png')}}" alt="">
+                </button>
+            </div>
         </div>
-        <ul class="nav nav-pills mb-3 col-md-12" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
-            <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                <button class="nav-link active" data-bs-toggle="pill" type="button" role="tab" aria-selected="true"
-                    onClick="allData()">All</button>
+        <ul class="nav nav-pills" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="filter-button btn-all pills-profile-tab" onClick="allData()"
+                    data-bs-toggle="pill" role="tab" aria-controls="pills-profile" type="submit"
+                    aria-selected="false">All</button>
             </li>
-            <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                <button class="nav-link" data-bs-toggle="pill" type="button" role="tab" aria-selected="false"
-                    onClick="data(1)">Enterprise Network Infrastructure</button>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" style="min-width: max-content;" id="network-tab" data-bs-toggle="pill"
+                    data-bs-target="#network" type="button" role="tab" aria-controls="network"
+                    aria-selected="false">Enterprise Network
+                    Infrastructure</button>
             </li>
-            <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                <button class="nav-link" data-bs-toggle="pill" type="button" role="tab" aria-selected="false"
-                    onClick="data(2)">Data Center & Cloud</button>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="filter-button datacenter-tab" style="min-width: max-content;"
+                    data-bs-toggle="pill" role="tab" aria-controls="datacenter" data-bs-target="#datacenter"
+                    type="submit" aria-selected="false">Data center &
+                    Cloud</button>
             </li>
-            <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                <button class="nav-link" data-bs-toggle="pill" type="button" role="tab" aria-selected="false"
-                    onClick="data(3)">Cyber Security</button>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="filter-button cyber-tab" style="min-width: max-content;"
+                    data-bs-toggle="pill" role="tab" aria-controls="cyber" data-bs-target="#cyber" type="submit"
+                    aria-selected="false">Cyber Security</button>
             </li>
-            <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                <button class="nav-link" data-bs-toggle="pill" type="button" role="tab" aria-selected="false"
-                    onClick="data(4)">Collaboration & Facility</button>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="filter-button collaboration-tab" style="min-width: max-content;"
+                    data-bs-toggle="pill" role="tab" aria-controls="collaboration" data-bs-target="#collaboration"
+                    type="submit" aria-selected="false">Collaboration &
+                    Facility</button>
             </li>
         </ul>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade" id="network" role="tabpanel" aria-labelledby="network-tab" tabindex="0">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
+                @foreach($category1 as $row)
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
+                        role="tab" type="submit" aria-selected="false"
+                        style="min-width: max-content;">{{$row->name}}</button>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="datacenter" role="tabpanel" aria-labelledby="datacenter-tab" tabindex="0">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
+                @foreach($category2 as $row)
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
+                        role="tab" type="submit" aria-selected="false"
+                        style="min-width: max-content;">{{$row->name}}</button>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="cyber" role="tabpanel" aria-labelledby="cyber-tab" tabindex="0">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
+                @foreach($category3 as $row)
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
+                        role="tab" type="submit" aria-selected="false"
+                        style="min-width: max-content;">{{$row->name}}</button>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="collaboration" role="tabpanel" aria-labelledby="collaboration-tab" tabindex="0">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
+                @foreach($category4 as $row)
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
+                        role="tab" type="submit" aria-selected="false"
+                        style="min-width: max-content;">{{$row->name}}</button>
+                </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div class="tab-content" id="pills-tabContent">
         <div class="d-flex flex-wrap" id="loop_data">

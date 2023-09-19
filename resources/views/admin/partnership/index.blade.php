@@ -125,7 +125,7 @@
                         <img alt="" src="" class="img-thumbnail col-md-6" id="img_edit"
                             style="height: 200px; object-fit: cover;">
                     </div>
-                    <input required type="file" name="image" class="form-control">
+                    <input type="file" name="image" class="form-control">
                 </div>
                 <div class="mt-3">
                     <label for="">Level</label>

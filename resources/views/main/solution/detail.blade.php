@@ -52,10 +52,15 @@
 
 @section('content')
 <?php use App\Partnership ?>
+<?php use App\Customer ?>
 <?php use App\ProjectReference ?>
 <style>
     .nav-link {
         color: grey;
+    }
+
+    .nav-pills {
+        border-bottom: none;
     }
 
     .nav-link:hover {
@@ -85,200 +90,210 @@
     <p>{{$desc}}</p>
 
     <ul class="nav nav-underline" id="myTab" role="tablist">
+        @foreach($product as $row)
         <li class="nav-item" role="presentation">
-            <button class="nav-link active fw-semibold" id="product-tab" data-bs-toggle="tab"
-                data-bs-target="#product-tab-pane" type="button" role="tab" aria-controls="product-tab-pane"
-                aria-selected="true">Product</button>
+            <button class="nav-link fw-semibold" id="{{$row->id}}-tab" data-bs-toggle="tab"
+                data-bs-target="#{{$row->id}}-tab-pane" type="button" role="tab" aria-controls="{{$row->id}}-tab-pane"
+                aria-selected="true" onClick="blogData({{$row->id}})">{{$row->name}}</button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link fw-semibold" id="customer-tab" data-bs-toggle="tab"
-                data-bs-target="#customer-tab-pane" type="button" role="tab" aria-controls="customer-tab-pane"
-                aria-selected="false ">Customer</button>
-        </li>
+        @endforeach
     </ul>
+
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="product-tab-pane" role="tabpanel" aria-labelledby="product-tab"
+        @foreach($product as $row)
+        <div class="tab-pane fade" id="{{$row->id}}-tab-pane" role="tabpanel" aria-labelledby="{{$row->id}}-tab"
             tabindex="0">
-            <ul class="ps-3">
-                @foreach($product as $row)
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapse{{$row->id}}"
-                        aria-expanded="false" aria-controls="collapse{{$row->id}}">{{$row->name}}</p>
-                </li>
-                <div class="collapse" id="collapse{{$row->id}}">
-                    <p class="fs-6">Partnership</p>
-                    <div class="card card-body gap-2" style="flex-direction: row;">
-                        <?php $partnership = Partnership::where('id_category', $row->id)->get()->all() ?>
-                        @foreach($partnership as $partner)
-                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$partner->image)}}"
-                                alt="">
-                        @endforeach
-                    </div>
-                </div>
+            <p class="fs-6">Partnership</p>
+            <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
+                <?php $partnership = Partnership::where('id_category', $row->id)->where('level', 'Expert')->get()->all() ?>
+                @foreach($partnership as $partner)
+                <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
+                    src="{{asset('storage/images/' .$partner->image)}}" alt="">
                 @endforeach
-            </ul>
-        </div>
-        <div class="tab-pane fade" id="customer-tab-pane" role="tabpanel" aria-labelledby="customer-tab" tabindex="0">
-            <ul class="ps-3">
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapsefsi"
-                        aria-expanded="false" aria-controls="collapsefsi">FSI and Banking</p>
+            </div>
+
+            <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                <?php $partnership = Partnership::where('id_category', $row->id)->where('level', '!=', 'Expert')->get()->all() ?>
+                @foreach($partnership as $partner)
+                <img style="height: 65px; width: 130px; object-fit: contain" class="rounded shadow p-2"
+                    src="{{asset('storage/images/' .$partner->image)}}" alt="">
+                @endforeach
+            </div>
+
+            <p class="fs-6 mt-4">Customer</p>
+            <ul class="nav nav-underline" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="fsi{{$row->id}}-tab" data-bs-toggle="pill" data-bs-target="#fsi{{$row->id}}"
+                        type="button" role="tab" aria-controls="fsi{{$row->id}}" aria-selected="true">FSI and Banking</button>
                 </li>
-                <div class="collapse" id="collapsefsi">
-                    <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                        @foreach($fsi as $row)
-                        <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
-                            src="{{asset('storage/images/' .$row->image)}}" alt="">
-                        @endforeach
-                    </div>
-                    <p class="mt-3">Project Reference</p>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="goverment{{$row->id}}-tab" data-bs-toggle="pill" data-bs-target="#goverment{{$row->id}}"
+                        type="button" role="tab" aria-controls="goverment{{$row->id}}" aria-selected="true">Government</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="manufacturing{{$row->id}}-tab" data-bs-toggle="pill"
+                        data-bs-target="#manufacturing{{$row->id}}" type="button" role="tab" aria-controls="manufacturing{{$row->id}}"
+                        aria-selected="true">Manufacturing</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="telco{{$row->id}}-tab" data-bs-toggle="pill" data-bs-target="#telco{{$row->id}}" type="button"
+                        role="tab" aria-controls="telco{{$row->id}}" aria-selected="true">Telco & Service</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="retail{{$row->id}}-tab" data-bs-toggle="pill" data-bs-target="#retail{{$row->id}}"
+                        type="button" role="tab" aria-controls="retail{{$row->id}}" aria-selected="true">Retail</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="education{{$row->id}}-tab" data-bs-toggle="pill" data-bs-target="#education{{$row->id}}"
+                        type="button" role="tab" aria-controls="education{{$row->id}}" aria-selected="true">Education</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="fsi{{$row->id}}" role="tabpanel" aria-labelledby="fsi{{$row->id}}-tab" tabindex="0">
+                    <p class="">Project Reference</p>
                     <div class="card card-body d-flex justify-content-around flex-wrap">
+                        <?php $project1 = ProjectReference::where('id_product', $row->id)->where('type', 1)->get()->first(); ?>
                         @if($project1)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
                                 src="{{asset('storage/images/' .$project1->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify; margin-top: 40px;">{{$project1->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project1->desc}}</p>
                         @endif
                     </div>
-                </div>
-
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapseGroverment"
-                        aria-expanded="false" aria-controls="collapseGroverment">Government</p>
-                </li>
-                <div class="collapse" id="collapseGroverment">
-                    <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                        @foreach($government as $row)
-                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
-                                alt="">
+                    <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                        <?php $fsi = Customer::where('id_product', $row->id)->where('type', 1)->get()->all(); ?>
+                        @foreach($fsi as $fsidata)
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
+                            src="{{asset('storage/images/' .$fsidata->image)}}" alt="">
                         @endforeach
                     </div>
-                    <p class="mt-3">Project Reference</p>
+                </div>
+                <div class="tab-pane fade" id="goverment{{$row->id}}" role="tabpanel" aria-labelledby="goverment{{$row->id}}-tab" tabindex="0">
+                    <p class="">Project Reference</p>
                     <div class="card card-body d-flex justify-content-around flex-wrap">
+                        <?php $project2 = ProjectReference::where('id_product', $row->id)->where('type', 2)->get()->first(); ?>
                         @if($project2)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
                                 src="{{asset('storage/images/' .$project2->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify; margin-top: 40px;">{{$project2->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project2->desc}}</p>
                         @endif
                     </div>
-                </div>
-
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapseManufacturing"
-                        aria-expanded="false" aria-controls="collapseManufacturing">Manufacturing</p>
-                </li>
-                <div class="collapse" id="collapseManufacturing">
-                    <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                        @foreach($manufacturing as $row)
-                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
-                                alt="">
+                    <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                        <?php $government = Customer::where('id_product', $row->id)->where('type', 2)->get()->all(); ?>
+                        @foreach($government as $governmentdata)
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
+                            src="{{asset('storage/images/' .$governmentdata->image)}}" alt="">
                         @endforeach
                     </div>
-                    <p class="mt-3">Project Reference</p>
+                </div>
+                <div class="tab-pane fade" id="manufacturing{{$row->id}}" role="tabpanel" aria-labelledby="manufacturing{{$row->id}}-tab"
+                    tabindex="0">
+                    <p class="">Project Reference</p>
                     <div class="card card-body d-flex justify-content-around flex-wrap">
+                        <?php $project3 = ProjectReference::where('id_product', $row->id)->where('type', 3)->get()->first(); ?>
                         @if($project3)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
                                 src="{{asset('storage/images/' .$project3->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify; margin-top: 40px;">{{$project3->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project3->desc}}</p>
                         @endif
                     </div>
-                </div>
-
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapseTelco"
-                        aria-expanded="false" aria-controls="collapseTelco">Telco & Service</p>
-                </li>
-                <div class="collapse" id="collapseTelco">
-                    <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                        @foreach($telco as $row)
-                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
-                                alt="">
+                    <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                        <?php $manufacturing = Customer::where('id_product', $row->id)->where('type', 3)->get()->all(); ?>
+                        @foreach($manufacturing as $manufacturingdata)
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
+                            src="{{asset('storage/images/' .$manufacturingdata->image)}}" alt="">
                         @endforeach
                     </div>
-                    <p class="mt-3">Project Reference</p>
+                </div>
+                <div class="tab-pane fade" id="telco{{$row->id}}" role="tabpanel" aria-labelledby="telco{{$row->id}}-tab" tabindex="0">
+                    <p class="">Project Reference</p>
                     <div class="card card-body d-flex justify-content-around flex-wrap">
+                        <?php $project4 = ProjectReference::where('id_product', $row->id)->where('type', 4)->get()->first(); ?>
                         @if($project4)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
                                 src="{{asset('storage/images/' .$project4->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify; margin-top: 40px;">{{$project4->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project4->desc}}</p>
                         @endif
                     </div>
-                </div>
-
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapseRetail"
-                        aria-expanded="false" aria-controls="collapseRetail">Retail</p>
-                </li>
-                <div class="collapse" id="collapseRetail">
-                    <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                        @foreach($retail as $row)
-                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
-                                alt="">
+                    <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                        <?php $telco = Customer::where('id_product', $row->id)->where('type', 4)->get()->all(); ?>
+                        @foreach($telco as $telcodata)
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
+                            src="{{asset('storage/images/' .$telcodata->image)}}" alt="">
                         @endforeach
                     </div>
-                    <p class="mt-3">Project Reference</p>
+                </div>
+                <div class="tab-pane fade" id="retail{{$row->id}}" role="tabpanel" aria-labelledby="retail{{$row->id}}-tab" tabindex="0">
+                    <p class="">Project Reference</p>
                     <div class="card card-body d-flex justify-content-around flex-wrap">
+                        <?php $project5 = ProjectReference::where('id_product', $row->id)->where('type', 5)->get()->first(); ?>
                         @if($project5)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
                                 src="{{asset('storage/images/' .$project5->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify; margin-top: 40px;">{{$project5->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project5->desc}}</p>
                         @endif
                     </div>
-                </div>
-
-                <li>
-                    <p class="solution-about" data-bs-toggle="collapse" data-bs-target="#collapseEducation"
-                        aria-expanded="false" aria-controls="collapseEducation">Education</p>
-                </li>
-                <div class="collapse" id="collapseEducation">
-                    <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                        @foreach($education as $row)
-                            <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2" src="{{asset('storage/images/' .$row->image)}}"
-                                alt="">
+                    <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                        <?php $retail = Customer::where('id_product', $row->id)->where('type', 5)->get()->all(); ?>
+                        @foreach($retail as $retaildata)
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
+                            src="{{asset('storage/images/' .$retaildata->image)}}" alt="">
                         @endforeach
                     </div>
-                    <p class="mt-3">Project Reference</p>
+                </div>
+                <div class="tab-pane fade" id="education{{$row->id}}" role="tabpanel" aria-labelledby="education{{$row->id}}-tab" tabindex="0">
+                    <p class="">Project Reference</p>
                     <div class="card card-body d-flex justify-content-around flex-wrap">
+                        <?php $project6 = ProjectReference::where('id_product', $row->id)->where('type', 6)->get()->first(); ?>
                         @if($project6)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
                                 src="{{asset('storage/images/' .$project6->image)}}" class="shadow rounded p-2" alt="">
                         </div>
-                        <p style="text-align: justify; margin-top: 40px;">{{$project6->desc}}</p>
+                        <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project6->desc}}</p>
                         @endif
                     </div>
+                    <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
+                        <?php $education = Customer::where('id_product', $row->id)->where('type', 6)->get()->all(); ?>
+                        @foreach($education as $educationdata)
+                        <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
+                            src="{{asset('storage/images/' .$educationdata->image)}}" alt="">
+                        @endforeach
+                    </div>
                 </div>
-            </ul>
+            </div>
         </div>
+        @endforeach
     </div>
-
 
     <div class="d-flex justify-content-between mt-5">
         <p class="fw-semibold fs-5">Blog</p>
         <a style="color: var(--purple); text-decoration: none" href="{{url('insights/blog')}}">see all</a>
     </div>
 
-    <div class="d-flex flex-wrap">
-        @foreach($insight as $row)
+    <div class="d-flex flex-wrap" id="blog-content">
+
+    </div>
+
+    <div class="d-flex flex-wrap" id="blog-all">
+        @foreach($blog as $row)
         <div class="mt-4 col-md-3 d-flex justify-content-center p-2">
-            <a class="card shadow my-card" style="text-decoration: none;"
-                href="{{url('insights', $row->insights->id)}}">
+            <a class="card shadow my-card" style="text-decoration: none;" href="{{url('insights', $row->insights->id)}}">
                 <div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">
                     <img style="width: 100%; min-height: 100%; object-fit: cover;"
                         src="{{asset('storage/images/' .$row->insights->image)}}" alt="Card image cap">
                 </div>
-                <p class="card-date mx-3 mb-0">
-                    {{Carbon\Carbon::parse($row->insights->created_at)->format('d M Y')}}
-                </p>
+                <p class="card-date mx-3 mb-0">{{Carbon\Carbon::parse($row->insights->created_at)->format('d M Y')}}</p>
                 <div class="card-body">
                     <p class="card-title fw-semibold"
                         style="  overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;-webkit-box-orient: vertical;">
@@ -289,15 +304,8 @@
         </div>
         @endforeach
     </div>
-</div>
 
-<div class="reach-us my-5">
-    <div class="container px-2">
-        <p class="fs-6 fw-semibold ">Learn more about how we can help you</p>
-        <a class="fs-6 fw-semibold" href="{{url('quotation')}}">REACH US</a>
-    </div>
-</div>
-<div class="container">
+
     <div class="mt-5">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist" style="overflow: scroll; flex-wrap: nowrap;">
@@ -523,9 +531,58 @@
     </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(allDetailData(), 1000);
-    });
+    function blogData(id) {
+        document.querySelector('#blog-all').setAttribute('style', 'display: none !important');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "/blog/" + id,
+            success: function (response) {
+                var data = ""
+                
+                if (response.length > 0) {
+                    $.each(response, function (key, value) {
+                        var createdAtDate = new Date(value.created_at);
 
+                        // Mendapatkan tanggal, bulan, dan tahun dari objek Date
+                        var day = createdAtDate.getDate();
+                        var month = createdAtDate.toLocaleString('default', {
+                            month: 'short'
+                        });
+                        var year = createdAtDate.getFullYear();
+
+                        // Membuat tampilan tanggal dengan format "DD MMM YYYY"
+                        var formattedDate = day + " " + month + " " + year;
+
+                        data = data +
+                            '<div class="mt-4 col-md-3 d-flex justify-content-center p-2">';
+                        data = data +
+                            '<a class="card shadow my-card" style="text-decoration: none;" href="/insights/' +
+                            value.id + '">';
+                        data = data +
+                            '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
+                        data = data +
+                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
+                            value.image + '" alt="Card image cap">';
+                        data = data + '</div>';
+                        data = data + '<p class="card-date mx-3 mb-0">' + formattedDate + '</p>';
+                        data = data + '<div class="card-body">';
+                        data = data +
+                            '<p class="card-title fw-semibold" style="  overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;-webkit-box-orient: vertical;">' +
+                            value.title + '</p>';;
+                        data = data +
+                            '<p class="card-text mt-2 px-4 py-2 rounded shadow">See Detail --></p>';
+                        data = data + '</div>';
+                        data = data + '</a>';
+                        data = data + '</div>';
+                    });
+                } else {
+                    data =
+                        '<p class="rounded p-1 mt-5" style="background: var(--purple); color: white;">Cannot find the news</p>';
+                }
+                $('#blog-content').html(data);
+            }
+        })
+    }
 </script>
 @endsection

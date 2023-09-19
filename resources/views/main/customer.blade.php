@@ -64,8 +64,14 @@
 
     .nav-link {
         color: var(--purple);
+        box-shadow: 0px 0px 3px var(--purple);
+        margin: 10px 0px;
     }
 
+    .nav-link:hover {
+        color: white;
+        background: var(--purple);
+    }
 </style>
 <div class="container">
     <div class="partnership-header">

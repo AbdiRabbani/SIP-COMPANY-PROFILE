@@ -106,12 +106,11 @@
                     </select>
                 </div>
                 <div class="mt-3">
-                    <label for="">About</label>
-                    <select name="about" id="" class="form-select">
-                        <option value="1">Enterprise Network Infrastructure</option>
-                        <option value="2">Data center & Cloud</option>
-                        <option value="3">Cyber Security</option>
-                        <option value="4">Collaboration & Facility</option>
+                    <label for="">Product</label>
+                    <select name="id_product" id="product_add" stle="width: 100% !important;">
+                        @foreach($product as $row)
+                        <option value="{{$row->id}}">{{$row->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -141,7 +140,7 @@
                     <label for="">Image</label>
                     <div>
                         <img alt="" src="" class="img-thumbnail col-md-6" id="img_edit"
-                            style="height: 200px; object-fit: cover;">
+                            style="height: 100px; width: auto; object-fit: cover;">
                     </div>
                     <input type="file" name="image" class="form-control">
                 </div>
@@ -157,12 +156,11 @@
                     </select>
                 </div>
                 <div class="mt-3">
-                    <label for="">About</label>
-                    <select name="about" id="about_partner_edit" class="form-select">
-                        <option value="1">Enterprise Network Infrastructure</option>
-                        <option value="2">Data center & Cloud</option>
-                        <option value="3">Cyber Security</option>
-                        <option value="4">Collaboration & Facility</option>
+                    <label for="">Product</label>
+                    <select name="id_product" id="product_edit" style="width: 100% !important;">
+                        @foreach($product as $row)
+                        <option value="{{$row->id}}">{{$row->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -172,9 +170,26 @@
         </form>
     </div>
 </div>
+
+
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
+    $('#product_edit').select2({
+        theme: "bootstrap-5",
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        dropdownParent: $('#editCustomerModal'),
+        placeholder: $(this).data('placeholder'),
+    });
+
+    $('#product_add').select2({
+        theme: "bootstrap-5",
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        dropdownParent: $('#customerModal'),
+        placeholder: $(this).data('placeholder'),
+    });
+
     $('.remove-data').click(function (event) {
         var form = $(this).closest("form");
         event.preventDefault();
@@ -232,7 +247,7 @@
                 document.querySelector('#img_edit').setAttribute('src', '/storage/images/' + response
                     .image);
                 document.querySelector('#type_partner_edit').value = response.type
-                document.querySelector('#about_partner_edit').value = response.about
+                $('#product_edit').val(response.id_product).trigger('change')
             }
         });
     };

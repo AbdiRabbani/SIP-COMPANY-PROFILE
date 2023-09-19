@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Insights;
-use App\About;
-USE App\NewsTag;
-USE App\TagConnector;
+use App\PartnershipCategory;
+use App\NewsTag;
+use App\TagConnector;
+use App\BlogTag;
 
 class InsightController extends Controller
 {
@@ -19,16 +20,18 @@ class InsightController extends Controller
     public function create()
     {
         $tag = NewsTag::all();
-        return view('admin.insight.create', compact('tag'));
+        $product = PartnershipCategory::all();
+        return view('admin.insight.create', compact('tag', 'product'));
     }
 
     public function edit($id)
     {
         $data = Insights::find($id);
-        $about = About::where('id_insights', $id)->get()->all();
+        $product = PartnershipCategory::all();
+        $tag2 = BlogTag::where('id_insights', $id)->get()->all();
         $tag = NewsTag::all();
         $connector = TagConnector::where('id_insights', $id)->get()->all();
-        return view('admin.insight.edit', compact('data', 'about', 'tag', 'connector'));
+        return view('admin.insight.edit', compact('data', 'product', 'tag', 'tag2', 'connector'));
     }
 
     public function store(Request $request)
@@ -50,12 +53,12 @@ class InsightController extends Controller
         $insights = Insights::create($data_all);
 
         if($data['type'] == 'blog') {
-            foreach ($data['about'] as $item => $value) {
-                $data_about = array(
-                    'about' => $data['about'][$item],
+            foreach ($data['id_product'] as $item => $value) {
+                $data_product = array(
+                    'id_product' => $data['id_product'][$item],
                     'id_insights' => $insights->id,
                 );
-                About::create($data_about);
+                BlogTag::create($data_product);
             };
         } else if($data['type'] == 'news') {
             foreach ($data['tag_name'] as $item => $value) {
@@ -117,17 +120,18 @@ class InsightController extends Controller
         }
 
         
-        if($request->type == 'blog'){
-            About::where('id_insights', $id)->delete();
-            foreach ($data['about'] as $item => $value) {
-                $data_about = array(
-                    'about' => $data['about'][$item],
+        if($request->type == 'Blog'){
+            TagConnector::where('id_insights', $id)->delete();
+            BlogTag::where('id_insights', $id)->delete();
+            foreach ($data['id_product'] as $item => $value) {
+                $data_product = array(
+                    'id_product' => $data['id_product'][$item],
                     'id_insights' => $id,
                 );
-                About::create($data_about);
+                BlogTag::create($data_product);
             };
-        }else if($request->type == 'news') {
-            About::where('id_insights', $id)->delete();
+        }else if($request->type == 'News') {
+            BlogTag::where('id_insights', $id)->delete();
             TagConnector::where('id_insights', $id)->delete();
             
             foreach ($data['tag_name'] as $item => $value) {

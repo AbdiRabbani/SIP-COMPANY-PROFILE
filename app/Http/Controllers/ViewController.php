@@ -14,6 +14,7 @@ use App\PartnershipCategory;
 use App\SolutionPartner;
 use App\About;
 use App\NewsTag;
+use App\BlogTag;
 use App\TagConnector;
 use App\JobRegist;
 
@@ -57,7 +58,12 @@ class ViewController extends Controller
             $data = Insights::where('type', 'blog')->get()->all();
         }
 
-        return view('main.insights.blog', compact('data', 'value'));
+        $category1 = PartnershipCategory::where('about', '1')->get()->all();
+        $category2 = PartnershipCategory::where('about', '2')->get()->all();
+        $category3 = PartnershipCategory::where('about', '3')->get()->all();
+        $category4 = PartnershipCategory::where('about', '4')->get()->all();
+
+        return view('main.insights.blog', compact('data', 'value', 'category1', 'category2', 'category3', 'category4'));
     }
 
     public function insight_b_allData() 
@@ -68,7 +74,7 @@ class ViewController extends Controller
 
     public function insight_b_data($id) 
     {
-        $data = About::where('about', $id)->join('insights','insights.id', '=', 'about.id_insights')->get()->all();    
+        $data = BlogTag::where('id_product', $id)->join('insights','insights.id', '=', 'blog_tag.id_insights')->get()->all();    
         return response()->json($data);
     }
 
@@ -99,11 +105,11 @@ class ViewController extends Controller
     public function insight_show($id) 
     {
         $data = Insights::find($id);
-        $about = About::where('id_insights', $data->id)->get()->all();
         $tag = TagConnector::where('id_insights', $data->id)->get()->all();
+        $blogtag = BlogTag::where('id_insights', $data->id)->get()->all();
         $data_random_1 = Insights::where('type', 'blog')->inRandomOrder()->take(4)->get();
         $data_random_2 = Insights::where('type', 'news')->inRandomOrder()->take(4)->get();
-        return view('main.insights.detail', compact('data', 'data_random_1', 'data_random_2', 'about', 'tag'));
+        return view('main.insights.detail', compact('data', 'data_random_1', 'data_random_2', 'blogtag', 'tag'));
     }
     
     public function solution() 
@@ -131,24 +137,17 @@ class ViewController extends Controller
             $desc = "Collaboration solutions involve several technologies, such as IP phone, Contact Center, and Teleconference solutions";
         }
 
-        $insight = About::where('about', $request->t)->latest()->take(4)->get();
         $product= PartnershipCategory::where('about', $request->t)->get()->all();
+        $blog = BlogTag::whereHas('product', function ($query) use ($request) {
+            $query->where('about', $request->t);
+        })->get()->all();    
+        return view('main.solution.detail', compact('title', 'desc', 'image', 'product', 'blog'));
+    }
 
-        $fsi = Customer::where('about', $request->t)->where('type', 1)->get()->all();
-        $government = Customer::where('about', $request->t)->where('type', 2)->get()->all();
-        $manufacturing = Customer::where('about', $request->t)->where('type', 3)->get()->all();
-        $telco = Customer::where('about', $request->t)->where('type', 4)->get()->all();
-        $retail = Customer::where('about', $request->t)->where('type', 5)->get()->all();
-        $education = Customer::where('about', $request->t)->where('type', 6)->get()->all();
-
-        $project1 = ProjectReference::where('about', $request->t)->where('type', 1)->get()->first();
-        $project2 = ProjectReference::where('about', $request->t)->where('type', 2)->get()->first();
-        $project3 = ProjectReference::where('about', $request->t)->where('type', 3)->get()->first();
-        $project4 = ProjectReference::where('about', $request->t)->where('type', 4)->get()->first();
-        $project5 = ProjectReference::where('about', $request->t)->where('type', 5)->get()->first();
-        $project6 = ProjectReference::where('about', $request->t)->where('type', 6)->get()->first();
-
-        return view('main.solution.detail', compact('title', 'insight', 'desc', 'image', 'product', 'fsi', 'government', 'manufacturing', 'telco', 'retail', 'education', 'project1', 'project2', 'project3', 'project4', 'project5', 'project6'));
+    public function blogData($id) 
+    {
+        $data = BlogTag::where('id_product', $id)->join('insights','insights.id', '=', 'blog_tag.id_insights')->get()->all();    
+        return response()->json($data);
     }
 
     public function campaign() 
@@ -167,8 +166,11 @@ class ViewController extends Controller
 
     public function partnership() 
     {
-        $category = PartnershipCategory::all();
-        return view('main.partnership', compact('category'));
+        $category1 = PartnershipCategory::where('about', '1')->get()->all();
+        $category2 = PartnershipCategory::where('about', '2')->get()->all();
+        $category3 = PartnershipCategory::where('about', '3')->get()->all();
+        $category4 = PartnershipCategory::where('about', '4')->get()->all();
+        return view('main.partnership', compact('category1', 'category2', 'category3', 'category4'));
     }
 
     public function pa_data() 
@@ -234,19 +236,43 @@ class ViewController extends Controller
 
     public function c_data($id) 
     {
-        $data_1 = Customer::where('type', 1)->where('about', $id)->get()->all();
-        $data_2 = Customer::where('type', 2)->where('about', $id)->get()->all();
-        $data_3 = Customer::where('type', 3)->where('about', $id)->get()->all();
-        $data_4 = Customer::where('type', 4)->where('about', $id)->get()->all();
-        $data_5 = Customer::where('type', 5)->where('about', $id)->get()->all();
-        $data_6 = Customer::where('type', 6)->where('about', $id)->get()->all();
+        $data_1 = Customer::where('type', 1)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->all();
+        $data_2 = Customer::where('type', 2)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->all();
+        $data_3 = Customer::where('type', 3)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->all();
+        $data_4 = Customer::where('type', 4)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->all();
+        $data_5 = Customer::where('type', 5)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->all();
+        $data_6 = Customer::where('type', 6)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->all();
 
-        $project1 = ProjectReference::where('about', $id)->where('type', 1)->get()->first();
-        $project2 = ProjectReference::where('about', $id)->where('type', 2)->get()->first();
-        $project3 = ProjectReference::where('about', $id)->where('type', 3)->get()->first();
-        $project4 = ProjectReference::where('about', $id)->where('type', 4)->get()->first();
-        $project5 = ProjectReference::where('about', $id)->where('type', 5)->get()->first();
-        $project6 = ProjectReference::where('about', $id)->where('type', 6)->get()->first();
+        $project1 = ProjectReference::where('type', 1)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->first();
+        $project2 = ProjectReference::where('type', 2)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->first();
+        $project3 = ProjectReference::where('type', 3)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->first();
+        $project4 = ProjectReference::where('type', 4)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->first();
+        $project5 = ProjectReference::where('type', 5)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->first();
+        $project6 = ProjectReference::where('type', 6)->whereHas('partner_section', function ($query) use ($id) {
+            $query->where('about', $id);
+        })->get()->first();
 
         $response_data = [
             1 => $data_1,

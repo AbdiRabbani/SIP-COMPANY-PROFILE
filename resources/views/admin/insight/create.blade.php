@@ -32,12 +32,11 @@
             </select>
         </div>
         <div class="mt-2" id="blog_about">
-            <label for="">About</label>
-            <select name="about[]" id="about_select" class="" multiple="multiple" style="width: 100%;">
-                <option value="1">Enterprise Network Infrastructure</option>
-                <option value="2">Data center & Cloud</option>
-                <option value="3">Cyber Security</option>
-                <option value="4">Collaboration & facility</option>
+            <label for="">About Product</label>
+            <select name="id_product[]" id="about_select" class="" multiple="multiple" style="width: 100%;">
+                @foreach($product as $row)
+                <option value="{{$row->id}}">{{$row->name}}</option>
+                @endforeach
             </select>
         </div>
         <div class="mt-2" id="news_tag">

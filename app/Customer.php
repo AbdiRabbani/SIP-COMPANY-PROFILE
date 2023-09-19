@@ -9,8 +9,8 @@ class Customer extends Model
     protected $table = 'customer';
     protected $guarded = [];
 
-    public function category() 
+    public function partner_section() 
     {
-        return $this->belongsTo('App\Customercategory', 'id_category');
+        return $this->belongsTo('App\Partnershipcategory', 'id_product');
     }
 }

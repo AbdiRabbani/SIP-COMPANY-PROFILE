@@ -67,29 +67,29 @@
 <div class="container">
     <p class="text-center fw-semibold" style="margin-top: 100px; font-size: 48px;"><a href=""
             style="text-decoration: none; color: black;">News</a></p>
-    <div class="d-flex row insights-header justify-content-end">
+    <div class="d-flex justify-content-end">
         <div class="search_insights col-md-2 mb-3">
             <input type="text" class="form-control" id="search_input" onChange="dataSearch()">
             <button href="" type="submit" style="border: none; background-color: white;" onClick="dataSearch()">
                 <img src="{{asset('custom/icon/ic_search.png')}}" alt="">
             </button>
         </div>
-        <div class="d-flex col-md-12">
-            <ul class="nav nav-pills mb-3" role="tablist" style="min-width: fit-content;">
-                <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                    <button class="nav-link" type="button" role="tab" aria-selected="true" onClick="allData()">Show
-                        All</button>
-                </li>
-            </ul>
-            <ul class="nav nav-pills mb-3" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
-                @foreach($all_tag as $row)
-                <li class="nav-item" role="presentation" style="min-width: fit-content;">
-                    <button class="nav-link" type="button" role="tab" aria-selected="true"
-                        onClick="dataTag('{{$row->id}}')">#{{$row->tag_name}}</button>
-                </li>
-                @endforeach
-            </ul>
-        </div>
+    </div>
+    <div class="d-flex col-md-12">
+        <ul class="nav nav-pills mb-3" role="tablist" style="min-width: fit-content;">
+            <li class="nav-item" role="presentation" style="min-width: fit-content;">
+                <button class="nav-link" type="button" role="tab" aria-selected="true" onClick="allData()">Show
+                    All</button>
+            </li>
+        </ul>
+        <ul class="nav nav-pills mb-3" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
+            @foreach($all_tag as $row)
+            <li class="nav-item" role="presentation" style="min-width: fit-content;">
+                <button class="nav-link" type="button" role="tab" aria-selected="true"
+                    onClick="dataTag('{{$row->id}}')">#{{$row->tag_name}}</button>
+            </li>
+            @endforeach
+        </ul>
     </div>
     <div class="d-flex flex-wrap-reverse align-items-end">
         <div class="d-flex flex-wrap col-md-9" id="loop_data">

@@ -18,7 +18,8 @@ class CreateCustomerTable extends Migration
             $table->text('name');
             $table->text('image');
             $table->enum('type', [1, 2, 3, 4, 5, 6]);
-            $table->enum('about', [1, 2, 3, 4]);
+            $table->integer('id_product')->unsigned();
+            $table->foreign('id_product')->references('id')->on('partner_section')->onDelete('cascade');
             $table->timestamps();
         });
     }

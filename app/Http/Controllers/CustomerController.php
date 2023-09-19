@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\PartnershipCategory;
 
 class CustomerController extends Controller
 {
     protected function index()
     {
         $data = Customer::all();
-        return view('admin.customer.index', compact('data'));
+        $product = PartnershipCategory::all();
+        return view('admin.customer.index', compact('data', 'product'));
     }
 
     protected function store(Request $request) 
@@ -21,7 +23,7 @@ class CustomerController extends Controller
             'name' => $response['name'],
             'image' => $response['image'],
             'type' => $response['type'],
-            'about' => $response['about'],
+            'id_product' => $response['id_product'],
         ];
 
         $destination_path = 'public/images'; 
@@ -55,7 +57,7 @@ class CustomerController extends Controller
                 'name' => $response['name'],
                 'image' => $response['image'],
                 'type' => $response['type'],
-                'about' => $response['about'],
+                'id_product' => $response['id_product'],
             ];
 
             $destination_path = 'public/images'; 
@@ -67,7 +69,7 @@ class CustomerController extends Controller
             $data = [
                 'name' => $response['name'],
                 'type' => $response['type'],
-                'about' => $response['about'],
+                'id_product' => $response['id_product'],
             ];
         }
 
