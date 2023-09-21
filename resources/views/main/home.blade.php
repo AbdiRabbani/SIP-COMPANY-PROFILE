@@ -1,71 +1,31 @@
 @extends('layouts.main')
 
-
-@section('nav')
-<a class="nav-active" href="{{url('/home')}}">Home</a>
-<a class="nav-item" href="{{url('/profile')}}">Profile</a>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Insights</a>
-    <div class="dropdown-items">
-        <li><a class="nav-item" href="{{url('/insights/blog')}}">Blog</a></li>
-        <li><a class="nav-item" href="{{url('/insights/news')}}">News</a></li>
-    </div>
-</div>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Solution</a>
-    <div class="dropdown-items">
-        <p>Offering a wide range of services, it provides high quality, cost savings, and lightning-fast project
-            delivery times that meet the specialize needs of its clients.</p>
-        <div>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="1" hidden>
-                    <button class="nav-item">~ Enterprise Network Infrastructure</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="2" hidden>
-                    <button class="nav-item">~ Data center & Cloud</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="3" hidden>
-                    <button class="nav-item">~ Cyber Security</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="4" hidden>
-                    <button class="nav-item">~ Collaboration & Facility</button>
-                </form>
-            </li>
-        </div>
-    </div>
-</div>
-<a class="nav-item" href="{{url('/campaign')}}">Campaign</a>
-<a class="nav-item" href="{{url('/partnership')}}">Partnership</a>
-<a class="nav-item" href="{{url('/customer')}}">Customer</a>
-<a class="nav-item" href="{{url('/career')}}">Career</a>
-<a class="nav-item" href="{{url('/quotation')}}">Quotation</a>
-@endsection
-
 @section('content')
+
+<!-- <div class="insights-notification">
+    <img src="{{asset('storage/images/' .$last_data->image)}}" style="object-fit: cover; border-radius: 10px 0px 0px 10px;" class="col-md-3" alt="">
+    <p class="col-md-7 mb-0 ps-2 py-2">{{$last_data->title}}</p>
+    <div class="col-md-2 d-flex align-items-center justify-content-center" style="background: var(--red); border-radius: 0px 10px 10px 0px;">
+        <p class="mb-0 text-white" onClick="closeNews()">x</p>
+    </div>
+</div> -->
+
 <div id="home-header" class="row gx-0">
-    <div class="text-white d-flex justify-content-center align-items-end fw-semibold">
+    <div class="d-flex justify-content-center align-items-end fw-semibold">
         <p>Sinergy Informasi Pratama</p>
     </div>
 
     <div class="header-content">
         <div class="content c-a">
-            <form action="{{url('solution/detail')}}">
+            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip" data-bs-title="Enterprise Network Infrastructure">
                 <input type="text" value="1" name="t" hidden>
                 <button class="btn">
                     <img src="{{asset('custom/icon/Group 71.png')}}" alt="">
                 </button>
             </form>
-            <form action="{{url('solution/detail')}}">
+            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip" data-bs-title="Collaboration & Facility">
                 <input type="text" value="4" name="t" hidden>
                 <button class="btn">
                     <img src="{{asset('custom/icon/Support.png')}}" alt="">
@@ -73,13 +33,15 @@
             </form>
         </div>
         <div class="content c-b">
-            <form action="{{url('solution/detail')}}">
+            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip" data-bs-title="Data center & Cloud">
                 <input type="text" value="2" name="t" hidden>
                 <button class="btn">
                     <img src="{{asset('custom/icon/Group 80.png')}}" alt="">
                 </button>
             </form>
-            <form action="{{url('solution/detail')}}">
+            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip" data-bs-title="Cyber Security">
                 <input type="text" value="3" name="t" hidden>
                 <button class="btn">
                     <img src="{{asset('custom/icon/Group 76.png')}}" alt="">
@@ -89,7 +51,7 @@
     </div>
 </div>
 
-<div id="home-service" class="container-fluid">
+<div id="home-service" class="container-fluid" data-aos="fade-up">
 
     <p class="fs-5 fw-semibold">Best service you can get in SIP</p>
 
@@ -158,87 +120,7 @@
     </div>
 </div>
 
-<div id="home-team" class="py-5">
-    <div class="container d-flex justify-content-center">
-        <p class="team-header fs-5 py-2">Our Team</p>
-        <div class="team-content col-md-9">
-            <button type="button" onclick="getValue('Sales Account Manager')" class="btn btn-team"
-                data-bs-toggle="modal" data-bs-target="#teamModal">
-                <div class="team-item text-center text-white fw-semibold">
-                    <img src="{{asset('custom/icon/sales account.png')}}" alt="">
-                    <p>Sales Account Manager</p>
-                </div>
-            </button>
-            <button type="button" onclick="getValue('Project Manager')" class="btn btn-team" data-bs-toggle="modal"
-                data-bs-target="#teamModal">
-                <div class="team-item text-center text-white fw-semibold">
-                    <img src="{{asset('custom/icon/project manager.png')}}" alt="">
-                    <p>Project Manager</p>
-                </div>
-            </button>
-
-            <button type="button" onclick="getValue('Professional Service')" class="btn btn-team" data-bs-toggle="modal"
-                data-bs-target="#teamModal">
-                <div class="team-item text-center text-white fw-semibold">
-                    <img src="{{asset('custom/icon/professional service.png')}}" alt="">
-                    <p>Professional Service</p>
-                </div>
-            </button>
-
-            <button type="button" onclick="getValue('Maintenance and Managed Service')" class="btn btn-team"
-                data-bs-toggle="modal" data-bs-target="#teamModal">
-                <div class="team-item text-center text-white fw-semibold">
-                    <img src="{{asset('custom/icon/maintenance and managed service.png')}}" alt="">
-                    <p>Maintenance and Managed Service</p>
-                </div>
-            </button>
-
-            <button type="button" onclick="getValue('Business Development')" class="btn btn-team" data-bs-toggle="modal"
-                data-bs-target="#teamModal">
-                <div class="team-item text-center text-white fw-semibold">
-                    <img src="{{asset('custom/icon/business development.png')}}" alt="">
-                    <p>Business Development</p>
-                </div>
-            </button>
-
-            <button type="button" onclick="getValue('Application Service')" class="btn btn-team" data-bs-toggle="modal"
-                data-bs-target="#teamModal">
-                <div class="team-item text-center text-white fw-semibold">
-                    <img src="{{asset('custom/icon/applicaition service.png')}}" alt="">
-                    <p>Application Service</p>
-                </div>
-            </button>
-        </div>
-    </div>
-
-</div>
-
-<!-- Team modal -->
-<div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-2">
-            <div class="text-center">
-                <img src="{{asset('custom/icon/sales account.png')}}" alt=""
-                    class="img-team-modal img-fluid p-3 my-3 rounded"
-                    style="background-color: var(--red); width: 90px;">
-                <h1 class="modal-title fs-5" id="teamModalLabel">Modal title</h1>
-            </div>
-            <div class="d-flex justify-content-center my-3">
-                <p class="team-desc col-md-10">The goal of our Sales Account Manager Team is to always be aware of
-                    the specific needs of our costumers with respect to the current technical field. Our Sales
-                    Department proudly consist of experienced professionals dedicated to creating anf advertising
-                    services that are personalized to each client. As part of our strategy, we focus on finding the
-                    most beneficial balance between const and benefit</p>
-            </div>
-            <div class="text-end">
-                <button type="button" class="btn btn-red" style="background-color: var(--red); color: white;"
-                    data-bs-dismiss="modal">back</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="home-insights" class="container mb-5">
+<div id="home-insights" class="container my-5" data-aos="fade-up">
     <div class="d-flex justify-content-between">
         <p class="fs-5 fw-semibold">Lastest News</p>
         <a href="{{url('insights/news')}}" class="fs-5 see-insight" style="text-decoration: none;">see all</a>
@@ -264,7 +146,7 @@
     </div>
 </div>
 
-<div class="container mt-2">
+<div class="container mt-2" data-aos="fade-up">
     <p class="fw-semibold fs-5">Executive Summary</p>
     <p style="text-align: justify;">For more than a decade, SIP has earned its reputation as an IT system integrator
         that helps companies maximize their investments in IT solutions. To ensure effectiveness an efficiency, costs
@@ -272,7 +154,7 @@
         framework that allows for paractical business concepts to be actualized into tangible outcomes.</p>
 </div>
 
-<div class="certificate-content">
+<div class="certificate-content" data-aos="fade-up">
     <div class="certificate-icon d-flex justify-content-center align-items-center">
         <img src="{{asset('custom/icon/certificate.png')}}" style="width: 50px;" alt="">
     </div>
@@ -300,21 +182,6 @@
     </div>
 </div>
 
-<div id="home-maps" class="container">
-    <p class="fs-5 fw-semibold">Find Us</p>
-    <iframe src="https://www.google.com/maps/d/embed?mid=1ozZiTj6s8xekvy1tDcdVuXj1OaXnURI&ehbc=2E312F&noprof=1"
-        width="100%"></iframe>
-    <div class="mt-3">
-        <p class="map-desc">(Utama) Jalan Puri Indah Raya Kav, BLOK A3/2, No.33-35, KEMBANGAN, JAKARTA BARAT, INDONESIA.
-        </p>
-        <p class="map-desc">(Ruko) JL. PURI KENCANA, BLOK K6 NO. 2L-2M, KEMBANGAN, JAKARTA BARAT, INDONESIA.</p>
-    </div>
-</div>
-
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqBfhDcz_JK2iTWGVZRbdQGRWutM_r_6M&callback=initMap">
-</script>
-
 <script>
     const content1 = document.querySelector('.c-a')
     const content2 = document.querySelector('.c-b')
@@ -332,5 +199,56 @@
         };
     });
 
+    const service_modal_title = document.querySelector('.service-modal-title')
+    const service_desc = document.querySelector('.service-desc')
+    const service_img = document.querySelector('.img-service-modal')
+
+    function getServiceValue(name) {
+        service_modal_title.innerText = name
+
+        if (name == "IT SERVICES BY PROJECT & SERVICE LEVEL AGREEMENT") {
+            service_desc.innerText =
+                "Infrastructure Development. Application Administration & Maintainance. Enterprise System Integration. Telecomunication System Integration & Managed Services. Outsourcing & Joint Development Services"
+            service_img.setAttribute('src', '/custom/icon/Group 108.png')
+        } else if (name == "HARDWARE INTEGRATION & IMPLEMENTATION") {
+            service_desc.innerText =
+                "Network Blue Printing & Architecture. Network Administration & Maintainance. Network & Infrastructure Deployment, Enterprise Network Solutions. Carrier Grade Network Management Services."
+            service_img.setAttribute('src', '/custom/icon/Group 109.png')
+
+        } else if (name == "24/7 SUPPORT") {
+            service_desc.innerText =
+                "Available Support Any Time. Operate Continuously At All Times With Complete Shoft Staff."
+            service_img.setAttribute('src', '/custom/icon/Group 110.png')
+
+        } else if (name == "CABLING SYSTEM INSTALLATION") {
+            service_desc.innerText =
+                "Network Cabling Termination. Fiber Optic Cabling Deployment. Electrical Cabling Solution"
+            service_img.setAttribute('src', '/custom/icon/Group 111.png')
+
+        } else if (name == "APLICATION & SERVICE IMPLEMENTATION") {
+            service_desc.innerText =
+                "Application Architectures Supporting Digital Business, Mobile, Cloud And APIs Include Services That Integrate Exiting Assets Or Implement New Capabilities"
+            service_img.setAttribute('src', '/custom/icon/Group 112.png')
+
+        } else {
+            service_desc.innerText =
+                "Physical Building Security Solution. Enterprise Specific Security Services. Integrated Security"
+            service_img.setAttribute('src', '/custom/icon/Group 113.png')
+
+        }
+    }
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    showNews()
+
+    function showNews() {
+        document.querySelector('.insights-notification').style.right = '50px'
+    }
+
+    function closeNews() {
+        document.querySelector('.insights-notification').style.right = '-1000px'
+    }
 </script>
 @endsection

@@ -15,8 +15,8 @@ class CreateQuotationTable extends Migration
     {
         Schema::create('quotation', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('first_name');
-            $table->text('last_name');
+            $table->text('name');
+            $table->text('for');
             $table->text('business');
             $table->text('email');
             $table->bigInteger('phone');

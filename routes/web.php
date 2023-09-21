@@ -61,8 +61,8 @@ Route::get('/career/data', 'ViewController@allData');
 Route::get('/career/data/{name}', 'ViewController@careerData');
 Route::get('/career/detail/{id}', 'ViewController@career_show');
 
-//Quotation
-Route::get('/quotation', 'ViewController@quotation');
+//message
+Route::get('/message', 'ViewController@message');
 
 
 
@@ -74,10 +74,10 @@ Route::get('/admin/solution','SolutionController@index');
 Route::post('/admin/solution/create','SolutionController@store');
 Route::put('/admin/solution/update/{id}','SolutionController@update');
 
-Route::get('/admin/quotation','QuotationController@index');
-Route::get('/admin/quotation/detail/{id}','QuotationController@show');
-Route::delete('/admin/quotation/delete/{id}','QuotationController@destroy');
-Route::post('/quotation/send','QuotationController@store');
+Route::get('/admin/message','QuotationController@index');
+Route::get('/admin/message/detail/{id}','QuotationController@show');
+Route::delete('/admin/message/delete/{id}','QuotationController@destroy');
+Route::post('/message/send','QuotationController@store');
 
 Route::get('/admin/insights','InsightController@index');
 Route::get('/admin/insights/create','InsightController@create');

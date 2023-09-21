@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Quotation</title>
+    <title>Message</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,9 +12,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="container-fluid pt-5 d-flex row align-items-center justify-content-center">
-    <p class="fw-semibold fs-5 text-center">Request Quotation</p>
+    <p class="fw-semibold fs-5 text-center">Message</p>
     <div class="bg-white p-4 rounded shadow col-md-8">
-        <p>From : {{$data['first_name']}} {{$data['last_name']}}</p>
+        <p>From : {{$data['name']}}</p>
+        <p>For : {{$data['for']}}</p>
         <p>Company : {{$data['business']}}</p>
         <p>Email : {{$data['email']}}</p>
         <p>Phone : {{$data['phone']}}</p>

@@ -1,56 +1,5 @@
 @extends('layouts.main')
 
-
-@section('nav')
-<a class="nav-item" href="{{url('/home')}}">Home</a>
-<a class="nav-active" href="{{url('/profile')}}">Profile</a>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Insights</a>
-    <div class="dropdown-items">
-        <li><a class="nav-item" href="{{url('/insights/blog')}}">Blog</a></li>
-        <li><a class="nav-item" href="{{url('/insights/news')}}">News</a></li>
-    </div>
-</div>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Solution</a>
-    <div class="dropdown-items">
-        <p>Offering a wide range of services, it provides high quality, cost savings, and lightning-fast project
-            delivery times that meet the specialize needs of its clients.</p>
-        <div>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="1" hidden>
-                    <button class="nav-item">~ Enterprise Network Infrastructure</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="2" hidden>
-                    <button class="nav-item">~ Data center & Cloud</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="3" hidden>
-                    <button class="nav-item">~ Cyber Security</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="4" hidden>
-                    <button class="nav-item">~ Collaboration & Facility</button>
-                </form>
-            </li>
-        </div>
-    </div>
-</div>
-<a class="nav-item" href="{{url('/campaign')}}">Campaign</a>
-<a class="nav-item" href="{{url('/partnership')}}">Partnership</a>
-<a class="nav-item" href="{{url('/customer')}}">Customer</a>
-<a class="nav-item" href="{{url('/career')}}">Career</a>
-<a class="nav-item" href="{{url('/quotation')}}">Quotation</a>
-@endsection
-
 @section('content')
 <div id="profile-content" class="container mt-5">
 
@@ -74,19 +23,19 @@
 
     <div id="profile-vision">
         <div class="vision-content">
-            <div>
+            <div data-aos="fade-left">
                 <p class="fw-semibold">Vision</p>
                 <p>The Primary Information Communication Technology (ICT) Enabler with Effective and Efficient
                     Infrastructure platform.</p>
             </div>
-            <div>
+            <div data-aos="fade-right">
                 <p class="fw-semibold">Mission</p>
                 <p>Establish A benchmark for excellence by providing renowned global certifications that enable
                     continuous competency. We not only strive to incorporate the latest technology, but also provide
                     our costumers with reliable solutions.</p>
             </div>
         </div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2cMy6XpGFArSI4X7FDeQdNILPmJsbCBm7dGIsM2MHw&s"
+        <img src="{{asset('custom/images/sipemploye.jpg')}}"
             alt="" class="img-vision rounded">
     </div>
 
@@ -117,7 +66,7 @@
         <p class="fs-5 fw-semibold ethics-title">Our Work Ethics <span>[</span> <span> WISE</span> <span>]</span>
         </p>
         <div class="d-flex mt-5 flex-wrap justify-content-between gap-3">
-            <div class="d-flex col-md-5">
+            <div class="d-flex col-md-5" data-aos="fade-left">
                 <div class="ethics-icon">
                     <p class="fs-5 fw-semibold">W</p>
                 </div>
@@ -127,7 +76,7 @@
                         all our stakeholder</p>
                 </div>
             </div>
-            <div class="d-flex col-md-5">
+            <div class="d-flex col-md-5" data-aos="fade-right">
                 <div class="ethics-icon">
                     <p class="fs-5 fw-semibold">I</p>
                 </div>
@@ -137,7 +86,7 @@
                         highly ethics behavior</p>
                 </div>
             </div>
-            <div class="d-flex col-md-5">
+            <div class="d-flex col-md-5" data-aos="fade-right">
                 <div class="ethics-icon">
                     <p class="fs-5 fw-semibold">S</p>
                 </div>
@@ -146,7 +95,7 @@
                     <p class="mt-2">We have an unwavering commitment to being a partner of choice <br><br><br></p>
                 </div>
             </div>
-            <div class="d-flex col-md-5">
+            <div class="d-flex col-md-5" data-aos="fade-left">
                 <div class="ethics-icon">
                     <p class="fs-5 fw-semibold">E</p>
                 </div>
@@ -236,4 +185,58 @@
         </div>
     </div>
 </div>
+
+<script>
+    const key_desc = document.querySelector('.key-desc')
+    key_desc.style.display = 'none'
+
+    const key_desc_value = document.querySelector('.key-desc-value')
+    const key_title = document.querySelector('.key-title-value')
+    const arrow1 = document.querySelector('#arrow1')
+    const arrow2 = document.querySelector('#arrow2')
+    const arrow3 = document.querySelector('#arrow3')
+    const arrow4 = document.querySelector('#arrow4')
+
+    function showKeyDesc(index) {
+        console.log(index);
+        if (index == 1) {
+            key_desc.style.display = 'block'
+            key_desc_value.innerText =
+                "Infrastructure deployment, Aplication administration & maintenance, Enterprise system integration, Telecomunication system integration, Information & technology, operation & managed services, Outsourcing & joint development services"
+            key_title.innerText = "IT Service by Project & Service Level Agreement (SLA)"
+            arrow1.style.display = 'block'
+            arrow2.style.display = 'none'
+            arrow3.style.display = 'none'
+            arrow4.style.display = 'none'
+        } else if (index == 2) {
+            key_desc.style.display = 'block'
+            key_desc_value.innerText =
+                "Network Blueprinting & Architecture, Network Administration & Maintenance, Network & Infrastructure Deployment, Enterprise Network Solutions,  Carrier Grade Network Management Service, Physical Building Security Solution, Enterprise Specific Security Services, Integrated Security Audit"
+            key_title.innerText = "Hardware Integration & Implementation"
+            arrow1.style.display = 'none'
+            arrow2.style.display = 'block'
+            arrow3.style.display = 'none'
+            arrow4.style.display = 'none'
+        } else if (index == 3) {
+            key_desc.style.display = 'block'
+            key_desc_value.innerText =
+                "Network Cabling Termination, Fiber Optic, Cabling Deployment, Electrical Cabling Solution, Fire Alarm Solution"
+            key_title.innerText = "Cabling System Installation"
+            arrow1.style.display = 'none'
+            arrow2.style.display = 'none'
+            arrow3.style.display = 'block'
+            arrow4.style.display = 'none'
+        } else if (index == 4) {
+            key_desc.style.display = 'block'
+            key_desc_value.innerText =
+                "Application architectures supporting digital business, mobile, cloud and APIs include services that integrate exiting assets or implement new capabilities"
+            key_title.innerText = "Application & Cloud Implementation"
+            arrow1.style.display = 'none'
+            arrow2.style.display = 'none'
+            arrow3.style.display = 'none'
+            arrow4.style.display = 'block'
+        }
+    }
+
+</script>
 @endsection

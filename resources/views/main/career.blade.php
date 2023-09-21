@@ -1,56 +1,5 @@
 @extends('layouts.main')
 
-
-@section('nav')
-<a class="nav-item" href="{{url('/home')}}">Home</a>
-<a class="nav-item" href="{{url('/profile')}}">Profile</a>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Insights</a>
-    <div class="dropdown-items">
-        <li><a class="nav-item" href="{{url('/insights/blog')}}">Blog</a></li>
-        <li><a class="nav-item" href="{{url('/insights/news')}}">News</a></li>
-    </div>
-</div>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Solution</a>
-    <div class="dropdown-items">
-        <p>Offering a wide range of services, it provides high quality, cost savings, and lightning-fast project
-            delivery times that meet the specialize needs of its clients.</p>
-        <div>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="1" hidden>
-                    <button class="nav-item">~ Enterprise Network Infrastructure</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="2" hidden>
-                    <button class="nav-item">~ Data center & Cloud</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="3" hidden>
-                    <button class="nav-item">~ Cyber Security</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="4" hidden>
-                    <button class="nav-item">~ Collaboration & Facility</button>
-                </form>
-            </li>
-        </div>
-    </div>
-</div>
-<a class="nav-item" href="{{url('/campaign')}}">Campaign</a>
-<a class="nav-item" href="{{url('/partnership')}}">Partnership</a>
-<a class="nav-item" href="{{url('/customer')}}">Customer</a>
-<a class="nav-active" href="{{url('/career')}}">Career</a>
-<a class="nav-item" href="{{url('/quotation')}}">Quotation</a>
-@endsection
-
 @section('content')
 <div class="container mt-5">
     <p class="career-title fw-semibold text-center" style="margin-top: 100px;">Work With Us</p>
@@ -64,8 +13,8 @@
                 lightning-fast project delivery times that meet the specialize needs of its clients.</p>
         </div>
         <div class="col-md-5 d-flex justify-content-around align-items-center">
-            <img class="col-md-10" style="height: 310px; object-fit: cover; object-position: center;"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2cMy6XpGFArSI4X7FDeQdNILPmJsbCBm7dGIsM2MHw&s"
+            <img class="col-md-10" style="height: 320px; object-fit: cover; object-position: center;"
+                src="{{asset('custom/images/brain.png')}}"
                 alt="">
         </div>
     </div>

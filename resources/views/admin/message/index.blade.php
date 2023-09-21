@@ -3,7 +3,7 @@
 @section('content')
 <div class="container pt-5">
     <div class="d-flex justify-content-between align-items-center">
-        <p class="fw-semibold" style="font-size: 48px;">Request Quotation</p>
+        <p class="fw-semibold" style="font-size: 48px;">Message</p>
     </div>
     <div class="table table-responsive bg-white p-4 rounded">
         <table class="table" id="myTable">
@@ -11,6 +11,9 @@
                 <tr>
                     <td>
                         Name
+                    </td>
+                    <td>
+                        For
                     </td>
                     <td>
                         Business
@@ -26,12 +29,13 @@
             <tbody>
                 @foreach($data as $row)
                 <tr>
-                    <td>{{$row->first_name}} {{$row->last_name}}</td>
+                    <td>{{$row->name}}</td>
+                    <td>{{$row->for}}</td>
                     <td>{{$row->business}}</td>
                     <td>{{$row->email}}</td>
                     <td class="d-flex gap-3 justify-content-center">
-                        <a href="{{url('admin/quotation/detail', $row->id)}}" class="btn btn-sm btn-warning text-white">Detail</a>
-                        <form action="{{url('/admin/quotation/delete', $row->id)}}" method="post">
+                        <a href="{{url('admin/message/detail', $row->id)}}" class="btn btn-sm btn-warning text-white">Detail</a>
+                        <form action="{{url('/admin/message/delete', $row->id)}}" method="post">
                             @csrf
                             {{method_field('delete')}}
                             <button class="btn btn-sm btn-danger remove-data">Delete</button>

@@ -14,170 +14,184 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
+        integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 
+<style>
+    .dropdown-item:hover {
+        color: white;
+        background: var(--purple);
+    }
+
+    .dropdown-item:active {
+        background: var(--purple);
+    }
+
+    .navbar-link-custom {
+        color: var(--purple);
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .navbar-link-custom:hover {
+        color: white;
+        background: var(--purple);
+    }
+
+    .navbar-link-custom:focus:hover {
+        color: white;
+        background: var(--purple);
+    }
+
+</style>
+
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
-            <button class="nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="">=</span>
+    <nav class="navbar fixed-top navbar-expand-lg bg-light shadow">
+        <div class="container">
+            <a class="navbar-brand" href="{{url('/home')}}">
+                <img src="{{asset('custom/icon/logosip.png')}}" alt="Bootstrap" width="auto" height="40">
+            </a>
+            <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    @yield('nav')
-                </div>
+            <div class="collapse navbar-collapse my-2" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-link-custom dropdown-toggle" style="box-shadow: none;" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Solution
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                            <li>
+                                <form action="{{url('solution/detail')}}">
+                                    <input type="text" name="t" value="1" hidden>
+                                    <button class="dropdown-item">~ Enterprise Network Infrastructure</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="{{url('solution/detail')}}">
+                                    <input type="text" name="t" value="2" hidden>
+                                    <button class="dropdown-item">~ Data center & Cloud</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="{{url('solution/detail')}}">
+                                    <input type="text" name="t" value="3" hidden>
+                                    <button class="dropdown-item">~ Cyber Security</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="{{url('solution/detail')}}">
+                                    <input type="text" name="t" value="4" hidden>
+                                    <button class="dropdown-item">~ Collaboration & Facility</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-link-custom dropdown-toggle" style="box-shadow: none;" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Insights
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{url('/insights/news')}}">News</a></li>
+                            <li><a class="dropdown-item" href="{{url('/insights/blog')}}">Blog</a></li>
+                            <li><a class="dropdown-item" href="{{url('/campaign')}}">Campaign</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-link-custom dropdown-toggle" style="box-shadow: none;" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{url('/profile')}}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{url('/partnership')}}">Partnership</a></li>
+                            <li><a class="dropdown-item" href="{{url('/customer')}}">Customer</a></li>
+                            <li><a class="dropdown-item" href="{{url('/career')}}">Career</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
+
     @yield('content')
 
-    @if(session()->has('message'))
-    <div class="message-floating">
-        {{ session()->get('message') }}
-
-        <p onClick="closeQuotation()">x</p>
-    </div>
-    @endif
-
-    <div class="floating-button" onClick="showQuotation()">
-        <img src="{{asset('custom/icon/quote.png')}}" alt="">
-    </div>
-
-    <div class="quotation-form d-flex row justify-content-end">
-        <p onClick="hideQuotation()">x</p>
-        <form action="{{url('quotation/send')}}" method="post">
-            @csrf
-            <p class="fw-semibold fs-5">Request Quotation</p>
-            <div class="mt-3 d-flex justify-content-between gap-1">
-                <div class="col-md-5">
-                    <label for="name">First Name</label>
-                    <input required name="first_name" type="text" id="name" class="form-control">
-                </div>
-                <div class="col-md-5">
-                    <label for="name">Last Name</label>
-                    <input required name="last_name" type="text" id="name" class="form-control">
-                </div>
-            </div>
-            <div class="mt-3">
-                <label for="business">Business / Organization</label>
-                <input required name="business" type="text" id="business" class="form-control">
-            </div>
-            <div class="mt-3">
-                <label for="email"> Email</label>
-                <input required name="email" type="mail" id="email" class="form-control">
-            </div>
-            <div class="mt-3">
-                <label for="business">Phone</label>
-                <input required name="phone" type="number" id="business" class="form-control">
-            </div>
-            <div class="my-3 d-flex row">
-                <label for="reques">Request</label>
-                <textarea required name="request" id="request" rows="5" class="form-control"></textarea>
-            </div>
-            <div class="my-3 d-flex">
-                <div class="me-1">
-                    <input type="checkbox" class="quotate-check" onClick="privacy()" style="margin-top: -8px;">
-                </div>
-                <p style="font-size: 10px;">I agree to the <span data-bs-toggle="modal" data-bs-target="#regulation">Sinergy Informasi
-                        Pratama Website Terms & Conditions of Use</span>.</p>
-            </div>
-            <div class="text-end">
-                <button class="btn" style="color: white; background: var(--red);" id="btn-quote" disabled>submit</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="modal fade" id="regulation" tabindex="-1" aria-labelledby="regulationLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-4">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <p class="fs-5 mt-2 fw-semibold">Ownership of Site; Agreement to Terms of Use</p>
-            <p>These Terms and Conditions of Use (the "Terms of Use") apply to the Sinergy web site located at
-                www.sinergy.co.id, and all associated sites linked to www.sinergy.co.id by Sinergy, its subsidiaries and
-                affiliates, including Sinergy sites around the world (collectively, the "Site"). The Site is the
-                property of Sinergy. BY USING THE SITE, YOU AGREE TO THESE TERMS OF USE; IF YOU DO NOT AGREE, DO NOT USE
-                THE SITE.</p>
-            <p class="fs-5 fw-semibold">Content</p>
-            <p>All text, graphics, user interfaces, visual interfaces, photographs, trademarks, logos, sounds, music,
-                artwork and computer code (collectively, "Content"), including but not limited to the design, structure,
-                selection, coordination, expression, "look and feel" and arrangement of such Content, contained on the
-                Site is owned, controlled or licensed by or to Sinergy, and is protected by trade dress, copyright,
-                patent and trademark laws, and various other intellectual property rights and unfair competition laws.
-            </p>
-            <p class="fs-5 fw-semibold">Privacy</p>
-            <p>Sinergy's Privacy Policy applies to use of this Site, and its terms are made a part of these Terms of Use
-                by this reference. To view Sinergy's Privacy Policy, click here. Additionally, by using the Site, you
-                acknowledge and agree that Internet transmissions are never completely private or secure. You understand
-                that any message or information you send to the Site may be read or intercepted by others, even if there
-                is a special notice that a particular transmission (for example, credit card information) is encrypted.
-            </p>
-        </div>
-    </div>
-</div>
+    <a href="{{url('/message')}}" class="floating-button">
+        <img src="{{asset('custom/icon/message_icon.png')}}" alt="">
+    </a>
 
     <div id="footer" class="mt-5">
         <div class="line"></div>
-        <div class="d-flex gap-3 mt-4">
-            <a href="https://wa.me/02158355599" target="_blank">
-                <img src="{{asset('custom/icon/ic_phone.png')}}" alt="">
-            </a>
-            <a href="mailto:info@sinergy.co.id" target="_blank">
-                <img src="{{asset('custom/icon/ic_mail.png')}}" alt="">
-            </a>
-            <a href="https://www.instagram.com/sinergyinformasipratama" target="_blank">
-                <img src="{{asset('custom/icon/ic_instagram.png')}}" alt="">
-            </a>
-            <a href="https://www.linkedin.com/company/ptsip" target="_blank">
-                <img src="{{asset('custom/icon/ic_linkedin.png')}}" alt="">
-            </a>
-            <a href="https://www.facebook.com/sinergyip/" target="_blank">
-                <img src="{{asset('custom/icon/ic_facebook.png')}}" alt="">
-            </a>
+        <div class="d-flex flex-wrap col-md-12 justify-content-center">
+            <div class="map col-md-4 px-5">
+                <p class="fw-semibold fs-5">Our Office</p>
+                <iframe
+                    src="https://www.google.com/maps/d/embed?mid=1ozZiTj6s8xekvy1tDcdVuXj1OaXnURI&ehbc=2E312F&noprof=1"
+                    width="100%" height="250px"></iframe>
+            </div>
+            <div class="about-us col-md-4 pt-2 px-5 d-flex row justify-content-between">
+                <div class="p-0 ">
+                    <p class="map-desc">(Utama) Jalan Puri Indah Raya Kav, BLOK A3/2, No.33-45, KEMBANGAN, JAKARTA
+                        BARAT, INDONESIA.
+                    </p>
+                    <p class="map-desc">(Ruko) JL. PURI KENCANA, BLOK K6 NO. 2L-2M, KEMBANGAN, JAKARTA BARAT, INDONESIA.
+                    </p>
+                </div>
+                <p class="fw-semibold fs-5 mb-0 p-0">About us</p>
+                <div class="d-flex row justify-content-between">
+                    <a href="{{url('/message')}}" class="item-footer p-0">> Contact Us</a>
+                    <div class="d-flex align-items-center p-0">
+                        <img src="{{asset('custom/icon/ic_linkedin.png')}}" style="height: 30px; margin-right: 5px;"
+                            alt="">
+                        <a href="https://www.linkedin.com/company/ptsip" target="_blank"
+                            class="item-footer">Linkedin</a>
+                    </div>
+                    <div class="d-flex align-items-center p-0">
+                        <img src="{{asset('custom/icon/ic_instagram.png')}}" style="height: 30px; margin-right: 5px;"
+                            alt="">
+                        <a href="https://instagram.com/sinergyinformasipratama?igshid=MzRlODBiNWFlZA==" target="_blank"
+                            class="item-footer">Instagram</a>
+                    </div>
+                    <div class="d-flex align-items-center p-0">
+                        <img src="{{asset('custom/icon/ic_phone.png')}}" style="height: 30px; margin-right: 5px;"
+                            alt="">
+                        <a class="item-footer">+62 21 583 555 99</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logo col-md-4 text-center">
+                <a href="{{url('/home')}}">
+                    <img src="{{asset('custom/icon/logosip.png')}}" alt="Bootstrap" style="width:220px;">
+                </a>
+            </div>
         </div>
-        <ul class="d-flex flex-wrap justify-content-center px-0">
-            <li>
-                <a href="{{url('home')}}">Home</a>
-            </li>
-            <li>
-                <a href="{{url('profile')}}">Profile</a>
-            </li>
-            <li>
-                <a href="{{url('insights/blog')}}">Insights</a>
-            </li>
-            <li>
-                <a href="{{url('solution')}}">Solution</a>
-            </li>
-            <li>
-                <a href="{{url('campaign')}}">Campaign</a>
-            </li>
-            <li>
-                <a href="{{url('partnership')}}">Partnership</a>
-            </li>
-            <li>
-                <a href="{{url('customer')}}">Costumer</a>
-            </li>
-            <li>
-                <a href="{{url('career')}}">Career</a>
-            </li>
-            <li>
-                <a href="{{url('quotation')}}">Quotation</a>
-            </li>
-        </ul>
-        <p class="text-center text-copyright">copyright © 2023 PT Sinergy Informasi Pratama</p>
+        <p class="text-center text-copyright mt-4">copyright © 2023 PT Sinergy Informasi Pratama</p>
     </div>
 </body>
+<script>
+    AOS.init();
 
-<script src="{{asset('custom/javascript/main.js')}}"></script>
+</script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
-    integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </html>

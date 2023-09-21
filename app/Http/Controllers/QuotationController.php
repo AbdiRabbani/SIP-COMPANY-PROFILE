@@ -12,7 +12,7 @@ class QuotationController extends Controller
     public function index()
     {
         $data = Quotation::all();
-        return view('admin.quotation.index', compact('data'));
+        return view('admin.message.index', compact('data'));
     }
 
     public function store(Request $request)
@@ -20,8 +20,8 @@ class QuotationController extends Controller
         $data = $request->all();
 
         $mail = new SendMail($data); // Membuat instance objek pesan email
-        $mail->subject('Request Quotation'); 
-        $mail->from($data['email'], $data['first_name']);
+        $mail->subject('Message Sinergy Website'); 
+        $mail->from($data['email'], $data['name']);
 
         Mail::to('admin@sinergy.co.id')->send($mail);
 
@@ -33,7 +33,7 @@ class QuotationController extends Controller
     public function show($id) 
     {
         $data = Quotation::find($id);
-        return view('admin.quotation.detail', compact('data'));
+        return view('admin.message.detail', compact('data'));
     }
 
     public function destroy($id)

@@ -22,8 +22,9 @@ class ViewController extends Controller
 {
     public function home() 
     {
-        $new_data = Insights::where('type', 'news')->latest()->take(4)->get();
-        return view('main.home', compact('new_data'));
+        $new_data = Insights::where('type', 'News')->latest()->take(4)->get();
+        $last_data = Insights::where('type', 'News')->latest()->get()->first();
+        return view('main.home', compact('new_data', 'last_data'));
     }
 
     public function profile() 
@@ -107,8 +108,8 @@ class ViewController extends Controller
         $data = Insights::find($id);
         $tag = TagConnector::where('id_insights', $data->id)->get()->all();
         $blogtag = BlogTag::where('id_insights', $data->id)->get()->all();
-        $data_random_1 = Insights::where('type', 'blog')->inRandomOrder()->take(4)->get();
-        $data_random_2 = Insights::where('type', 'news')->inRandomOrder()->take(4)->get();
+        $data_random_1 = Insights::where('type', 'Blog')->inRandomOrder()->take(4)->get();
+        $data_random_2 = Insights::where('type', 'News')->inRandomOrder()->take(4)->get();
         return view('main.insights.detail', compact('data', 'data_random_1', 'data_random_2', 'blogtag', 'tag'));
     }
     
@@ -343,8 +344,8 @@ class ViewController extends Controller
         return response()->json($dataT);
     }
 
-    public function quotation() 
+    public function message() 
     {
-        return view('main.quotation');
+        return view('main.message');
     }
 }

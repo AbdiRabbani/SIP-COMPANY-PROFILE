@@ -1,60 +1,5 @@
 @extends('layouts.main')
 
-@section('nav')
-<a class="nav-item" href="{{url('/home')}}">Home</a>
-<a class="nav-item" href="{{url('/profile')}}">Profile</a>
-<div>
-    <a class="nav-active nav-dropdown" href="#">Insights</a>
-    <div class="dropdown-items">
-        @if($data->type == 'blog')
-        <li><a class="nav-active" href="{{url('/insights/blog')}}">Blog</a></li>
-        <li><a class="nav-item" href="{{url('/insights/news')}}">News</a></li>
-        @else
-        <li><a class="nav-item" href="{{url('/insights/blog')}}">Blog</a></li>
-        <li><a class="nav-active" href="{{url('/insights/news')}}">News</a></li>
-        @endif
-    </div>
-</div>
-<div>
-    <a class="nav-item nav-dropdown" href="#">Solution</a>
-    <div class="dropdown-items">
-        <p>Offering a wide range of services, it provides high quality, cost savings, and lightning-fast project
-            delivery times that meet the specialize needs of its clients.</p>
-        <div>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="1" hidden>
-                    <button class="nav-item">~ Enterprise Network Infrastructure</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="2" hidden>
-                    <button class="nav-item">~ Data center & Cloud</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="3" hidden>
-                    <button class="nav-item">~ Cyber Security</button>
-                </form>
-            </li>
-            <li>
-                <form action="{{url('solution/detail')}}">
-                    <input type="text" name="t" value="4" hidden>
-                    <button class="nav-item">~ Collaboration & Facility</button>
-                </form>
-            </li>
-        </div>
-    </div>
-</div>
-<a class="nav-item" href="{{url('/campaign')}}">Campaign</a>
-<a class="nav-item" href="{{url('/partnership')}}">Partnership</a>
-<a class="nav-item" href="{{url('/customer')}}">Customer</a>
-<a class="nav-item" href="{{url('/career')}}">Career</a>
-<a class="nav-item" href="{{url('/quotation')}}">Quotation</a>
-@endsection
-
 @section('content')
 <div class="mt-5 d-flex container justify-content-between flex-wrap">
     <div class="col-md-9 detail-content">
@@ -77,7 +22,7 @@
         <span class="ck-content">{!! $data->paragraph !!}</span>
     </div>
     <div class="mt-4 side-detail col-md-3">
-        @if($data->type == 'news')
+        @if($data->type == 'News')
         @foreach($data_random_2 as $row)
         <a class="card shadow my-card mt-4 col-md-10" style="text-decoration: none;"
             href="{{url('insights', $row->id)}}">
