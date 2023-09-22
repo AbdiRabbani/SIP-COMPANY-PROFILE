@@ -4,7 +4,7 @@
 <div class="container p-4">
     <div class="table table-responsive p-3 bg-white">
         <div class="mb-3 text-end">
-        <a href="/admin/project-reference/create" class="btn btn-success">Add</a>
+            <a href="/admin/project-reference/create" class="btn btn-success">Add</a>
         </div>
         <table class="table table-stripped" id="myTable">
             <thead>
@@ -19,6 +19,9 @@
                         Product
                     </td>
                     <td>
+                        Type
+                    </td>
+                    <td>
                         Action
                     </td>
                 </tr>
@@ -30,14 +33,30 @@
                         {{$row->name}}
                     </td>
                     <td>
-                    <button class="btn btn-warning btn-sm text-white" data-bs-toggle="modal"
+                        <button class="btn btn-warning btn-sm text-white" data-bs-toggle="modal"
                             data-bs-target="#imageModal" onClick="image('{{$row->image}}')">See Image</button>
                     </td>
                     <td>
-                    {{$row->product->name}}
+                        {{$row->partner_section->name}}
+                    </td>
+                    <td>
+                        @if($row->type == 1)
+                        FSI and Banking
+                        @elseif($row->type == 2)
+                        Government
+                        @elseif($row->type == 3)
+                        Manufacturing
+                        @elseif($row->type == 4)
+                        Telco & Service Provider
+                        @elseif($row->type == 5)
+                        Retail
+                        @elseif($row->type == 6)
+                        Education
+                        @endif
                     </td>
                     <td class="d-flex gap-2">
-                        <a href="{{url('/admin/project-reference/edit', $row->id)}}" class="btn btn-warning btn-sm text-white">Edit</a>
+                        <a href="{{url('/admin/project-reference/edit', $row->id)}}"
+                            class="btn btn-warning btn-sm text-white">Edit</a>
                         <form action="{{url('/admin/project-reference/destroy', $row->id)}}" method="post">
                             @csrf
                             {{method_field('delete')}}
@@ -53,7 +72,7 @@
 
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content align-items-center">
+        <div class="modal-content align-items-center py-4">
             <img id="img_modal" style="width: 250px;" alt="">
         </div>
     </div>
@@ -107,5 +126,6 @@
             }
         })
     });
+
 </script>
 @endsection

@@ -42,7 +42,7 @@
 
         <label for="">Product</label>
         <select name="id_product" id="" class="form-select">
-            <option value="{{$data->id_product}}" selected>{{$data->product->name}} --current</option>
+            <option value="{{$data->id_product}}" selected>{{$data->partner_section->name}} --current</option>
             @foreach($product as $row)
             <option value="{{$row->id}}">{{$row->name}}</option>
             @endforeach

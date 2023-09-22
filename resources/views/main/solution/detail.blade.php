@@ -461,7 +461,7 @@
     </div>
 </div>
 
-<div class="col-md-12 py-4 mt-2" style="background : var(--purple)">
+<div class="col-md-12 py-5 mt-2" style="background: url('/custom/images/bg-network.png'); background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="reach-us container">
         <p class="fs-5 mb-0 text-white">Intrested with this company?</p>
         <a href="{{url('/message')}}" class="bg-white nav-link py-2 px-3 rounded" style="color: var(--purple);">Get Company Profile</a>

@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('content')
 <style>
     .floating-button {
@@ -12,27 +13,26 @@
     .nav-link-custom:hover {
         color: black;
     }
-
 </style>
 <div class="container" style="margin-top: 100px;">
     <p class="fw-semibold text-center" style="font-size: 48px;">Text Us Something</p>
     <div class="form-request ms-auto me-auto col-md-6">
         <ul class="nav nav-tabs" id="myTab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
             <li class="nav-item" role="presentation">
-                <button class="nav-link nav-link-custom active" id="quotation-tab" data-bs-toggle="tab" style="min-width: max-content"
-                    data-bs-target="#quotation-tab-pane" type="button" role="tab" aria-controls="quotation-tab-pane"
-                    aria-selected="true">Quotation</button>
+                <button class="nav-link nav-link-custom active" id="quotation-tab" data-bs-toggle="tab"
+                    style="min-width: max-content" data-bs-target="#quotation-tab-pane" type="button" role="tab"
+                    aria-controls="quotation-tab-pane" aria-selected="true">Quotation</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link nav-link-custom" id="career-tab" data-bs-toggle="tab" style="min-width: max-content"
-                    data-bs-target="#career-tab-pane" type="button" role="tab" aria-controls="career-tab-pane"
-                    aria-selected="false">Career
+                <button class="nav-link nav-link-custom" id="career-tab" data-bs-toggle="tab"
+                    style="min-width: max-content" data-bs-target="#career-tab-pane" type="button" role="tab"
+                    aria-controls="career-tab-pane" aria-selected="false">Career
                     Inquiry</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link nav-link-custom" id="req-company-tab" data-bs-toggle="tab" style="min-width: max-content"
-                    data-bs-target="#req-company-tab-pane" type="button" role="tab" aria-controls="req-company-tab-pane"
-                    aria-selected="false">Req Company Profile</button>
+                <button class="nav-link nav-link-custom" id="req-company-tab" data-bs-toggle="tab"
+                    style="min-width: max-content" data-bs-target="#req-company-tab-pane" type="button" role="tab"
+                    aria-controls="req-company-tab-pane" aria-selected="false">Req Company Profile</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">

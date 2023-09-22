@@ -55,7 +55,7 @@
 
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content align-items-center">
+        <div class="modal-content align-items-center py-4">
             <img id="img_modal" style="width: 250px;" alt="">
         </div>
     </div>

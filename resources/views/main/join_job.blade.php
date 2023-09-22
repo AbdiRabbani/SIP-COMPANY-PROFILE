@@ -8,10 +8,10 @@
 
 </style>
 <div class="container request-header">
-    <p class="fw-semibold text-center  mb-0">Join Our Company</p>
+    <p class="fw-semibold text-center mb-0 mt-5 pt-5">Join Our Company</p>
     <p class="text-center">Tell everyone that you can do it!!</p>
 
-    <div class="form-request col-md-6">
+    <div class="form-request ms-auto me-auto col-md-6">
         <form action="{{url('join/send')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="">Name</label>
