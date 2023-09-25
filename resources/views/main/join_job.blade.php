@@ -22,6 +22,7 @@
 
             <label for="">Your CV</label>
             <input required type="file" name="cv" class="form-control">
+            <p style="color: grey; font-size: 13px; padding-left: 2px;">use PDF file</p>
 
             <label for="">Job</label>
             <input type="text" value="{{$data->position}}" disabled class="form-control">

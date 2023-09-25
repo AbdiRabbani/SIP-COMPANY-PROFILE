@@ -82,9 +82,9 @@
                 <div class="mt-3">
                     <label for="">Level</label>
                     <select name="level" id="" class="form-select">
-                        <option value="Expert">Expert</option>
-                        <option value="Professional">Professional</option>
-                        <option value="Associate">Associate</option>
+                        <option value="Excelent">Excelent</option>
+                        <option value="Great">Great</option>
+                        <option value="Good">Good</option>
                         <option value="Authorized">Authorized</option>
                     </select>
                 </div>
@@ -123,16 +123,16 @@
                     <label for="">Image</label>
                     <div>
                         <img alt="" src="" class="img-thumbnail col-md-6" id="img_edit"
-                            style="height: 200px; object-fit: cover;">
+                            style="height: 200px; object-fit: contain;">
                     </div>
                     <input type="file" name="image" class="form-control">
                 </div>
                 <div class="mt-3">
                     <label for="">Level</label>
                     <select name="level" id="level_partner_edit" class="form-select">
-                        <option value="Expert">Expert</option>
-                        <option value="Professional">Professional</option>
-                        <option value="Associate">Associate</option>
+                        <option value="Excelent">Excelent</option>
+                        <option value="Great">Great</option>
+                        <option value="Good">Good</option>
                         <option value="Authorized">Authorized</option>
                     </select>
                 </div>

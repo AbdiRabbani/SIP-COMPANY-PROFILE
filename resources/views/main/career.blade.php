@@ -2,25 +2,25 @@
 
 @section('content')
 <div class="container mt-5">
-    <p class="career-title fw-semibold text-center" style="margin-top: 100px;">Work With Us</p>
+    <p class="career-title fw-semibold text-center" style="margin-top: 100px; font-family: HemiHead;" >Work With Us</p>
 
     <div class="d-flex mt-5 flex-wrap-reverse gap-3 justify-content-around">
         <div class="col-md-6">
-            <p class="fs-5 fw-semibold">Reach yout dream with us</p>
+            <p class="fs-5 fw-semibold" style="font-family: HemiHead;">Reach yout dream with us</p>
             <p style="margin-bottom: 130px; text-align: justify;">We offer solutions related to network
                 infrastructure, data center infrastructure, network security,
                 and collaboration. Offering a wide range of services, it provides high quality, cost savings, and
                 lightning-fast project delivery times that meet the specialize needs of its clients.</p>
         </div>
         <div class="col-md-5 d-flex justify-content-around align-items-center">
-            <img class="col-md-10" style="height: 320px; object-fit: cover; object-position: center;"
-                src="{{asset('custom/images/brain.png')}}"
+            <img class="col-md-10 rounded" style="height: 320px; object-fit: cover; object-position: center;"
+                src="{{asset('custom/images/pak-agus.png')}}"
                 alt="">
         </div>
     </div>
 </div>
 <div class="container mt-5" id="jobs">
-    <p class="fw-semibold fs-5">Current Job Opportunities</p>
+    <p class="fw-semibold fs-5" style="font-family: HemiHead;">Current Job Opportunities</p>
     <div class="career-job">
         <div class="d-flex justify-content-start" style="overflow: scroll;">
             <div class="form-check">

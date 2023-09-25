@@ -23,7 +23,15 @@ class QuotationController extends Controller
         $mail->subject('Message Sinergy Website'); 
         $mail->from($data['email'], $data['name']);
 
-        Mail::to('admin@sinergy.co.id')->send($mail);
+        if($data['for'] = 'Quotation') {
+            Mail::to('sales@sinergy.com')->send($mail);
+        } else if($data['for'] = 'Career'){
+            Mail::to('admin@sinergy.com')->send($mail);
+        } else if ($data['for'] = 'Company Profile') {
+            Mail::to('sales@sinergy.com')->send($mail);
+        } else if ($data['for'] = 'Help Desk') {
+            Mail::to('helpdesk@sinergy.com')->send($mail);
+        }
 
         Quotation::create($data);        
     

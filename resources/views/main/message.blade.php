@@ -15,7 +15,7 @@
     }
 </style>
 <div class="container" style="margin-top: 100px;">
-    <p class="fw-semibold text-center" style="font-size: 48px;">Text Us Something</p>
+    <p class="fw-semibold text-center" style="font-size: 48px;">Contact Us</p>
     <div class="form-request ms-auto me-auto col-md-6">
         <ul class="nav nav-tabs" id="myTab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
             <li class="nav-item" role="presentation">
@@ -33,6 +33,11 @@
                 <button class="nav-link nav-link-custom" id="req-company-tab" data-bs-toggle="tab"
                     style="min-width: max-content" data-bs-target="#req-company-tab-pane" type="button" role="tab"
                     aria-controls="req-company-tab-pane" aria-selected="false">Req Company Profile</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link nav-link-custom" id="help-desk-tab" data-bs-toggle="tab"
+                    style="min-width: max-content" data-bs-target="#help-desk-tab-pane" type="button" role="tab"
+                    aria-controls="help-desk-tab-pane" aria-selected="false">Help Desk</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -141,6 +146,42 @@
                         Us</button>
                 </div>
             </form>
+            <form action="{{url('message/send')}}" method="post" class="tab-pane text-black fade"
+                id="help-desk-tab-pane" role="tabpanel" aria-labelledby="help-desk-tab" tabindex="0">
+                @csrf
+                <div class="mt-3">
+                    <label for="name">Your Name</label>
+                    <input required name="name" type="text" id="name" class="form-control">
+                    <input name="for" type="text" value="Help Desk" hidden>
+                </div>
+                <div class="mt-3">
+                    <label for="business">Business / Organization</label>
+                    <input required name="business" type="text" id="business" class="form-control">
+                </div>
+                <div class="mt-3">
+                    <label for="email"> Email</label>
+                    <input required name="email" type="mail" id="email" class="form-control">
+                </div>
+                <div class="mt-3">
+                    <label for="business">Phone</label>
+                    <input required name="phone" type="number" id="business" class="form-control">
+                </div>
+                <div class="my-3 d-flex row">
+                    <label for="request">Message</label>
+                    <textarea required name="request" id="request" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="my-3 d-flex">
+                    <div class="me-1">
+                        <input type="checkbox" id="quotate-check3" onClick="privacy()">
+                    </div>
+                    <p for="">I agree to the <span data-bs-toggle="modal" data-bs-target="#regulation">Sinergy Informasi
+                            Pratama Website Terms & Conditions of Use</span>.</p>
+                </div>
+                <div class="text-end">
+                    <button class="btn" style="color: white; background: var(--red);" id="btn-quote3" disabled>Contact
+                        Us</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -199,6 +240,7 @@
         const check_quote1 = document.querySelector('#quotate-check1')
         const check_quote2 = document.querySelector('#quotate-check2')
         const check_quote3 = document.querySelector('#quotate-check3')
+        const check_quote4 = document.querySelector('#quotate-check4')
 
         if (check_quote1.checked == true) {
             document.querySelector("#btn-quote1").disabled = false;
@@ -219,6 +261,13 @@
 
         } else {
             document.querySelector("#btn-quote3").disabled = true;
+        }
+
+        if (check_quote4.checked == true) {
+            document.querySelector("#btn-quote4").disabled = false;
+
+        } else {
+            document.querySelector("#btn-quote4").disabled = true;
         }
     }
 

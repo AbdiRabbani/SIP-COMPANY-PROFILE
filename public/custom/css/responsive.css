@@ -11,7 +11,7 @@
 @media screen and (max-width: 1120px) {
     /*  */
 
-    #home-header p {
+    .home-title {
         font-size: 30px;
     }
     

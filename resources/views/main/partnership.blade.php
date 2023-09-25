@@ -29,7 +29,7 @@
 </style>
 <div class="container">
     <div class="partnership-header">
-        <p class="text-center fw-semibold">Our Partnership</p>
+        <p class="text-center fw-semibold" style="font-family: HemiHead;">Our Partnership</p>
         <ul class="nav nav-pills" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
             <li class="nav-item" role="presentation">
                 <button class="nav-link nav-link-custom active" id="filter-button btn-all pills-profile-tab" onClick="allData()"
@@ -109,25 +109,25 @@
     </div>
     <div class="tab-content">
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3">Expert</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Excelent</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_e">
 
             </div>
         </div>
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3">Professional</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Great</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_p">
 
             </div>
         </div>
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3">Associate</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Good</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_as">
 
             </div>
         </div>
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3">Authorized</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Authorized</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_au">
 
             </div>
@@ -152,19 +152,19 @@
                 var data_au = "";
 
                 $.each(response, function (key, value) {
-                    if (key === 'Expert') {
+                    if (key === 'Excelent') {
                         $.each(value, function (index, user) {
                             data_e +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image + '" alt="">';
                         });
-                    } else if (key === 'Professional') {
+                    } else if (key === 'Great') {
                         $.each(value, function (index, user) {
                             data_p +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image + '" alt="">';
                         });
-                    } else if (key === 'Associate') {
+                    } else if (key === 'Good') {
                         $.each(value, function (index, user) {
                             data_as +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
@@ -199,21 +199,21 @@
                 var data_au = "";
 
                 $.each(response, function (key, value) {
-                    if (key === 'Expert') {
+                    if (key === 'Excelent') {
                         $.each(value, function (index, user) {
                             data_e +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image +
                                 '" alt="">';
                         });
-                    } else if (key === 'Professional') {
+                    } else if (key === 'Great') {
                         $.each(value, function (index, user) {
                             data_p +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image +
                                 '" alt="">';
                         });
-                    } else if (key === 'Associate') {
+                    } else if (key === 'Good') {
                         $.each(value, function (index, user) {
                             data_as +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +

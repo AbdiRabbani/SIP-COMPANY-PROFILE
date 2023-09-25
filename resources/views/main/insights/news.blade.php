@@ -15,7 +15,7 @@
 
 <div class="container">
     <p class="text-center fw-semibold" style="margin-top: 100px; font-size: 48px;"><a href=""
-            style="text-decoration: none; color: black;">News</a></p>
+            style="text-decoration: none; color: black; font-family: HemiHead;">News</a></p>
     <div class="d-flex justify-content-end">
         <div class="search_insights col-md-2 mb-3">
             <input type="text" class="form-control" id="search_input" onChange="dataSearch()">
@@ -45,7 +45,7 @@
 
         </div>
         <div class="col-md-3 rounded p-3 tag-bar">
-            <p class="fw-semibold">Lastest Tag</p>
+            <p class="fw-semibold" style="font-family: HemiHead;">Lastest Tag</p>
             <ul>
                 @foreach($tag as $row)
                 <li class="my-2">

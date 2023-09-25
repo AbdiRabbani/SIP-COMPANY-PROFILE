@@ -145,7 +145,7 @@
         <div class="line"></div>
         <div class="d-flex flex-wrap col-md-12 justify-content-center">
             <div class="map col-md-4 px-5">
-                <p class="fw-semibold fs-5">Our Office</p>
+                <p class="fw-semibold fs-5" style="font-family: HemiHead;">Our Office</p>
                 <iframe
                     src="https://www.google.com/maps/d/embed?mid=1ozZiTj6s8xekvy1tDcdVuXj1OaXnURI&ehbc=2E312F&noprof=1"
                     width="100%" height="250px"></iframe>
@@ -158,7 +158,7 @@
                     <p class="map-desc">(Ruko) JL. PURI KENCANA, BLOK K6 NO. 2L-2M, KEMBANGAN, JAKARTA BARAT, INDONESIA.
                     </p>
                 </div>
-                <p class="fw-semibold fs-5 mb-0 p-0">About us</p>
+                <p class="fw-semibold fs-5 mb-0 p-0" style="font-family: HemiHead;">About us</p>
                 <div class="d-flex row justify-content-between">
                     <a href="{{url('/message')}}" class="item-footer p-0">> Contact Us</a>
                     <div class="d-flex align-items-center p-0">

@@ -176,15 +176,15 @@ class ViewController extends Controller
 
     public function pa_data() 
     {
-        $data_e = Partnership::where('level', 'Expert')->get()->all();
-        $data_p = Partnership::where('level', 'Professional')->get()->all();
-        $data_as = Partnership::where('level', 'Associate')->get()->all();
+        $data_e = Partnership::where('level', 'Excelent')->get()->all();
+        $data_p = Partnership::where('level', 'Great')->get()->all();
+        $data_as = Partnership::where('level', 'Good')->get()->all();
         $data_au = Partnership::where('level', 'Authorized')->get()->all();
 
         $response_data = [
-            'Expert' => $data_e,
-            'Professional' => $data_p,
-            'Associate' => $data_as,
+            'Excelent' => $data_e,
+            'Great' => $data_p,
+            'Good' => $data_as,
             'Authorized' => $data_au,
         ];
 
@@ -193,15 +193,15 @@ class ViewController extends Controller
 
     public function p_data($id) 
     {
-        $data_e = Partnership::where('id_category', $id)->where('level', 'Expert')->get()->all();
-        $data_p = Partnership::where('id_category', $id)->where('level', 'Professional')->get()->all();
-        $data_as = Partnership::where('id_category', $id)->where('level', 'Associate')->get()->all();
+        $data_e = Partnership::where('id_category', $id)->where('level', 'Excelent')->get()->all();
+        $data_p = Partnership::where('id_category', $id)->where('level', 'Great')->get()->all();
+        $data_as = Partnership::where('id_category', $id)->where('level', 'Good')->get()->all();
         $data_au = Partnership::where('id_category', $id)->where('level', 'Authorized')->get()->all();
 
         $response_data = [
-            'Expert' => $data_e,
-            'Professional' => $data_p,
-            'Associate' => $data_as,
+            'Excelent' => $data_e,
+            'Great' => $data_p,
+            'Good' => $data_as,
             'Authorized' => $data_au,
         ];
 

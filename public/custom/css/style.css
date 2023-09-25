@@ -1,16 +1,25 @@
 @font-face {
-    font-family: 'Poppins';
-    src: url('/custom/font/Poppins-Regular.ttf');
+    font-family: 'Helvetica';
+    src: url('/custom/font/Helvetica.ttf');
+}
+
+@font-face {
+    font-family: 'HemiHead';
+    src: url('/custom/font/HemiHead.otf');
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins';
+    font-family: 'Helvetica';
 }
 
 *::-webkit-scrollbar {
     display: none;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 :root {
@@ -33,10 +42,12 @@
     transition: 0.4s;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.238) 0px 0px 10px;
+    transform: skew(-10deg);
 }
 
 .floating-button img {
     width: 45px;
+    transform: skew(10deg);
 }
 
 .custom-tooltip .tooltip-inner {
@@ -133,6 +144,14 @@
 
 /* Home - Header */
 
+#carousel-home {    
+    z-index: -999999;
+}
+
+#carousel-home img {
+    filter: brightness(50%);
+}
+
 .insights-notification {
     position: absolute;
     top: 100px;
@@ -146,16 +165,14 @@
 }
 
 #home-header {
-    background: url('/custom/images/newsip.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 100vh;
 }
 
-#home-header p {
+.home-title {
     font-size: 48px;
     text-align: center;
     color: white;
+    font-family: 'HemiHead';
 }
 
 .header-content {
@@ -163,6 +180,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+    padding: 0;
 }
 
 .content {
@@ -238,6 +256,11 @@
     transition: 0.3s;
 }
 
+.btn-service img {
+    width: auto;
+    height: 50px;
+}
+
 /* Home Insights */
 
 /* .my-card {
@@ -293,8 +316,6 @@
 .certificate-icon {
     width: 70px;
     height: 70px;
-    background-color: var(--red);
-    border: 3px solid white;
     position: absolute;
     right: 48px;
     margin-top: -35px;
@@ -408,6 +429,7 @@
 
 .vision-content>div p:nth-child(1) {
     font-size: 20px;
+    
 }
 
 .vision-content>div p:nth-child(2) {
@@ -473,6 +495,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    transform: skew(-10deg);
+}
+
+.ethics-icon p {
+    transform: skew(10deg);
 }
 
 #profile-key {
@@ -840,6 +867,32 @@
 .img-partnership>p {
     font-size: 1000x;
     color: black;
+}
+
+/* Customer */
+
+.customer-title {
+    color: var(--red);
+    width: max-content !important;
+    padding: 10px;
+    border-radius: 10px;
+    transform: skew(-10deg);
+    margin-bottom: 0;
+    align-items: center;
+     display: flex;
+}
+
+.img-customer {
+    background-color: var(--red);
+    height: 60px;
+    padding: 10px;
+    transform: skew(-10deg);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.img-customer img {
+    transform: skew(10deg);
 }
 
 /* Career */

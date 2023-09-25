@@ -4,12 +4,12 @@
 <div id="profile-content" class="container mt-5">
 
     <div id="profile-header" class="text-center">
-        <p class="fw-semibold">Sinergy Informasi Pratama</p>
+        <p class="fw-semibold" style="font-family: HemiHead;">Sinergy Informasi Pratama</p>
         <p>“Your IT Business Solution”</p>
     </div>
 
     <div id="profile-higtlights" class="my-5">
-        <p class="fs-5 fw-semibold">Company Hightlights</p>
+        <p class="fs-5 fw-semibold" style="font-family: HemiHead;">Company Hightlights</p>
         <p>
             PT. Sinergy Informasi Pratama (SIP) is one of the company's IT system integrator in Indonesia, which
             focuses on providing an integrated network infrastructure solutions. This includes the provision of
@@ -23,24 +23,24 @@
 
     <div id="profile-vision">
         <div class="vision-content">
-            <div data-aos="fade-left">
-                <p class="fw-semibold">Vision</p>
-                <p>The Primary Information Communication Technology (ICT) Enabler with Effective and Efficient
+            <div style="transform: skew(-10deg);" data-aos="fade-left">
+                <p class="fw-semibold" style="font-family: HemiHead; transform: skew(10deg)">Vision</p>
+                <p style="transform: skew(10deg);">The Primary Information Communication Technology (ICT) Enabler with Effective and Efficient
                     Infrastructure platform.</p>
             </div>
-            <div data-aos="fade-right">
-                <p class="fw-semibold">Mission</p>
-                <p>Establish A benchmark for excellence by providing renowned global certifications that enable
+            <div style="transform: skew(-10deg);" data-aos="fade-right">
+                <p class="fw-semibold" style="font-family: HemiHead; transform: skew(10deg)">Mission</p>
+                <p style="transform: skew(10deg);">Establish A benchmark for excellence by providing renowned global certifications that enable
                     continuous competency. We not only strive to incorporate the latest technology, but also provide
                     our costumers with reliable solutions.</p>
             </div>
         </div>
-        <img src="{{asset('custom/images/sipemploye.jpg')}}"
+        <img src="{{asset('custom/images/img-profile.png')}}"
             alt="" class="img-vision rounded">
     </div>
 
     <div id="profile-reason">
-        <p class="fs-5 fw-semibold">
+        <p class="fs-5 fw-semibold" style="font-family: HemiHead;">
             Why Choose Us?
         </p>
         <div>
@@ -63,7 +63,7 @@
     </div>
 
     <div id="profile-ethics">
-        <p class="fs-5 fw-semibold ethics-title">Our Work Ethics <span>[</span> <span> WISE</span> <span>]</span>
+        <p class="fs-5 fw-semibold ethics-title" style="font-family: HemiHead;">Our Work Ethics <span>[</span> <span> WISE</span> <span>]</span>
         </p>
         <div class="d-flex mt-5 flex-wrap justify-content-between gap-3">
             <div class="d-flex col-md-5" data-aos="fade-left">
@@ -109,7 +109,7 @@
     </div>
 
     <div id="profile-key">
-        <p class="fw-semibold fs-5">Key Bussiness</p>
+        <p class="fw-semibold fs-5" style="font-family: HemiHead;">Key Bussiness</p>
         <div class="d-flex flex-wrap justify-content-evenly gap-4 mt-5">
             <div class="key-item" onClick="showKeyDesc(1)">
                 <div class="key-button-content">
@@ -163,7 +163,7 @@
     </div>
 
     <div id="profile-organization">
-        <p class="fs-5 fw-semibold">Organization</p>
+        <p class="fs-5 fw-semibold" style="font-family: HemiHead;">Organization</p>
         <img src="{{asset('custom/images/structure.png')}}" alt="" width="100%" data-bs-toggle="modal"
             data-bs-target="#exampleModal">
         <p class="text-center mt-3" style="font-size: 10px;">*click the image for zooming in mobile</p>

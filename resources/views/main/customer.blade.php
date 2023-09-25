@@ -25,11 +25,11 @@
 </style>
 <div class="container">
     <div class="partnership-header">
-        <p class="text-center fw-semibold">Our Customer</p>
+        <p class="text-center fw-semibold" style="font-family: HemiHead;">Our Customer</p>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-wrap: nowrap; overflow: scroll;">
             <li class="nav-item" role="presentation">
-                <button class="nav-link nav-link-custom active" id="filter-button btn-all pills-profile-tab" onClick="allData()"
-                    data-bs-toggle="pill" role="tab" aria-controls="pills-profile" type="submit"
+                <button class="nav-link nav-link-custom active" id="filter-button btn-all pills-profile-tab"
+                    onClick="allData()" data-bs-toggle="pill" role="tab" aria-controls="pills-profile" type="submit"
                     aria-selected="false">All</button>
             </li>
             <li class="nav-item" role="presentation">
@@ -60,7 +60,12 @@
 
     <div class="tab-content">
         <div class="mt-4 d-flex row justify-content-center">
-            <p class="fs-5 fw-semibold pt-5">~ FSI and Banking</p>
+            <div class="mt-5 d-flex">
+                <div class="img-customer">
+                    <img src="{{asset('custom/icon/fsi.png')}}" style="width: 100%; height: 100%;" alt="">
+                </div>
+                <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">FSI and Banking</p>
+            </div>
             <p id="title-project1"></p>
             <div>
                 <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project1" alt="">
@@ -71,7 +76,12 @@
             </div>
         </div>
         <div class="mt-4 d-flex row justify-content-center">
-            <p class="fs-5 fw-semibold pt-5">~ Government</p>
+            <div class="mt-5 d-flex">
+                <div class="img-customer">
+                    <img src="{{asset('custom/icon/government.png')}}" style="width: 100%; height: 100%;" alt="">
+                </div>
+                <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Government</p>
+            </div>
             <p id="title-project2"></p>
             <div>
                 <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project2" alt="">
@@ -82,7 +92,12 @@
             </div>
         </div>
         <div class="mt-4 d-flex row justify-content-center">
-            <p class="fs-5 fw-semibold pt-5">~ Manufacturing</p>
+            <div class="mt-5 d-flex">
+                <div class="img-customer">
+                    <img src="{{asset('custom/icon/manufacturing.png')}}" style="width: 100%; height: 100%;" alt="">
+                </div>
+                <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Manufacturing</p>
+            </div>
             <p id="title-project3"></p>
             <div>
                 <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project3" alt="">
@@ -93,7 +108,12 @@
             </div>
         </div>
         <div class="mt-4 d-flex row justify-content-center">
-            <p class="fs-5 fw-semibold pt-5">~ Telco & Service Provider</p>
+            <div class="mt-5 d-flex">
+                <div class="img-customer">
+                    <img src="{{asset('custom/icon/telco.png')}}" style="width: 100%; height: 100%;" alt="">
+                </div>
+                <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Telco & Service Provider</p>
+            </div>
             <p id="title-project4"></p>
             <div>
                 <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project4" alt="">
@@ -104,7 +124,12 @@
             </div>
         </div>
         <div class="mt-4 d-flex row justify-content-center">
-            <p class="fs-5 fw-semibold pt-5">~ Retail</p>
+            <div class="mt-5 d-flex">
+                <div class="img-customer">
+                    <img src="{{asset('custom/icon/retail.png')}}" style="width: 100%; height: 100%;" alt="">
+                </div>
+                <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Retail</p>
+            </div>
             <p id="title-project5"></p>
             <div>
                 <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project5" alt="">
@@ -115,7 +140,12 @@
             </div>
         </div>
         <div class="mt-4 d-flex row justify-content-center">
-            <p class="fs-5 fw-semibold pt-5">~ Education</p>
+            <div class="mt-5 d-flex">
+                <div class="img-customer">
+                    <img src="{{asset('custom/icon/education.png')}}" style="width: 100%; height: 100%;" alt="">
+                </div>
+                <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Education</p>
+            </div>
             <p id="title-project6"></p>
             <div>
                 <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project6" alt="">

@@ -2,95 +2,110 @@
 
 @section('content')
 
-<!-- <div class="insights-notification">
-    <img src="{{asset('storage/images/' .$last_data->image)}}" style="object-fit: cover; border-radius: 10px 0px 0px 10px;" class="col-md-3" alt="">
-    <p class="col-md-7 mb-0 ps-2 py-2">{{$last_data->title}}</p>
-    <div class="col-md-2 d-flex align-items-center justify-content-center" style="background: var(--red); border-radius: 0px 10px 10px 0px;">
-        <p class="mb-0 text-white" onClick="closeNews()">x</p>
-    </div>
-</div> -->
+<div id="home-header" class="row">
+    <div style="margin-top: 260px; position: absolute;">
+        <p class="fw-semibold home-title">Sinergy Informasi Pratama</p>
 
-<div id="home-header" class="row gx-0">
-    <div class="d-flex justify-content-center align-items-end fw-semibold">
-        <p>Sinergy Informasi Pratama</p>
-    </div>
-
-    <div class="header-content">
-        <div class="content c-a">
-            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip" data-bs-title="Enterprise Network Infrastructure">
-                <input type="text" value="1" name="t" hidden>
-                <button class="btn">
-                    <img src="{{asset('custom/icon/Group 71.png')}}" alt="">
-                </button>
-            </form>
-            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip" data-bs-title="Collaboration & Facility">
-                <input type="text" value="4" name="t" hidden>
-                <button class="btn">
-                    <img src="{{asset('custom/icon/Support.png')}}" alt="">
-                </button>
-            </form>
+        <div class="header-content pe-0">
+            <div class="content c-a">
+                <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="Enterprise Network Infrastructure">
+                    <input type="text" value="1" name="t" hidden>
+                    <button class="btn">
+                        <img src="{{asset('custom/icon/Group 71.png')}}" alt="">
+                    </button>
+                </form>
+                <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="Collaboration & Facility">
+                    <input type="text" value="4" name="t" hidden>
+                    <button class="btn">
+                        <img src="{{asset('custom/icon/Support.png')}}" alt="">
+                    </button>
+                </form>
+            </div>
+            <div class="content c-b">
+                <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="Data center & Cloud">
+                    <input type="text" value="2" name="t" hidden>
+                    <button class="btn">
+                        <img src="{{asset('custom/icon/Group 80.png')}}" alt="">
+                    </button>
+                </form>
+                <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="Cyber Security">
+                    <input type="text" value="3" name="t" hidden>
+                    <button class="btn">
+                        <img src="{{asset('custom/icon/Group 76.png')}}" alt="">
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="content c-b">
-            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip" data-bs-title="Data center & Cloud">
-                <input type="text" value="2" name="t" hidden>
-                <button class="btn">
-                    <img src="{{asset('custom/icon/Group 80.png')}}" alt="">
-                </button>
-            </form>
-            <form action="{{url('solution/detail')}}" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip" data-bs-title="Cyber Security">
-                <input type="text" value="3" name="t" hidden>
-                <button class="btn">
-                    <img src="{{asset('custom/icon/Group 76.png')}}" alt="">
-                </button>
-            </form>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-home"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-home"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div id="carousel-home" class="carousel slide pe-0" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item p-0 active">
+                <img src="{{asset('custom/images/data-center.jpg')}}" class="d-block" style="object-fit: cover; width: 100%; height: 100vh;" alt="...">
+            </div>
+            <div class="carousel-item p-0">
+                <img src="{{asset('custom/images/data-center2.jpg')}}" class="d-block" style="object-fit: cover; width: 100%; height: 100vh;" alt="...">
+            </div>
+            <div class="carousel-item p-0">
+                <img src="{{asset('custom/images/data-center3.jpg')}}" class="d-block" style="object-fit: cover; width: 100%; height: 100vh;" alt="...">
+            </div>
         </div>
     </div>
 </div>
 
 <div id="home-service" class="container-fluid" data-aos="fade-up">
 
-    <p class="fs-5 fw-semibold">Best service you can get in SIP</p>
+    <p class="fs-5 fw-semibold" style="font-family: HemiHead;">Best service you can get in SIP</p>
 
     <div class="col-md-10 d-flex gap-5 flex-wrap justify-content-center my-4">
         <button type="button" onclick="getServiceValue('IT SERVICES BY PROJECT & SERVICE LEVEL AGREEMENT')"
             class="btn btn-service col-md-3 service-item d-flex align-items-center p-0" data-bs-toggle="modal"
             data-bs-target="#serviceModal">
-            <img src="{{asset('custom/icon/Group 108.png')}}" alt="">
+            <img src="{{asset('custom/icon/ic_service1.png')}}" alt="">
             <p class="mb-0">IT SERVICES BY PROJECT & SERVICE LEVEL AGREEMENT</p>
         </button>
 
         <button type="button" onclick="getServiceValue('HARDWARE INTEGRATION & IMPLEMENTATION')"
             class="btn btn-service col-md-3 service-item d-flex align-items-center p-0" data-bs-toggle="modal"
             data-bs-target="#serviceModal">
-            <img src="{{asset('custom/icon/Group 109.png')}}" alt="">
+            <img src="{{asset('custom/icon/ic_service2.png')}}" alt="">
             <p class="mb-0">HARDWARE INTEGRATION & IMPLEMENTATION</p>
         </button>
         <button type="button" onclick="getServiceValue('24/7 SUPPORT')"
             class="btn btn-service col-md-3 service-item d-flex align-items-center p-0" data-bs-toggle="modal"
             data-bs-target="#serviceModal">
-            <img src="{{asset('custom/icon/Group 110.png')}}" alt="">
+            <img src="{{asset('custom/icon/ic_service3.png')}}" alt="">
             <p class="mb-0">24/7 SUPPORT</p>
         </button>
         <button type="button" onclick="getServiceValue('CABLING SYSTEM INSTALLATION')"
             class="btn btn-service col-md-3 service-item d-flex align-items-center p-0" data-bs-toggle="modal"
             data-bs-target="#serviceModal">
-            <img src="{{asset('custom/icon/Group 111.png')}}" alt="">
+            <img src="{{asset('custom/icon/ic_service4.png')}}" alt="">
             <p class="mb-0">CABLING SYSTEM INSTALLATION</p>
         </button>
         <button type="button" onclick="getServiceValue('APLICATION & SERVICE IMPLEMENTATION')"
             class="btn btn-service col-md-3 service-item d-flex align-items-center p-0" data-bs-toggle="modal"
             data-bs-target="#serviceModal">
-            <img src="{{asset('custom/icon/Group 112.png')}}" alt="">
+            <img src="{{asset('custom/icon/ic_service5.png')}}" alt="">
             <p class="mb-0">APLICATION & SERVICE IMPLEMENTATION</p>
         </button>
         <button type="button" onclick="getServiceValue('NETWORK SECURITY')"
             class="btn btn-service col-md-3 service-item d-flex align-items-center p-0" data-bs-toggle="modal"
             data-bs-target="#serviceModal">
-            <img src="{{asset('custom/icon/Group 113.png')}}" alt="">
+            <img src="{{asset('custom/icon/ic_service6.png')}}" alt="">
             <p class="mb-0">NETWORK SECURITY</p>
         </button>
     </div>
@@ -122,7 +137,7 @@
 
 <div id="home-insights" class="container my-5" data-aos="fade-up">
     <div class="d-flex justify-content-between">
-        <p class="fs-5 fw-semibold">Lastest News</p>
+        <p class="fs-5 fw-semibold" style="font-family: HemiHead;">Lastest News</p>
         <a href="{{url('insights/news')}}" class="fs-5 see-insight" style="text-decoration: none;">see all</a>
     </div>
     <div class="d-flex flex-wrap">
@@ -147,7 +162,7 @@
 </div>
 
 <div class="container mt-2" data-aos="fade-up">
-    <p class="fw-semibold fs-5">Executive Summary</p>
+    <p class="fw-semibold fs-5" style="font-family: HemiHead;">Executive Summary</p>
     <p style="text-align: justify;">For more than a decade, SIP has earned its reputation as an IT system integrator
         that helps companies maximize their investments in IT solutions. To ensure effectiveness an efficiency, costs
         are strategically targeted to the most essential element. Drawing from this experience, SIP has developed a
@@ -156,7 +171,7 @@
 
 <div class="certificate-content" data-aos="fade-up">
     <div class="certificate-icon d-flex justify-content-center align-items-center">
-        <img src="{{asset('custom/icon/certificate.png')}}" style="width: 50px;" alt="">
+        <img src="{{asset('custom/icon/certificate.png')}}" style="width: 70px;" alt="">
     </div>
     <div class="container py-5 d-flex flex-wrap">
         <div class="col-md-9 d-flex gap-3" style="overflow: scroll; border-radius: 10px;">
@@ -174,7 +189,7 @@
             </div>
         </div>
         <div class="col-md-3 p-3">
-            <p class="fw-semibold text-white fs-3">Company Certifications</p>
+            <p class="fw-semibold text-white fs-3" style="font-family: HemiHead;">Company Certifications</p>
             <p class="text-white" style="text-align: justify;">SIP places a high emphasis on providing services that are
                 reliable, secure, and of high quality. Among its international standards that it complies with are ISO
                 45001 :2018 ISO 37001:2015 27001:2013 and ISO 9001:2015.</p>
@@ -209,31 +224,31 @@
         if (name == "IT SERVICES BY PROJECT & SERVICE LEVEL AGREEMENT") {
             service_desc.innerText =
                 "Infrastructure Development. Application Administration & Maintainance. Enterprise System Integration. Telecomunication System Integration & Managed Services. Outsourcing & Joint Development Services"
-            service_img.setAttribute('src', '/custom/icon/Group 108.png')
+            service_img.setAttribute('src', '/custom/icon/ic_service1.png')
         } else if (name == "HARDWARE INTEGRATION & IMPLEMENTATION") {
             service_desc.innerText =
                 "Network Blue Printing & Architecture. Network Administration & Maintainance. Network & Infrastructure Deployment, Enterprise Network Solutions. Carrier Grade Network Management Services."
-            service_img.setAttribute('src', '/custom/icon/Group 109.png')
+            service_img.setAttribute('src', '/custom/icon/ic_service2.png')
 
         } else if (name == "24/7 SUPPORT") {
             service_desc.innerText =
                 "Available Support Any Time. Operate Continuously At All Times With Complete Shoft Staff."
-            service_img.setAttribute('src', '/custom/icon/Group 110.png')
+            service_img.setAttribute('src', '/custom/icon/ic_service3.png')
 
         } else if (name == "CABLING SYSTEM INSTALLATION") {
             service_desc.innerText =
                 "Network Cabling Termination. Fiber Optic Cabling Deployment. Electrical Cabling Solution"
-            service_img.setAttribute('src', '/custom/icon/Group 111.png')
+            service_img.setAttribute('src', '/custom/icon/ic_service4.png')
 
         } else if (name == "APLICATION & SERVICE IMPLEMENTATION") {
             service_desc.innerText =
                 "Application Architectures Supporting Digital Business, Mobile, Cloud And APIs Include Services That Integrate Exiting Assets Or Implement New Capabilities"
-            service_img.setAttribute('src', '/custom/icon/Group 112.png')
+            service_img.setAttribute('src', '/custom/icon/ic_service5.png')
 
         } else {
             service_desc.innerText =
                 "Physical Building Security Solution. Enterprise Specific Security Services. Integrated Security"
-            service_img.setAttribute('src', '/custom/icon/Group 113.png')
+            service_img.setAttribute('src', '/custom/icon/ic_service6.png')
 
         }
     }
@@ -250,5 +265,6 @@
     function closeNews() {
         document.querySelector('.insights-notification').style.right = '-1000px'
     }
+
 </script>
 @endsection

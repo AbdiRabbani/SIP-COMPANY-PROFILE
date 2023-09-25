@@ -5,7 +5,11 @@
 <?php use App\Customer ?>
 <?php use App\ProjectReference ?>
 <style>
-    .nav-link {
+    .floating-button {
+        display: none;
+    }
+    
+    .nav-link-custom {
         color: grey;
     }
 
@@ -13,7 +17,7 @@
         border-bottom: none;
     }
 
-    .nav-link:hover {
+    .nav-link-custom:hover {
         color: grey;
     }
 
@@ -33,7 +37,7 @@
 <div class="solution-detail-header" style="background-color: #EAF1F6;">
     <div class="container d-flex justify-content-between align-items-center flex-wrap">
         <img src="{{asset($image)}}" alt="">
-        <p class="fw-semibold mb-0">{{$title}}</p>
+        <p class="fw-semibold mb-0" style="font-family: HemiHead;">{{$title}}</p>
     </div>
 </div>
 <div class="solution-detail-content container">
@@ -42,7 +46,7 @@
     <ul class="nav nav-underline" id="myTab" role="tablist">
         @foreach($product as $row)
         <li class="nav-item" role="presentation">
-            <button class="nav-link fw-semibold" id="{{$row->id}}-tab" data-bs-toggle="tab"
+            <button class="nav-link nav-link-custom fw-semibold" id="{{$row->id}}-tab" data-bs-toggle="tab"
                 data-bs-target="#{{$row->id}}-tab-pane" type="button" role="tab" aria-controls="{{$row->id}}-tab-pane"
                 aria-selected="true" onClick="blogData({{$row->id}})">{{$row->name}}</button>
         </li>
@@ -53,7 +57,7 @@
         @foreach($product as $row)
         <div class="tab-pane fade" id="{{$row->id}}-tab-pane" role="tabpanel" aria-labelledby="{{$row->id}}-tab"
             tabindex="0">
-            <p class="fs-6">Partnership</p>
+            <p class="fs-6" style="font-family: HemiHead;">Partnership</p>
             <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
                 <?php $partnership = Partnership::where('id_category', $row->id)->where('level', 'Expert')->get()->all() ?>
                 @foreach($partnership as $partner)
@@ -70,35 +74,35 @@
                 @endforeach
             </div>
 
-            <p class="fs-6 mt-4">Customer</p>
+            <p class="fs-6 mt-4" style="font-family: HemiHead;">Customer</p>
             <ul class="nav nav-underline" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="fsi{{$row->id}}-tab" data-bs-toggle="pill"
+                    <button class="nav-link nav-link-custom active" id="fsi{{$row->id}}-tab" data-bs-toggle="pill"
                         data-bs-target="#fsi{{$row->id}}" type="button" role="tab" aria-controls="fsi{{$row->id}}"
                         aria-selected="true">FSI and Banking</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="goverment{{$row->id}}-tab" data-bs-toggle="pill"
+                    <button class="nav-link nav-link-custom" id="goverment{{$row->id}}-tab" data-bs-toggle="pill"
                         data-bs-target="#goverment{{$row->id}}" type="button" role="tab"
                         aria-controls="goverment{{$row->id}}" aria-selected="true">Government</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="manufacturing{{$row->id}}-tab" data-bs-toggle="pill"
+                    <button class="nav-link nav-link-custom" id="manufacturing{{$row->id}}-tab" data-bs-toggle="pill"
                         data-bs-target="#manufacturing{{$row->id}}" type="button" role="tab"
                         aria-controls="manufacturing{{$row->id}}" aria-selected="true">Manufacturing</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="telco{{$row->id}}-tab" data-bs-toggle="pill"
+                    <button class="nav-link nav-link-custom" id="telco{{$row->id}}-tab" data-bs-toggle="pill"
                         data-bs-target="#telco{{$row->id}}" type="button" role="tab" aria-controls="telco{{$row->id}}"
                         aria-selected="true">Telco & Service</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="retail{{$row->id}}-tab" data-bs-toggle="pill"
+                    <button class="nav-link nav-link-custom" id="retail{{$row->id}}-tab" data-bs-toggle="pill"
                         data-bs-target="#retail{{$row->id}}" type="button" role="tab" aria-controls="retail{{$row->id}}"
                         aria-selected="true">Retail</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="education{{$row->id}}-tab" data-bs-toggle="pill"
+                    <button class="nav-link nav-link-custom" id="education{{$row->id}}-tab" data-bs-toggle="pill"
                         data-bs-target="#education{{$row->id}}" type="button" role="tab"
                         aria-controls="education{{$row->id}}" aria-selected="true">Education</button>
                 </li>
@@ -239,13 +243,13 @@
     <div class="mt-5">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist" style="overflow: scroll; flex-wrap: nowrap;">
-                <button style="min-width: max-content;" class="nav-link active" id="nav-consultant-tab"
+                <button style="min-width: max-content;" class="nav-link nav-link-custom active" id="nav-consultant-tab"
                     data-bs-toggle="tab" data-bs-target="#nav-consultant" type="button" role="tab"
                     aria-controls="nav-consultant" aria-selected="true">Consultant</button>
-                <button style="min-width: max-content;" class="nav-link" id="nav-delivery-tab" data-bs-toggle="tab"
+                <button style="min-width: max-content;" class="nav-link nav-link-custom" id="nav-delivery-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-delivery" type="button" role="tab" aria-controls="nav-delivery"
                     aria-selected="false">Delivery</button>
-                <button style="min-width: max-content;" class="nav-link" id="nav-service-tab" data-bs-toggle="tab"
+                <button style="min-width: max-content;" class="nav-link nav-link-custom" id="nav-service-tab" data-bs-toggle="tab"
                     data-bs-target="#nav-service" type="button" role="tab" aria-controls="nav-service"
                     aria-selected="false">Managed Service</button>
             </div>
@@ -260,7 +264,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Solution as a Service</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Solution as a Service</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -277,7 +281,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Service</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Service</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -294,7 +298,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Assesment</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Assesment</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -329,7 +333,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">System Integrator</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">System Integrator</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -346,7 +350,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Service Expert</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Service Expert</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -363,7 +367,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Supply Only</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Supply Only</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -397,7 +401,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Maintenance</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Maintenance</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -414,7 +418,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Subscription</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Subscription</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -431,7 +435,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5">Rental</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Rental</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the
@@ -470,7 +474,7 @@
 
 <div class="container">
     <div class="d-flex justify-content-between mt-5">
-        <p class="fw-semibold fs-5">Blog</p>
+        <p class="fw-semibold fs-5" style="font-family: HemiHead;">Blog</p>
         <a style="color: var(--purple); text-decoration: none" href="{{url('insights/blog')}}">see all</a>
     </div>
 

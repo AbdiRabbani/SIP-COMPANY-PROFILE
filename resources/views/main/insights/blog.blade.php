@@ -30,7 +30,7 @@
 
 <div class="container">
     <div class="partnership-header">
-        <p class="text-center fw-semibold">Blog</p>
+        <p class="text-center fw-semibold" style="font-family: HemiHead;">Blog</p>
         <div class="col-ms-12 d-flex justify-content-end">
             <div class="search_insights mb-3 col-md-2">
                 <input type="text" class="form-control" id="search_input" onChange="dataSearch()">

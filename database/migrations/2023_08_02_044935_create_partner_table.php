@@ -17,7 +17,7 @@ class CreatePartnerTable extends Migration
             $table->bigIncrements('id');
             $table->text('name');
             $table->text('image');
-            $table->enum('level', ['Expert', 'Professional', 'Associate', 'Authorized']);
+            $table->enum('level', ['Excelent', 'Greate', 'Good', 'Authorized']);
             $table->integer('id_category')->unsigned();
             $table->foreign('id_category')->references('id')->on('partner_section')->onDelete('cascade');
             $table->timestamps();
