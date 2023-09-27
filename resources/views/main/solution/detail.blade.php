@@ -4,6 +4,8 @@
 <?php use App\Partnership ?>
 <?php use App\Customer ?>
 <?php use App\ProjectReference ?>
+<?php use App\PartnerConnector ?>
+<?php use App\CustomerConnector ?>
 <style>
     .floating-button {
         display: none;
@@ -59,7 +61,7 @@
             tabindex="0">
             <p class="fs-6" style="font-family: HemiHead;">Partnership</p>
             <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                <?php $partnership = Partnership::where('id_category', $row->id)->where('level', 'Expert')->get()->all() ?>
+                <?php $partnership = partnerConnector::where('level', 'Seasoned')->where('id_product', $row->id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all() ?>
                 @foreach($partnership as $partner)
                 <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
                     src="{{asset('storage/images/' .$partner->image)}}" alt="">
@@ -67,7 +69,7 @@
             </div>
 
             <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                <?php $partnership = Partnership::where('id_category', $row->id)->where('level', '!=', 'Expert')->get()->all() ?>
+                <?php $partnership = partnerConnector::where('level', '!=', 'Seasoned')->where('id_product', $row->id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all() ?>
                 @foreach($partnership as $partner)
                 <img style="height: 65px; width: 130px; object-fit: contain" class="rounded shadow p-2"
                     src="{{asset('storage/images/' .$partner->image)}}" alt="">
@@ -123,7 +125,7 @@
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $fsi = Customer::where('id_product', $row->id)->where('type', 1)->get()->all(); ?>
+                        <?php $fsi = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 1)->get()->all(); ?>
                         @foreach($fsi as $fsidata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
                             src="{{asset('storage/images/' .$fsidata->image)}}" alt="">
@@ -144,7 +146,7 @@
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $government = Customer::where('id_product', $row->id)->where('type', 2)->get()->all(); ?>
+                        <?php $government = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 2)->get()->all(); ?>
                         @foreach($government as $governmentdata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
                             src="{{asset('storage/images/' .$governmentdata->image)}}" alt="">
@@ -165,7 +167,7 @@
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $manufacturing = Customer::where('id_product', $row->id)->where('type', 3)->get()->all(); ?>
+                        <?php $manufacturing = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 3)->get()->all(); ?>
                         @foreach($manufacturing as $manufacturingdata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
                             src="{{asset('storage/images/' .$manufacturingdata->image)}}" alt="">
@@ -186,7 +188,7 @@
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $telco = Customer::where('id_product', $row->id)->where('type', 4)->get()->all(); ?>
+                        <?php $telco = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 4)->get()->all(); ?>
                         @foreach($telco as $telcodata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
                             src="{{asset('storage/images/' .$telcodata->image)}}" alt="">
@@ -207,7 +209,7 @@
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $retail = Customer::where('id_product', $row->id)->where('type', 5)->get()->all(); ?>
+                        <?php $retail = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 5)->get()->all(); ?>
                         @foreach($retail as $retaildata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
                             src="{{asset('storage/images/' .$retaildata->image)}}" alt="">
@@ -228,7 +230,7 @@
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $education = Customer::where('id_product', $row->id)->where('type', 6)->get()->all(); ?>
+                        <?php $education = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 6)->get()->all(); ?>
                         @foreach($education as $educationdata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
                             src="{{asset('storage/images/' .$educationdata->image)}}" alt="">
@@ -350,7 +352,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/2048px-Circle-icons-tools.svg.png"
                                     style="width: 80px;" class="col-md-9" alt="">
                                 <div class="col-md-9">
-                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Service Expert</p>
+                                    <p class="text-black mb-0 fw-semibold fs-5" style="font-family: HemiHead;">Service Seasoned</p>
                                     <p class="text-black mb-0" style="text-align: justify;">We'll help you
                                         decide
                                         the

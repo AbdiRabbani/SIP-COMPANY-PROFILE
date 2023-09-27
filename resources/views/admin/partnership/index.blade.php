@@ -1,6 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: var(--purple);
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        color: white;
+    }
+
+</style>
+
 <div class="container pt-5">
     <div class="d-flex justify-content-between align-items-center">
         <p class="fw-semibold" style="font-size: 48px;">Partnership</p>
@@ -82,15 +93,15 @@
                 <div class="mt-3">
                     <label for="">Level</label>
                     <select name="level" id="" class="form-select">
-                        <option value="Excelent">Excelent</option>
-                        <option value="Great">Great</option>
-                        <option value="Good">Good</option>
-                        <option value="Authorized">Authorized</option>
+                        <option value="Seasoned">Seasoned</option>
+                        <option value="Stalwart">Stalwart</option>
+                        <option value="Trending">Trending</option>
+                        <option value="Featuring">Featuring</option>
                     </select>
                 </div>
                 <div class="mt-3">
-                    <label for="">Category</label>
-                    <select name="id_category" id="" class="form-select">
+                    <label for="">Product</label>
+                    <select name="id_product[]" id="product_select" multiple="multiple" style="width: 100%;">
                         @foreach($category as $row)
                         <option value="{{$row->id}}">{{$row->name}}</option>
                         @endforeach
@@ -130,15 +141,15 @@
                 <div class="mt-3">
                     <label for="">Level</label>
                     <select name="level" id="level_partner_edit" class="form-select">
-                        <option value="Excelent">Excelent</option>
-                        <option value="Great">Great</option>
-                        <option value="Good">Good</option>
-                        <option value="Authorized">Authorized</option>
+                        <option value="Seasoned">Seasoned</option>
+                        <option value="Stalwart">Stalwart</option>
+                        <option value="Trending">Trending</option>
+                        <option value="Featuring">Featuring</option>
                     </select>
                 </div>
                 <div class="mt-3">
-                    <label for="">Category</label>
-                    <select name="id_category" id="category_partner_edit" class="form-select">
+                    <label for="">Product</label>
+                    <select name="id_product[]" multiple="multiple" id="product_select_edit" style="width: 100%;">
                         @foreach($category as $row)
                         <option value="{{$row->id}}">{{$row->name}}</option>
                         @endforeach
@@ -155,6 +166,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    $('#product_select').select2({
+        multiple: true,
+        dropdownParent: $('#partnershipModal'),
+    });
+
     $('.remove-data').click(function (event) {
         var form = $(this).closest("form");
         event.preventDefault();
@@ -208,13 +224,37 @@
             dataType: "json",
             url: "/admin/partnership/edit/" + id,
             success: function (response) {
-                document.querySelector('#name_partner_edit').value = response.name
-                document.querySelector('#img_edit').setAttribute('src', '/storage/images/' + response
+                var data_partner = response.data_partner;
+                var data_connector = response.data_connector;
+                var selectedValues = data_connector.map(function (item) {
+                    return item.id_product;
+                });
+
+                document.querySelector('#name_partner_edit').value = data_partner.name
+                document.querySelector('#img_edit').setAttribute('src', '/storage/images/' + data_partner
                     .image);
-                document.querySelector('#level_partner_edit').value = response.level
-                document.querySelector('#category_partner_edit').value = response.id_category
+                document.querySelector('#level_partner_edit').value = data_partner.level
+
+
+                document.querySelectorAll('#product_select_edit option').forEach(function (option) {
+                    option.selected = false;
+                });
+
+                selectedValues.forEach(function (value) {
+                    var option = document.querySelector('#product_select_edit option[value="' +
+                        value + '"]');
+                    if (option) {
+                        option.selected = true;
+                    }
+                });
+
+                $('#product_select_edit').select2({
+                    multiple: true,
+                    dropdownParent: $('#editPartnershipModal'),
+                });
             }
         });
     };
+
 </script>
 @endsection

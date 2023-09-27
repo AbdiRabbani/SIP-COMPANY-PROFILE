@@ -1,6 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: var(--purple);
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        color: white;
+    }
+
+</style>
 <div class="container pt-5">
     <div class="d-flex justify-content-between align-items-center">
         <p class="fw-semibold" style="font-size: 48px;">Customer</p>
@@ -107,7 +117,7 @@
                 </div>
                 <div class="mt-3">
                     <label for="">Product</label>
-                    <select name="id_product" id="product_add" stle="width: 100% !important;">
+                    <select name="id_product[]" multiple="multiple" id="product_add" style="width: 100%">
                         @foreach($product as $row)
                         <option value="{{$row->id}}">{{$row->name}}</option>
                         @endforeach
@@ -157,7 +167,7 @@
                 </div>
                 <div class="mt-3">
                     <label for="">Product</label>
-                    <select name="id_product" id="product_edit" style="width: 100% !important;">
+                    <select name="id_product[]" multiple="multiple" id="customer_product_edit" style="width: 100%">
                         @foreach($product as $row)
                         <option value="{{$row->id}}">{{$row->name}}</option>
                         @endforeach
@@ -176,18 +186,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    $('#product_edit').select2({
-        theme: "bootstrap-5",
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        dropdownParent: $('#editCustomerModal'),
-        placeholder: $(this).data('placeholder'),
-    });
-
     $('#product_add').select2({
-        theme: "bootstrap-5",
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
         dropdownParent: $('#customerModal'),
-        placeholder: $(this).data('placeholder'),
+        multiple: true,
     });
 
     $('.remove-data').click(function (event) {
@@ -243,11 +244,34 @@
             dataType: "json",
             url: "/admin/customer/edit/" + id,
             success: function (response) {
-                document.querySelector('#name_partner_edit').value = response.name
-                document.querySelector('#img_edit').setAttribute('src', '/storage/images/' + response
+                var data_customer = response.data_customer;
+                var data_connector = response.data_connector;
+                var selectedValues = data_connector.map(function (item) {
+                    return item.id_product;
+                });
+
+                document.querySelector('#name_partner_edit').value = data_customer.name
+                document.querySelector('#img_edit').setAttribute('src', '/storage/images/' + data_customer
                     .image);
-                document.querySelector('#type_partner_edit').value = response.type
-                $('#product_edit').val(response.id_product).trigger('change')
+                document.querySelector('#type_partner_edit').value = data_customer.type
+                $('#customer_product_edit').val(data_customer.id_product).trigger('change')
+
+                document.querySelectorAll('#customer_product_edit option').forEach(function (option) {
+                    option.selected = false;
+                });
+
+                selectedValues.forEach(function (value) {
+                    var option = document.querySelector('#customer_product_edit option[value="' +
+                        value + '"]');
+                    if (option) {
+                        option.selected = true;
+                    }
+                });
+
+                $('#customer_product_edit').select2({
+                    dropdownParent: $('#editCustomerModal'),
+                    multiple: true,
+                });
             }
         });
     };

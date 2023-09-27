@@ -109,25 +109,25 @@
     </div>
     <div class="tab-content">
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Excelent</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Seasoned</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_e">
 
             </div>
         </div>
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Great</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Stalwart</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_p">
 
             </div>
         </div>
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Good</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Trending</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_as">
 
             </div>
         </div>
         <div class="mt-4">
-            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Authorized</p>
+            <p class="fs-5 fw-semibold px-3" style="font-family: HemiHead;">Featuring</p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 px-4" id="data_loop_au">
 
             </div>
@@ -152,25 +152,25 @@
                 var data_au = "";
 
                 $.each(response, function (key, value) {
-                    if (key === 'Excelent') {
+                    if (key === 'Seasoned') {
                         $.each(value, function (index, user) {
                             data_e +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image + '" alt="">';
                         });
-                    } else if (key === 'Great') {
+                    } else if (key === 'Stalwart') {
                         $.each(value, function (index, user) {
                             data_p +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image + '" alt="">';
                         });
-                    } else if (key === 'Good') {
+                    } else if (key === 'Trending') {
                         $.each(value, function (index, user) {
                             data_as +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image + '" alt="">';
                         });
-                    } else if (key === 'Authorized') {
+                    } else if (key === 'Featuring') {
                         $.each(value, function (index, user) {
                             data_au +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
@@ -199,28 +199,28 @@
                 var data_au = "";
 
                 $.each(response, function (key, value) {
-                    if (key === 'Excelent') {
+                    if (key === 'Seasoned') {
                         $.each(value, function (index, user) {
                             data_e +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image +
                                 '" alt="">';
                         });
-                    } else if (key === 'Great') {
+                    } else if (key === 'Stalwart') {
                         $.each(value, function (index, user) {
                             data_p +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image +
                                 '" alt="">';
                         });
-                    } else if (key === 'Good') {
+                    } else if (key === 'Trending') {
                         $.each(value, function (index, user) {
                             data_as +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
                                 user.image +
                                 '" alt="">';
                         });
-                    } else if (key === 'Authorized') {
+                    } else if (key === 'Featuring') {
                         $.each(value, function (index, user) {
                             data_au +=
                                 '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +

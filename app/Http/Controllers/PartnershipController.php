@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Partnership;
 use App\PartnershipCategory;
+use App\PartnerConnector;
 
 class PartnershipController extends Controller
 {
@@ -19,10 +20,9 @@ class PartnershipController extends Controller
     {
         $response = $request->all();
 
-        $data = [
+        $data_partner = [
             'name' => $response['name'],
             'image' => $response['image'],
-            'id_category' => $response['id_category'],
             'level' => $response['level'],
         ];
 
@@ -30,9 +30,20 @@ class PartnershipController extends Controller
         $image = $request -> file('image');
         $image_name = $image->getClientOriginalName(); 
         $path = $request->file('image')->storeAs($destination_path, $image_name); 
-        $data['image'] = $image_name;
+        $data_partner['image'] = $image_name;
 
-        Partnership::create($data);
+        $partner = Partnership::create($data_partner);
+        $partner_id = $partner->id;
+
+        foreach ($response['id_product'] as $item => $value) {
+            $data_connector = array(
+                'id_product' => $response['id_product'][$item],
+                'id_partnership' => $partner_id,
+            );
+            PartnerConnector::create($data_connector);
+        };
+
+
         return back();
     }
 
@@ -44,7 +55,6 @@ class PartnershipController extends Controller
             $data = [
                 'name' => $response['name'],
                 'image' => $response['image'],
-                'id_category' => $response['id_category'],
                 'level' => $response['level'],
             ];
                 
@@ -56,18 +66,35 @@ class PartnershipController extends Controller
         } else {
             $data = [
                 'name' => $response['name'],
-                'id_category' => $response['id_category'],
                 'level' => $response['level'],
             ];
+        };
+
+        PartnerConnector::where('id_partnership', $id)->delete();
+
+        foreach ($response['id_product'] as $item => $value) {
+            $data_connector = array(
+                'id_product' => $response['id_product'][$item],
+                'id_partnership' => $id,
+            );
+            PartnerConnector::create($data_connector);
         };
 
         Partnership::find($id)->update($data);
         return back();
     }
 
-    public function edit($id) {
-        $data = partnership::find($id);
-        return response()->json($data);
+    public function edit($id) 
+    {
+        $data_partner = partnership::find($id);
+        $data_connector = partnerConnector::where('id_partnership' ,$id)->get()->all();
+
+        $response = [
+            'data_partner' => $data_partner,
+            'data_connector' => $data_connector
+        ];
+    
+        return response()->json($response);
     }
 
     protected function destroy($id) 

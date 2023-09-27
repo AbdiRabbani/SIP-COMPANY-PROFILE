@@ -9,6 +9,7 @@ use App\Campaign;
 use App\Career;
 use App\Customer;
 use App\Partnership;
+use App\PartnerConnector;
 use App\ProjectReference;
 use App\PartnershipCategory;
 use App\SolutionPartner;
@@ -176,16 +177,16 @@ class ViewController extends Controller
 
     public function pa_data() 
     {
-        $data_e = Partnership::where('level', 'Excelent')->get()->all();
-        $data_p = Partnership::where('level', 'Great')->get()->all();
-        $data_as = Partnership::where('level', 'Good')->get()->all();
-        $data_au = Partnership::where('level', 'Authorized')->get()->all();
+        $data_e = Partnership::where('level', 'Seasoned')->get()->all();
+        $data_p = Partnership::where('level', 'Stalwart')->get()->all();
+        $data_as = Partnership::where('level', 'Trending')->get()->all();
+        $data_au = Partnership::where('level', 'Featuring')->get()->all();
 
         $response_data = [
-            'Excelent' => $data_e,
-            'Great' => $data_p,
-            'Good' => $data_as,
-            'Authorized' => $data_au,
+            'Seasoned' => $data_e,
+            'Stalwart' => $data_p,
+            'Trending' => $data_as,
+            'Featuring' => $data_au,
         ];
 
         return response()->json($response_data);
@@ -193,16 +194,16 @@ class ViewController extends Controller
 
     public function p_data($id) 
     {
-        $data_e = Partnership::where('id_category', $id)->where('level', 'Excelent')->get()->all();
-        $data_p = Partnership::where('id_category', $id)->where('level', 'Great')->get()->all();
-        $data_as = Partnership::where('id_category', $id)->where('level', 'Good')->get()->all();
-        $data_au = Partnership::where('id_category', $id)->where('level', 'Authorized')->get()->all();
+        $data_e = partnerConnector::where('level', 'Seasoned')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();    
+        $data_p = partnerConnector::where('level', 'Stalwart')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();
+        $data_as = partnerConnector::where('level', 'Trending')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();
+        $data_au = partnerConnector::where('level', 'Featuring')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();
 
         $response_data = [
-            'Excelent' => $data_e,
-            'Great' => $data_p,
-            'Good' => $data_as,
-            'Authorized' => $data_au,
+            'Seasoned' => $data_e,
+            'Stalwart' => $data_p,
+            'Trending' => $data_as,
+            'Featuring' => $data_au,
         ];
 
         return response()->json($response_data);
@@ -237,24 +238,30 @@ class ViewController extends Controller
 
     public function c_data($id) 
     {
-        $data_1 = Customer::where('type', 1)->whereHas('partner_section', function ($query) use ($id) {
-            $query->where('about', $id);
-        })->get()->all();
-        $data_2 = Customer::where('type', 2)->whereHas('partner_section', function ($query) use ($id) {
-            $query->where('about', $id);
-        })->get()->all();
-        $data_3 = Customer::where('type', 3)->whereHas('partner_section', function ($query) use ($id) {
-            $query->where('about', $id);
-        })->get()->all();
-        $data_4 = Customer::where('type', 4)->whereHas('partner_section', function ($query) use ($id) {
-            $query->where('about', $id);
-        })->get()->all();
-        $data_5 = Customer::where('type', 5)->whereHas('partner_section', function ($query) use ($id) {
-            $query->where('about', $id);
-        })->get()->all();
-        $data_6 = Customer::where('type', 6)->whereHas('partner_section', function ($query) use ($id) {
-            $query->where('about', $id);
-        })->get()->all();
+        $data_1 = Customer::where('type', 1)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
+        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
+        ->where('partner_section.about', $id)
+        ->get();
+        $data_2 = Customer::where('type', 2)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
+        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
+        ->where('partner_section.about', $id)
+        ->get();
+        $data_3 = Customer::where('type', 3)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
+        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
+        ->where('partner_section.about', $id)
+        ->get();
+        $data_4 = Customer::where('type', 4)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
+        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
+        ->where('partner_section.about', $id)
+        ->get();
+        $data_5 = Customer::where('type', 5)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
+        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
+        ->where('partner_section.about', $id)
+        ->get();
+        $data_6 = Customer::where('type', 6)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
+        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
+        ->where('partner_section.about', $id)
+        ->get();
 
         $project1 = ProjectReference::where('type', 1)->whereHas('partner_section', function ($query) use ($id) {
             $query->where('about', $id);

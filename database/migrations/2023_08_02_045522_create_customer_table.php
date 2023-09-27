@@ -14,12 +14,10 @@ class CreateCustomerTable extends Migration
     public function up()
     {
         Schema::create('customer', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->text('name');
             $table->text('image');
             $table->enum('type', [1, 2, 3, 4, 5, 6]);
-            $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id')->on('partner_section')->onDelete('cascade');
             $table->timestamps();
         });
     }

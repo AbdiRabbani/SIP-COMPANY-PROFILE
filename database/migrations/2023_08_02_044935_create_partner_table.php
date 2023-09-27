@@ -14,12 +14,10 @@ class CreatePartnerTable extends Migration
     public function up()
     {
         Schema::create('partner', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->text('name');
             $table->text('image');
-            $table->enum('level', ['Excelent', 'Greate', 'Good', 'Authorized']);
-            $table->integer('id_category')->unsigned();
-            $table->foreign('id_category')->references('id')->on('partner_section')->onDelete('cascade');
+            $table->enum('level', ['Seasoned', 'Stalwart', 'Trending', 'Featuring']);
             $table->timestamps();
         });
     }
