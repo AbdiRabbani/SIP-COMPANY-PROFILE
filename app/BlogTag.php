@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BlogTag extends Model
 {
-    protected $table = 'blog_tag';
+    protected $table = 'tb_blog_tag';
     protected $guarded = [];
 
     public function insights()

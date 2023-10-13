@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
 {
-    protected $table = 'campaign';
+    protected $table = 'tb_campaign';
     protected $guarded = [];
 }

@@ -21,7 +21,7 @@
         <p>Phone : {{$data['phone']}}</p>
         <p style="text-align: justify;">Request : {{$data['request']}}</p>
         <div class="text-end">
-            <a href="" class="btn btn-success btn-sm">Go to website</a>
+            <a href="{{url('http://localhost:8000/message')}}" target="_blank" class="btn btn-success btn-sm">Go to website</a>
         </div>
     </div>
 </body>

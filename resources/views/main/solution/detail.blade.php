@@ -45,12 +45,13 @@
 <div class="solution-detail-content container">
     <p>{{$desc}}</p>
 
-    <ul class="nav nav-underline" id="myTab" role="tablist">
+    <p style="color: grey; font-size: 12px;">scroll horizontaly --></p>
+    <ul class="nav nav-underline" id="myTab" role="tablist" style="overflow: scroll; flex-wrap: nowrap;">
         @foreach($product as $row)
         <li class="nav-item" role="presentation">
             <button class="nav-link nav-link-custom fw-semibold" id="{{$row->id}}-tab" data-bs-toggle="tab"
                 data-bs-target="#{{$row->id}}-tab-pane" type="button" role="tab" aria-controls="{{$row->id}}-tab-pane"
-                aria-selected="true" onClick="blogData({{$row->id}})">{{$row->name}}</button>
+                aria-selected="true" onClick="blogData({{$row->id}})" style="min-width: max-content;">{{$row->name_tech}}</button>
         </li>
         @endforeach
     </ul>
@@ -61,51 +62,51 @@
             tabindex="0">
             <p class="fs-6" style="font-family: HemiHead;">Partnership</p>
             <div class="card card-body gap-2" style="flex-direction: row; overflow: scroll;">
-                <?php $partnership = partnerConnector::where('level', 'Seasoned')->where('id_product', $row->id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all() ?>
+                <?php $partnership = partnerConnector::where('level', 'Seasoned')->where('technology', $row->id)->join('tb_partnership','tb_partnership.id_partnership', '=', 'tb_partnership_technology.id_partnership')->get()->all() ?>
                 @foreach($partnership as $partner)
                 <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
-                    src="{{asset('storage/images/' .$partner->image)}}" alt="">
+                    src="{{url(env('PARTNERSHIP_STORAGE'))}}{{$partner->logo}}" alt="{{$partner->partner}}">
                 @endforeach
             </div>
 
             <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                <?php $partnership = partnerConnector::where('level', '!=', 'Seasoned')->where('id_product', $row->id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all() ?>
+                <?php $partnership = partnerConnector::where('level', '!=', 'Seasoned')->where('technology', $row->id)->join('tb_partnership','tb_partnership.id_partnership', '=', 'tb_partnership_technology.id_partnership')->get()->all() ?>
                 @foreach($partnership as $partner)
                 <img style="height: 65px; width: 130px; object-fit: contain" class="rounded shadow p-2"
-                    src="{{asset('storage/images/' .$partner->image)}}" alt="">
+                    src="{{url(env('PARTNERSHIP_STORAGE'))}}{{$partner->logo}}" alt="{{$partner->partner}}">
                 @endforeach
             </div>
 
             <p class="fs-6 mt-4" style="font-family: HemiHead;">Customer</p>
-            <ul class="nav nav-underline" id="pills-tab" role="tablist">
+            <ul class="nav nav-underline" id="pills-tab" style="overflow: scroll; flex-wrap: nowrap;" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom active" id="fsi{{$row->id}}-tab" data-bs-toggle="pill"
-                        data-bs-target="#fsi{{$row->id}}" type="button" role="tab" aria-controls="fsi{{$row->id}}"
+                        data-bs-target="#fsi{{$row->id}}" type="button" role="tab" style="min-width: max-content;" aria-controls="fsi{{$row->id}}"
                         aria-selected="true">FSI and Banking</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="goverment{{$row->id}}-tab" data-bs-toggle="pill"
-                        data-bs-target="#goverment{{$row->id}}" type="button" role="tab"
+                        data-bs-target="#goverment{{$row->id}}" type="button" role="tab" style="min-width: max-content;"
                         aria-controls="goverment{{$row->id}}" aria-selected="true">Government</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="manufacturing{{$row->id}}-tab" data-bs-toggle="pill"
-                        data-bs-target="#manufacturing{{$row->id}}" type="button" role="tab"
+                        data-bs-target="#manufacturing{{$row->id}}" type="button" role="tab" style="min-width: max-content;"
                         aria-controls="manufacturing{{$row->id}}" aria-selected="true">Manufacturing</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="telco{{$row->id}}-tab" data-bs-toggle="pill"
-                        data-bs-target="#telco{{$row->id}}" type="button" role="tab" aria-controls="telco{{$row->id}}"
+                        data-bs-target="#telco{{$row->id}}" type="button" role="tab" style="min-width: max-content;" aria-controls="telco{{$row->id}}"
                         aria-selected="true">Telco & Service</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="retail{{$row->id}}-tab" data-bs-toggle="pill"
-                        data-bs-target="#retail{{$row->id}}" type="button" role="tab" aria-controls="retail{{$row->id}}"
+                        data-bs-target="#retail{{$row->id}}" type="button" role="tab" style="min-width: max-content;" aria-controls="retail{{$row->id}}"
                         aria-selected="true">Retail</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="education{{$row->id}}-tab" data-bs-toggle="pill"
-                        data-bs-target="#education{{$row->id}}" type="button" role="tab"
+                        data-bs-target="#education{{$row->id}}" type="button" role="tab" style="min-width: max-content;"
                         aria-controls="education{{$row->id}}" aria-selected="true">Education</button>
                 </li>
             </ul>
@@ -119,16 +120,16 @@
                         @if($project1)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
-                                src="{{asset('storage/images/' .$project1->image)}}" class="shadow rounded p-2" alt="">
+                                src="{{url(env('Storage_link'))}}project/{{$project1->image}}" class="shadow rounded p-2" alt="">
                         </div>
                         <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project1->desc}}</p>
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $fsi = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 1)->get()->all(); ?>
+                        <?php $fsi = CustomerConnector::where('id_product', $row->id)->join('tb_contact', 'tb_customer_connector.id_customer', '=', 'tb_contact.id_customer')->where('tb_contact.type', 1)->get()->all(); ?>
                         @foreach($fsi as $fsidata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
-                            src="{{asset('storage/images/' .$fsidata->image)}}" alt="">
+                            src="{{url(env('Storage_link'))}}customer/{{$fsidata->logo}}" alt="{{$fsidata->brand_name}}">
                         @endforeach
                     </div>
                 </div>
@@ -140,16 +141,16 @@
                         @if($project2)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
-                                src="{{asset('storage/images/' .$project2->image)}}" class="shadow rounded p-2" alt="">
+                                src="{{url(env('Storage_link'))}}project/{{$project2->image}}" class="shadow rounded p-2" alt="">
                         </div>
                         <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project2->desc}}</p>
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $government = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 2)->get()->all(); ?>
+                        <?php $government = CustomerConnector::where('id_product', $row->id)->join('tb_contact', 'tb_customer_connector.id_customer', '=', 'tb_contact.id_customer')->where('tb_contact.type', 2)->get()->all(); ?>
                         @foreach($government as $governmentdata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="shadow rounded p-2"
-                            src="{{asset('storage/images/' .$governmentdata->image)}}" alt="">
+                            src="{{url(env('Storage_link'))}}customer/{{$governmentdata->logo}}" alt="{{$governmentdata->brand_name}}">
                         @endforeach
                     </div>
                 </div>
@@ -161,16 +162,16 @@
                         @if($project3)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
-                                src="{{asset('storage/images/' .$project3->image)}}" class="shadow rounded p-2" alt="">
+                                src="{{url(env('Storage_link'))}}project/{{$project3->image}}" class="shadow rounded p-2" alt="">
                         </div>
                         <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project3->desc}}</p>
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $manufacturing = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 3)->get()->all(); ?>
+                        <?php $manufacturing = CustomerConnector::where('id_product', $row->id)->join('tb_contact', 'tb_customer_connector.id_customer', '=', 'tb_contact.id_customer')->where('tb_contact.type', 3)->get()->all(); ?>
                         @foreach($manufacturing as $manufacturingdata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
-                            src="{{asset('storage/images/' .$manufacturingdata->image)}}" alt="">
+                            src="{{url(env('Storage_link'))}}customer/{{$manufacturingdata->logo}}" alt="{{$manufacturingdata->brand_name}}">
                         @endforeach
                     </div>
                 </div>
@@ -182,16 +183,16 @@
                         @if($project4)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
-                                src="{{asset('storage/images/' .$project4->image)}}" class="shadow rounded p-2" alt="">
+                                src="{{url(env('Storage_link'))}}project/{{$project4->image}}" class="shadow rounded p-2" alt="">
                         </div>
                         <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project4->desc}}</p>
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $telco = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 4)->get()->all(); ?>
+                        <?php $telco = CustomerConnector::where('id_product', $row->id)->join('tb_contact', 'tb_customer_connector.id_customer', '=', 'tb_contact.id_customer')->where('tb_contact.type', 4)->get()->all(); ?>
                         @foreach($telco as $telcodata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
-                            src="{{asset('storage/images/' .$telcodata->image)}}" alt="">
+                            src="{{url(env('Storage_link'))}}customer/{{$telcodata->logo}}" alt="{{$telcodata->brand_name}}">
                         @endforeach
                     </div>
                 </div>
@@ -203,16 +204,16 @@
                         @if($project5)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
-                                src="{{asset('storage/images/' .$project5->image)}}" class="shadow rounded p-2" alt="">
+                                src="{{url(env('Storage_link'))}}project/{{$project5->image}}" class="shadow rounded p-2" alt="">
                         </div>
                         <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project5->desc}}</p>
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $retail = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 5)->get()->all(); ?>
+                        <?php $retail = CustomerConnector::where('id_product', $row->id)->join('tb_contact', 'tb_customer_connector.id_customer', '=', 'tb_contact.id_customer')->where('tb_contact.type', 5)->get()->all(); ?>
                         @foreach($retail as $retaildata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
-                            src="{{asset('storage/images/' .$retaildata->image)}}" alt="">
+                            src="{{url(env('Storage_link'))}}customer/{{$retaildata->logo}}" alt="{{$retaildata->brand_name}}">
                         @endforeach
                     </div>
                 </div>
@@ -224,16 +225,16 @@
                         @if($project6)
                         <div class="img-partnership col-md-2 mt-3">
                             <img style="height: 85px; width: 165px; object-fit: contain"
-                                src="{{asset('storage/images/' .$project6->image)}}" class="shadow rounded p-2" alt="">
+                                src="{{url(env('Storage_link'))}}project/{{$project6->image}}" class="shadow rounded p-2" alt="">
                         </div>
                         <p style="text-align: justify; margin-top: 40px; font-size: 15px;">{{$project6->desc}}</p>
                         @endif
                     </div>
                     <div class="card card-body gap-2 mt-2" style="flex-direction: row; overflow: scroll;">
-                        <?php $education = CustomerConnector::where('id_product', $row->id)->join('customer', 'customer_connector.id_customer', '=', 'customer.id')->where('customer.type', 6)->get()->all(); ?>
+                        <?php $education = CustomerConnector::where('id_product', $row->id)->join('tb_contact', 'tb_customer_connector.id_customer', '=', 'tb_contact.id_customer')->where('tb_contact.type', 6)->get()->all(); ?>
                         @foreach($education as $educationdata)
                         <img style="height: 85px; width: 165px; object-fit: contain" class="rounded shadow p-2"
-                            src="{{asset('storage/images/' .$educationdata->image)}}" alt="">
+                            src="{{url(env('Storage_link'))}}customer/{{$educationdata->logo}}" alt="{{$educationdata->brand_name}}">
                         @endforeach
                     </div>
                 </div>
@@ -537,7 +538,7 @@
                         data = data +
                             '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                         data = data +
-                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
+                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' +
                             value.image + '" alt="Card image cap">';
                         data = data + '</div>';
                         data = data + '<p class="card-date mx-3 mb-0">' + formattedDate + '</p>';
@@ -553,12 +554,11 @@
                     });
                 } else {
                     data =
-                        '<p class="rounded p-1 mt-5" style="background: var(--purple); color: white;">Cannot find the news</p>';
+                        '<p class="rounded p-1 mt-5" style="background: var(--purple); color: white;">No Blog for this Product</p>';
                 }
                 $('#blog-content').html(data);
             }
         })
     }
-
 </script>
 @endsection

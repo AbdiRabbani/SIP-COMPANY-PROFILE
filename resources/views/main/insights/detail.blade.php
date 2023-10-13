@@ -4,14 +4,14 @@
 <div class="mt-5 d-flex container justify-content-between flex-wrap">
     <div class="col-md-9 detail-content">
         <div>
-            <img src="{{asset('storage/images/'.$data->image)}}" alt="" style="height: 100%; object-fit: cover;">
+            <img src="{{url(env('Storage_link'))}}insights/{{$data->image}}" alt="" style="height: 100%; object-fit: cover;">
         </div>
         <p class="detail-date">{{Carbon\Carbon::parse($data->created_at)->format('d M Y')}}</p>
         <p class="detail-title fw-semibold">{{$data->title}}</p>
         <div class="justify-content-start gap-2" style="height: max-content;">
             @if($data->type == 'Blog')
             @foreach($blogtag as $row)
-            <p class="rounded p-1 text-white" style="background: var(--purple);">{{$row->product->name}}</p>
+            <p class="rounded p-1 text-white" style="background: var(--purple);">{{$row->product->name_tech}}</p>
             @endforeach
             @else
             @foreach($tag as $row)
@@ -28,7 +28,7 @@
             href="{{url('insights', $row->id)}}">
             <div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">
                 <img style="width: 100%; min-height: 100%; object-fit: cover;"
-                    src="{{asset('storage/images/' .$row->image)}}" alt="Card image cap">
+                    src="{{url(env('Storage_link'))}}insights/{{$row->image}}" alt="Card image cap">
             </div>
             <p class="card-date mx-3 mb-0">{{Carbon\Carbon::parse($row->created_at)->format('d M Y')}}</p>
             <div class="card-body">
@@ -43,7 +43,7 @@
             href="{{url('insights', $row->id)}}">
             <div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">
                 <img style="width: 100%; min-height: 100%; object-fit: cover;"
-                    src="{{asset('storage/images/' .$row->image)}}" alt="Card image cap">
+                    src="{{url(env('Storage_link'))}}insights/{{$row->image}}" alt="Card image cap">
             </div>
             <p class="card-date mx-3 mb-0">{{Carbon\Carbon::parse($row->created_at)->format('d M Y')}}</p>
             <div class="card-body">

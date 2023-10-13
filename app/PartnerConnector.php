@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PartnerConnector extends Model
 {
-    protected $table = 'partner_connector';
+    protected $table = 'tb_partnership_technology';
     protected $guarded = [];
 
-    public function partner_section() 
+    public function partner_section()
     {
-        return $this->belongsTo('App\Partnershipcategory', 'id_product');
+        return $this->belongsTo('App\Partnershipcategory', 'technology');
     }
 }

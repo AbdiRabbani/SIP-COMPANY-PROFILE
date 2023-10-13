@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Insights extends Model
 {
-    protected $table = 'insights';
+    protected $table = 'tb_insights';
     protected $guarded = [];
 }

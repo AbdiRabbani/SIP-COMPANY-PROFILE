@@ -23,6 +23,7 @@
     }
 
 </style>
+
 <div class="container">
     <div class="partnership-header">
         <p class="text-center fw-semibold" style="font-family: HemiHead;">Our Customer</p>
@@ -62,13 +63,13 @@
         <div class="mt-4 d-flex row justify-content-center">
             <div class="mt-5 d-flex">
                 <div class="img-customer">
-                    <img src="{{asset('custom/icon/fsi.png')}}" style="width: 100%; height: 100%;" alt="">
+                    <img src="{{asset('custom/icon/fsi.png')}}" style="width: 100%; height: 100%;" alt="' + user.brand_name + '">
                 </div>
                 <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">FSI and Banking</p>
             </div>
             <p id="title-project1"></p>
             <div>
-                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project1" alt="">
+                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project1" alt="' + user.brand_name + '">
             </div>
             <p style="text-align: justify;" id="text-project1"></p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_1">
@@ -78,13 +79,13 @@
         <div class="mt-4 d-flex row justify-content-center">
             <div class="mt-5 d-flex">
                 <div class="img-customer">
-                    <img src="{{asset('custom/icon/government.png')}}" style="width: 100%; height: 100%;" alt="">
+                    <img src="{{asset('custom/icon/government.png')}}" style="width: 100%; height: 100%;" alt="' + user.brand_name + '">
                 </div>
                 <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Government</p>
             </div>
             <p id="title-project2"></p>
             <div>
-                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project2" alt="">
+                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project2" alt="' + user.brand_name + '">
             </div>
             <p style="text-align: justify;" id="text-project2"></p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_2">
@@ -94,13 +95,13 @@
         <div class="mt-4 d-flex row justify-content-center">
             <div class="mt-5 d-flex">
                 <div class="img-customer">
-                    <img src="{{asset('custom/icon/manufacturing.png')}}" style="width: 100%; height: 100%;" alt="">
+                    <img src="{{asset('custom/icon/manufacturing.png')}}" style="width: 100%; height: 100%;" alt="' + user.brand_name + '">
                 </div>
                 <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Manufacturing</p>
             </div>
             <p id="title-project3"></p>
             <div>
-                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project3" alt="">
+                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project3" alt="' + user.brand_name + '">
             </div>
             <p style="text-align: justify;" id="text-project3"></p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_3">
@@ -110,13 +111,13 @@
         <div class="mt-4 d-flex row justify-content-center">
             <div class="mt-5 d-flex">
                 <div class="img-customer">
-                    <img src="{{asset('custom/icon/telco.png')}}" style="width: 100%; height: 100%;" alt="">
+                    <img src="{{asset('custom/icon/telco.png')}}" style="width: 100%; height: 100%;" alt="' + user.brand_name + '">
                 </div>
                 <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Telco & Service Provider</p>
             </div>
             <p id="title-project4"></p>
             <div>
-                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project4" alt="">
+                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project4" alt="' + user.brand_name + '">
             </div>
             <p style="text-align: justify;" id="text-project4"></p>
             <div class="d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_4">
@@ -126,13 +127,13 @@
         <div class="mt-4 d-flex row justify-content-center">
             <div class="mt-5 d-flex">
                 <div class="img-customer">
-                    <img src="{{asset('custom/icon/retail.png')}}" style="width: 100%; height: 100%;" alt="">
+                    <img src="{{asset('custom/icon/retail.png')}}" style="width: 100%; height: 100%;" alt="' + user.brand_name + '">
                 </div>
                 <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Retail</p>
             </div>
             <p id="title-project5"></p>
             <div>
-                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project5" alt="">
+                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project5" alt="' + user.brand_name + '">
             </div>
             <p style="text-align: justify;" id="text-project5"></p>
             <div class="d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_5">
@@ -142,13 +143,13 @@
         <div class="mt-4 d-flex row justify-content-center">
             <div class="mt-5 d-flex">
                 <div class="img-customer">
-                    <img src="{{asset('custom/icon/education.png')}}" style="width: 100%; height: 100%;" alt="">
+                    <img src="{{asset('custom/icon/education.png')}}" style="width: 100%; height: 100%;" alt="' + user.brand_name + '">
                 </div>
                 <p class="fs-5 fw-semibold customer-title" style="font-family: HemiHead;">Education</p>
             </div>
             <p id="title-project6"></p>
             <div>
-                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project6" alt="">
+                <img style="height: 75px; width: auto;" class="rounded shadow my-3 p-2" id="img-project6" alt="' + user.brand_name + '">
             </div>
             <p style="text-align: justify;" id="text-project6"></p>
             <div class=" d-flex row col-md-12 flex-wrap gap-2 my-2" id="data_loop_6">
@@ -179,33 +180,33 @@
                 $.each(response, function (key, value) {
                     if (key == 1) {
                         $.each(value, function (index, user) {
-                            data_1 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_1 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 2) {
                         $.each(value, function (index, user) {
-                            data_2 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_2 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 3) {
                         $.each(value, function (index, user) {
-                            data_3 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_3 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 4) {
                         $.each(value, function (index, user) {
-                            data_4 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_4 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 5) {
                         $.each(value, function (index, user) {
-                            data_5 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_5 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 6) {
                         $.each(value, function (index, user) {
-                            data_6 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_6 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     }
                 });
@@ -301,33 +302,33 @@
                 $.each(response, function (key, value) {
                     if (key == 1) {
                         $.each(value, function (index, user) {
-                            data_1 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_1 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 2) {
                         $.each(value, function (index, user) {
-                            data_2 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_2 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 3) {
                         $.each(value, function (index, user) {
-                            data_3 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_3 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 4) {
                         $.each(value, function (index, user) {
-                            data_4 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_4 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 5) {
                         $.each(value, function (index, user) {
-                            data_5 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_5 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     } else if (key == 6) {
                         $.each(value, function (index, user) {
-                            data_6 += '<img src="/storage/images/' + user.image +
-                                '" alt="" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
+                            data_6 += '<img src="{{url(env('Storage_link'))}}customer/' + user.logo +
+                                '" alt="' + user.brand_name + '" class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up">';
                         });
                     }
 

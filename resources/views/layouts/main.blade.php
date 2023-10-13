@@ -47,6 +47,7 @@
         border-radius: 10px;
         padding-left: 10px;
         padding-right: 10px;
+        margin: 0px !important;
     }
 
     .navbar-link-custom:hover {

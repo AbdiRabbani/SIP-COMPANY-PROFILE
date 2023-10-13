@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectReference extends Model
 {
-    protected $table = 'project_reference';
+    protected $table = 'tb_project_reference';
     protected $guarded = [];
 
     public function partner_section()

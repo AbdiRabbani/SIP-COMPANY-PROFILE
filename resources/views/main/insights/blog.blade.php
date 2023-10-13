@@ -77,7 +77,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -88,7 +88,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -99,7 +99,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -110,7 +110,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -157,8 +157,7 @@
                             data = data +
                                 '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                             data = data +
-                                '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
-                                value.image + '" alt="Card image cap">';
+                                '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' + value.image + '" alt="Card image cap">';
                             data = data + '</div>';
                             data = data + '<p class="card-date mx-3 mb-0">' + formattedDate +
                                 '</p>';
@@ -213,7 +212,7 @@
                         data = data +
                             '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                         data = data +
-                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
+                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' +
                             value.image + '" alt="Card image cap">';
                         data = data + '</div>';
                         data = data + '<p class="card-date mx-3 mb-0">' + formattedDate + '</p>';
@@ -265,7 +264,7 @@
                         data = data +
                             '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                         data = data +
-                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
+                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' +
                             value.image + '" alt="Card image cap">';
                         data = data + '</div>';
                         data = data + '<p class="card-date mx-3 mb-0">' + formattedDate + '</p>';

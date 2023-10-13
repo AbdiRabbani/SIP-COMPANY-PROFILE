@@ -68,7 +68,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -79,7 +79,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -90,7 +90,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -101,7 +101,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-link-custom" id="filter-button" onClick="data('{{$row->id}}')" data-bs-toggle="pill"
                         role="tab" type="submit" aria-selected="false"
-                        style="min-width: max-content;">{{$row->name}}</button>
+                        style="min-width: max-content;">{{$row->name_tech}}</button>
                 </li>
                 @endforeach
             </ul>
@@ -155,26 +155,26 @@
                     if (key === 'Seasoned') {
                         $.each(value, function (index, user) {
                             data_e +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image + '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo + '" alt="'+ user.partner +'">';
                         });
                     } else if (key === 'Stalwart') {
                         $.each(value, function (index, user) {
                             data_p +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image + '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo + '" alt="'+ user.partner +'">';
                         });
                     } else if (key === 'Trending') {
                         $.each(value, function (index, user) {
                             data_as +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image + '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo + '" alt="'+ user.partner +'">';
                         });
                     } else if (key === 'Featuring') {
                         $.each(value, function (index, user) {
                             data_au +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image + '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo + '" alt="'+ user.partner +'">';
                         });
                     }
 
@@ -202,30 +202,30 @@
                     if (key === 'Seasoned') {
                         $.each(value, function (index, user) {
                             data_e +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image +
-                                '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo +
+                                '" alt="'+ user.partner +'">';
                         });
                     } else if (key === 'Stalwart') {
                         $.each(value, function (index, user) {
                             data_p +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image +
-                                '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo +
+                                '" alt="'+ user.partner +'">';
                         });
                     } else if (key === 'Trending') {
                         $.each(value, function (index, user) {
                             data_as +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image +
-                                '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo +
+                                '" alt="'+ user.partner +'">';
                         });
                     } else if (key === 'Featuring') {
                         $.each(value, function (index, user) {
                             data_au +=
-                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="/storage/images/' +
-                                user.image +
-                                '" alt="">';
+                                '<img class="shadow rounded py-1" style="height: 85px; width: 165px; object-fit: contain" data-aos="fade-up"main src="{{url(env('PARTNERSHIP_STORAGE'))}}' +
+                                user.logo +
+                                '" alt="'+ user.partner +'">';
                         });
                     }
                 });
@@ -236,6 +236,5 @@
             }
         })
     };
-
 </script>
 @endsection

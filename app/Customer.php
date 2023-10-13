@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    protected $table = 'customer';
+    protected $table = 'tb_contact';
     protected $guarded = [];
 
     public function partner_section() 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TagConnector extends Model
 {
-    protected $table = 'news_tag_connector';
+    protected $table = 'tb_news_tag_connector';
     protected $guarded = [];
 
     public function tag()

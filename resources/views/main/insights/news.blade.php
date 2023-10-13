@@ -96,7 +96,7 @@
                             data = data +
                                 '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                             data = data +
-                                '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
+                                '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' +
                                 value.image + '" alt="Card image cap">';
                             data = data + '</div>';
                             data = data + '<p class="card-date mx-3 mb-0">' + formattedDate +
@@ -153,7 +153,7 @@
                         data = data +
                             '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                         data = data +
-                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
+                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' +
                             value.image + '" alt="Card image cap">';
                         data = data + '</div>';
                         data = data + '<p class="card-date mx-3 mb-0">' + formattedDate + '</p>';
@@ -205,8 +205,7 @@
                         data = data +
                             '<div class="card-img-top rounded d-flex align-items-center" style="overflow: hidden;">';
                         data = data +
-                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="/storage/images/' +
-                            value.image + '" alt="Card image cap">';
+                            '<img style="width: 100%; min-height: 100%; object-fit: cover;" src="{{url(env('Storage_link'))}}insights/' + value.image + '" alt="Card image cap">';
                         data = data + '</div>';
                         data = data + '<p class="card-date mx-3 mb-0">' + formattedDate + '</p>';
                         data = data + '<div class="card-body">';

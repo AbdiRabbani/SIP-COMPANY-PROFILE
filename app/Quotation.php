@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quotation extends Model
 {
-    protected $table = 'quotation';
+    protected $table = 'tb_message';
     protected $guarded = [];
 }

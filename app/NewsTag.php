@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsTag extends Model
 {
-    Protected $table = 'news_tag';
+    Protected $table = 'tb_news_tag';
     protected $guarded = [];
 }

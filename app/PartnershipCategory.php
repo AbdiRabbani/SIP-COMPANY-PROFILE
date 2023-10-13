@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PartnershipCategory extends Model
 {
-    protected $table = 'partner_section';
+    protected $table = 'tb_technology_tag';
     protected $guarded = [];
 }

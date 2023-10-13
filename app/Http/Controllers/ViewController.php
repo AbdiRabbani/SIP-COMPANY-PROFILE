@@ -39,9 +39,9 @@ class ViewController extends Controller
 
         if($request->p) 
         {
-            $data = Insights::where('type', 'news')->where('title', 'LIKE', '%' . $request->p . '%')->get()->all();
+            $data = Insights::where('type', 'News')->where('title', 'LIKE', '%' . $request->p . '%')->get()->all();
         } else {
-            $data = Insights::where('type', 'news')->get()->all();
+            $data = Insights::where('type', 'News')->get()->all();
         }
 
 
@@ -52,55 +52,48 @@ class ViewController extends Controller
 
     public function insight_b(Request $request) 
     {
-        $value = $request->p;
-
-        if($request->p) {
-            $data = Insights::where('type', 'blog')->where('title', 'LIKE', '%' . $request->p . '%')->get()->all();
-        } else {
-            $data = Insights::where('type', 'blog')->get()->all();
-        }
-
         $category1 = PartnershipCategory::where('about', '1')->get()->all();
         $category2 = PartnershipCategory::where('about', '2')->get()->all();
         $category3 = PartnershipCategory::where('about', '3')->get()->all();
         $category4 = PartnershipCategory::where('about', '4')->get()->all();
+        
 
-        return view('main.insights.blog', compact('data', 'value', 'category1', 'category2', 'category3', 'category4'));
+        return view('main.insights.blog', compact('category1', 'category2', 'category3', 'category4'));
     }
 
     public function insight_b_allData() 
     {
-        $data = Insights::where('type', 'blog')->get()->all();
+        $data = Insights::where('type', 'Blog')->get()->all();
         return response()->json($data);
     }
 
     public function insight_b_data($id) 
     {
-        $data = BlogTag::where('id_product', $id)->join('insights','insights.id', '=', 'blog_tag.id_insights')->get()->all();    
+        $data = BlogTag::where('id_product', $id)->join('tb_insights','tb_insights.id', '=', 'tb_blog_tag.id_insights')->get()->all();    
         return response()->json($data);
     }
 
     public function insight_b_search($name) 
     {
-        $data = Insights::where('type', 'blog')->where('title', 'LIKE', '%' . $name . '%')->get()->all();
+        $data = Insights::where('type', 'Blog')->where('title', 'LIKE', '%' . $name . '%')->get()->all();
         return response()->json($data);
     }
 
     public function insight_n_allData() 
     {
-        $data = Insights::where('type', 'news')->get()->all();
+        $data = Insights::where('type', 'News')->get()->all();
         return response()->json($data);
     }
 
     public function insight_n_search($name) 
     {
-        $data = Insights::where('type', 'news')->where('title', 'LIKE', '%' . $name . '%')->get()->all();
+        $data = Insights::where('type', 'News')->where('title', 'LIKE', '%' . $name . '%')->get()->all();
         return response()->json($data);
     }
 
     public function insight_n_tag($id) 
     {
-        $data = TagConnector::where('id_tag', $id)->join('insights','insights.id', '=', 'news_tag_connector.id_insights')->get()->all();    
+        $data = TagConnector::where('id_tag', $id)->join('tb_insights','tb_insights.id', '=', 'tb_news_tag_connector.id_insights')->get()->all();    
         return response()->json($data);
     }
 
@@ -148,7 +141,7 @@ class ViewController extends Controller
 
     public function blogData($id) 
     {
-        $data = BlogTag::where('id_product', $id)->join('insights','insights.id', '=', 'blog_tag.id_insights')->get()->all();    
+        $data = BlogTag::where('id_product', $id)->join('tb_insights','tb_insights.id', '=', 'tb_blog_tag.id_insights')->get()->all();    
         return response()->json($data);
     }
 
@@ -194,10 +187,10 @@ class ViewController extends Controller
 
     public function p_data($id) 
     {
-        $data_e = partnerConnector::where('level', 'Seasoned')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();    
-        $data_p = partnerConnector::where('level', 'Stalwart')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();
-        $data_as = partnerConnector::where('level', 'Trending')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();
-        $data_au = partnerConnector::where('level', 'Featuring')->where('id_product', $id)->join('partner','partner.id', '=', 'partner_connector.id_partnership')->get()->all();
+        $data_e = partnerConnector::where('level', 'Seasoned')->where('technology', $id)->join('tb_partnership','tb_partnership.id_partnership', '=', 'tb_partnership_technology.id_partnership')->get()->all();    
+        $data_p = partnerConnector::where('level', 'Stalwart')->where('technology', $id)->join('tb_partnership','tb_partnership.id_partnership', '=', 'tb_partnership_technology.id_partnership')->get()->all();
+        $data_as = partnerConnector::where('level', 'Trending')->where('technology', $id)->join('tb_partnership','tb_partnership.id_partnership', '=', 'tb_partnership_technology.id_partnership')->get()->all();
+        $data_au = partnerConnector::where('level', 'Featuring')->where('technology', $id)->join('tb_partnership','tb_partnership.id_partnership', '=', 'tb_partnership_technology.id_partnership')->get()->all();
 
         $response_data = [
             'Seasoned' => $data_e,
@@ -238,29 +231,29 @@ class ViewController extends Controller
 
     public function c_data($id) 
     {
-        $data_1 = Customer::where('type', 1)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
-        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
-        ->where('partner_section.about', $id)
+        $data_1 = Customer::where('type', 1)->join('tb_customer_connector', 'tb_contact.id_customer', '=', 'tb_customer_connector.id_customer')
+        ->join('tb_technology_tag', 'tb_customer_connector.id_product', '=', 'tb_technology_tag.id')
+        ->where('tb_technology_tag.about', $id)
         ->get();
-        $data_2 = Customer::where('type', 2)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
-        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
-        ->where('partner_section.about', $id)
+        $data_2 = Customer::where('type', 2)->join('tb_customer_connector', 'tb_contact.id_customer', '=', 'tb_customer_connector.id_customer')
+        ->join('tb_technology_tag', 'tb_customer_connector.id_product', '=', 'tb_technology_tag.id')
+        ->where('tb_technology_tag.about', $id)
         ->get();
-        $data_3 = Customer::where('type', 3)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
-        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
-        ->where('partner_section.about', $id)
+        $data_3 = Customer::where('type', 3)->join('tb_customer_connector', 'tb_contact.id_customer', '=', 'tb_customer_connector.id_customer')
+        ->join('tb_technology_tag', 'tb_customer_connector.id_product', '=', 'tb_technology_tag.id')
+        ->where('tb_technology_tag.about', $id)
         ->get();
-        $data_4 = Customer::where('type', 4)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
-        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
-        ->where('partner_section.about', $id)
+        $data_4 = Customer::where('type', 4)->join('tb_customer_connector', 'tb_contact.id_customer', '=', 'tb_customer_connector.id_customer')
+        ->join('tb_technology_tag', 'tb_customer_connector.id_product', '=', 'tb_technology_tag.id')
+        ->where('tb_technology_tag.about', $id)
         ->get();
-        $data_5 = Customer::where('type', 5)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
-        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
-        ->where('partner_section.about', $id)
+        $data_5 = Customer::where('type', 5)->join('tb_customer_connector', 'tb_contact.id_customer', '=', 'tb_customer_connector.id_customer')
+        ->join('tb_technology_tag', 'tb_customer_connector.id_product', '=', 'tb_technology_tag.id')
+        ->where('tb_technology_tag.about', $id)
         ->get();
-        $data_6 = Customer::where('type', 6)->join('customer_connector', 'customer.id', '=', 'customer_connector.id_customer')
-        ->join('partner_section', 'customer_connector.id_product', '=', 'partner_section.id')
-        ->where('partner_section.about', $id)
+        $data_6 = Customer::where('type', 6)->join('tb_customer_connector', 'tb_contact.id_customer', '=', 'tb_customer_connector.id_customer')
+        ->join('tb_technology_tag', 'tb_customer_connector.id_product', '=', 'tb_technology_tag.id')
+        ->where('tb_technology_tag.about', $id)
         ->get();
 
         $project1 = ProjectReference::where('type', 1)->whereHas('partner_section', function ($query) use ($id) {
@@ -329,10 +322,10 @@ class ViewController extends Controller
             'id_job' => $response['id_job'],
         ];
 
-        $destination_path = 'public/file'; 
-        $file = $request -> file('cv');
+        $destination_path = 'public/file/cv'; 
+        $file = $request->file('cv');
         $file_name = $file->getClientOriginalName(); 
-        $path = $request->file('cv')->storeAs($destination_path, $file_name); 
+        $path = $file->storeAs($destination_path, $file_name); 
         $data['cv'] = $file_name;
 
         JobRegist::create($data);

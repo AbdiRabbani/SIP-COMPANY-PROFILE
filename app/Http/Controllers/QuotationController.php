@@ -24,13 +24,13 @@ class QuotationController extends Controller
         $mail->from($data['email'], $data['name']);
 
         if($data['for'] = 'Quotation') {
-            Mail::to('sales@sinergy.com')->send($mail);
+            Mail::to('sales@sinergy.co.id')->send($mail);
         } else if($data['for'] = 'Career'){
-            Mail::to('admin@sinergy.com')->send($mail);
+            Mail::to('admin@sinergy.co.id')->send($mail);
         } else if ($data['for'] = 'Company Profile') {
-            Mail::to('sales@sinergy.com')->send($mail);
+            Mail::to('sales@sinergy.co.id')->send($mail);
         } else if ($data['for'] = 'Help Desk') {
-            Mail::to('helpdesk@sinergy.com')->send($mail);
+            Mail::to('helpdesk@sinergy.co.id')->send($mail);
         }
 
         Quotation::create($data);        

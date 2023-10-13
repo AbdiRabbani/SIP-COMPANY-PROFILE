@@ -12,7 +12,7 @@
     <p class="text-center">Tell everyone that you can do it!!</p>
 
     <div class="form-request ms-auto me-auto col-md-6">
-        <form action="{{url('join/send')}}" method="post" enctype="multipart/form-data">
+        <form action="{{url('/join/send')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="">Name</label>
             <input required type="text" name="name" class="form-control">
@@ -21,7 +21,7 @@
             <input required type="email" name="email" class="form-control">
 
             <label for="">Your CV</label>
-            <input required type="file" name="cv" class="form-control">
+            <input required type="file" name="cv" id="cv-input" class="form-control">
             <p style="color: grey; font-size: 13px; padding-left: 2px;">use PDF file</p>
 
             <label for="">Job</label>
